@@ -276,6 +276,10 @@
     <a href="#res-study" data-group="resources">Further Study</a>
     <a href="#res-security" data-group="resources">AI Security Essentials</a>
   </div>
+  <h2 style="margin-top:24px;">AI Conceptual Guide</h2>
+  <div class="nav-links">
+    <a href="#conceptual-guide" data-group="conceptual">AI Conceptual Guide</a>
+  </div>
 </nav>
 
 <!-- ── MAIN CONTENT ─────────────────────────────── -->
@@ -690,6 +694,60 @@
   </ul>
 
   <p><em>Part of the AI Onramps programme &mdash; Building AI literacy for working professionals</em></p>
+</section>
+
+<!-- ── AI CONCEPTUAL GUIDE ─────────────────────── -->
+<section class="step" id="conceptual-guide">
+  <h2>A Practitioner&rsquo;s Guide to LLMs: What They Are and How to Enhance Them</h2>
+
+  <h3>Opening</h3>
+  <p>To use any tool well, you need an accurate mental model of what it is. This is especially true for LLMs, because the two most common mental models &mdash; &ldquo;it&rsquo;s just autocomplete&rdquo; and &ldquo;it&rsquo;s a superintelligence&rdquo; &mdash; both lead to predictable mistakes. We&rsquo;re going to build a better one.</p>
+  <p>The structure is simple: first, what kind of intelligence is an LLM? Then, how do we enhance it?</p>
+
+  <h3>A. What Kind of Intelligence Is an LLM?</h3>
+
+  <h3>A1. It&rsquo;s a neural network</h3>
+  <p>A neural network is a system of interconnected computational units, loosely inspired by neurons in the brain. Early AI systems &mdash; chess engines, expert systems &mdash; were rule-based: a developer wrote explicit rules, and the machine followed them. Neural networks work differently: instead of following rules, they learn from examples. Through a process called gradient descent, the system repeatedly adjusts its internal connections, taking small steps in the direction of better performance &mdash; like finding the lowest point in a hilly landscape by always stepping downhill &mdash; until it gets reliably better at the task.</p>
+  <p>This is deep learning &mdash; neural networks with many layers, where each layer learns to recognise increasingly abstract patterns. Early layers might detect edges in an image; deeper layers recognise faces. The key insight that unlocked practical deep learning was not new mathematics &mdash; it was scale. When you combine this architecture with enough data and enough computing power, something remarkable happens: capability emerges that nobody explicitly programmed.</p>
+
+  <h3>A2. It&rsquo;s a language model</h3>
+  <p>The second thing to understand is what this particular neural network was trained to do &mdash; and what that training produced.</p>
+  <p>The story begins with machine translation. In the 2010s, neural networks trained on parallel texts in different languages began outperforming rule-based translation systems. Researchers noticed something interesting: to translate well, the model had to develop rich internal representations of meaning, not just word-for-word mappings. Language was turning out to be a surprisingly powerful training signal.</p>
+  <p>The decisive architectural breakthrough came in 2017. A paper called <em>Attention Is All You Need</em> introduced the attention mechanism and the Transformer architecture &mdash; a design that lets the model consider every word in a passage in relation to every other word simultaneously, rather than processing language sequentially. Because attention allows for parallel processing in a way that pre-Transformer models did not, this made it possible to train on vastly larger datasets in parallel. You could go very big, very fast.</p>
+  <p>What followed was a decision to train these networks on an enormous fraction of the written internet &mdash; books, articles, code, conversation. The result is a model that has learned the statistical distribution of human language: what kinds of text follow from what other kinds of text, across essentially the full breadth of recorded human knowledge.</p>
+  <p>This is the key conceptual move: an LLM is not a database. It doesn&rsquo;t store facts and retrieve them. It has compressed the patterns of an enormous corpus into a set of internal weights, and when you prompt it, it generates a response by sampling from those learned patterns &mdash; predicting what a good continuation would look like.</p>
+  <p>This is genuinely powerful. Predicting what a good answer looks like, across the full range of human knowledge, requires rich internal representations of that knowledge. But it is also the source of the model&rsquo;s most important failure mode: hallucination. The model isn&rsquo;t lying when it produces a plausible-sounding but false citation. It has no mechanism to distinguish &ldquo;I know this&rdquo; from &ldquo;this fits the pattern of something I&rsquo;d know.&rdquo; It generates fluently in both cases. Confidence is not a signal of accuracy. This is not a bug to be patched &mdash; it is a property of the architecture. The right response is not to distrust the tool, but to understand when verification matters.</p>
+
+  <h3>Bridge</h3>
+  <p>So: a neural network, trained on human language, that models statistical distributions rather than storing facts. This base intelligence has characteristic strengths &mdash; fluency, breadth, pattern recognition across domains, tireless availability &mdash; and characteristic weaknesses &mdash; hallucination, no persistent memory, no reliable self-knowledge about the limits of its knowledge.</p>
+  <p>Enhancement is the natural response to that profile. And the idea of enhancing a base intelligence is not new. We have always built on top of the base intelligence we were given &mdash; through language, writing, mathematics, computation, and now AI. Each layer extended what came before. The same logic applies here.</p>
+
+  <h3>A brief aside &mdash; and then back to work</h3>
+  <p>We should note something that is easy to miss in the rush to use these tools: we now live alongside a genuinely new kind of intelligence. Not a smarter human. Not a dumber human. Something built on entirely different foundations &mdash; designed rather than evolved, trained on human artefacts rather than shaped by survival pressures, with a completely different profile of strengths and weaknesses.</p>
+  <p>We have, until very recently, shared the world only with other evolved intelligences &mdash; humans and animals, all shaped by the same basic pressures. Artificial intelligences are categorically different. They are behaviourally familiar, because they were trained on everything we wrote, but structurally alien.</p>
+  <p>The most useful approach is not to rank them against human intelligence, but to understand them on their own terms. What is this thing actually good at? What does it genuinely struggle with? That&rsquo;s the question that makes you a better user &mdash; and it&rsquo;s the question the rest of this session is designed to answer.</p>
+
+  <h3>B. Enhancing the Intelligence</h3>
+
+  <h3>B1. Model enhancements &mdash; what the builders do</h3>
+  <p>The base model &mdash; trained on the internet, predicting next tokens &mdash; is powerful but raw. It will complete any text in whatever direction the patterns suggest, including harmful, false, or simply unhelpful directions. Several layers of enhancement are applied before you interact with it.</p>
+  <p>Reinforcement learning from human feedback (RLHF) and related fine-tuning techniques shape the model&rsquo;s behaviour: making it helpful, honest, and safe. Human raters evaluate outputs; the model learns to produce outputs that score well. This is why Claude behaves like an assistant rather than a raw text predictor.</p>
+  <p>Explicit reasoning &mdash; sometimes called chain-of-thought &mdash; is the discovery that models perform dramatically better on complex problems when they are prompted, or trained, to think step by step before answering. Rather than jumping to a completion, the model works through intermediate steps. This is the basis of the &ldquo;extended thinking&rdquo; modes you may have encountered.</p>
+  <p>Inference-time scaling is the most recent development: rather than just training bigger models, you run more computation at the moment of answering &mdash; letting the model explore multiple reasoning paths, check its own work, or run longer internal deliberation. This has driven significant capability jumps in the last year.</p>
+  <p>Most recently, agentic capacity itself is becoming a builder-level enhancement &mdash; shipped as part of the foundation model rather than constructed by users. Claude Code, which autonomously plans and executes complex coding tasks, and Cowork, which automates file and task management for non-developers, are current examples. The boundary between &ldquo;what the model can do&rdquo; and &ldquo;what you have to build&rdquo; is shifting rapidly &mdash; a point we will return to.</p>
+
+  <h3>B2. User techniques &mdash; what you can do</h3>
+  <p>Context is the most important and most underused lever. The model has no persistent memory &mdash; everything it knows about your situation is what you put in front of it in the current conversation. Rich context produces dramatically better output. Most new users underinvest here.</p>
+  <p>Prompt engineering is the practice of structuring your inputs to guide the model&rsquo;s thinking and outputs. It ranges from simple (be specific, give examples, specify the format you want) to sophisticated (role assignment, chain-of-thought prompting, system prompts).</p>
+  <p>Tools and skills extend the model beyond its training data. A model with access to web search, code execution, or file systems can act in the world, not just generate text.</p>
+  <p>Agents are systems where the model plans and executes multi-step tasks autonomously &mdash; breaking a complex goal into steps, using tools along the way, and iterating until the job is done. This is where the technology is moving fastest, with agentic capabilities increasingly being built into the underlying models and agentic applications such as Claude Code.</p>
+
+  <h3>Coda: Why Understanding Matters More Than Technique</h3>
+  <p>There is a pattern worth naming before we finish.</p>
+  <p>Since ChatGPT went public in late 2022, the capability of foundation models has risen steeply and continuously. Things that required significant custom engineering 18 months ago are now handled natively &mdash; by the model itself, or by tools like Claude Code, or by agents that no longer need elaborate custom infrastructure to orchestrate. People and organisations that invested heavily in building technical workarounds for the limitations of 2023-era models have repeatedly found that investment overtaken by model improvements. The specific workaround becomes unnecessary. The Python pipeline someone spent months building gets replaced by a conversation.</p>
+  <p>This creates a real risk for anyone trying to develop AI capability: following the hype into deep investment in today&rsquo;s limitations, only to find the model outgrows them in six months.</p>
+  <p>The antidote is literacy. Understanding what the model actually is &mdash; how it learns, what it&rsquo;s good at, where it fails and why &mdash; compounds over time. It makes you a better user of today&rsquo;s models and a faster adapter to tomorrow&rsquo;s. Specific techniques become obsolete. The understanding that lets you evaluate and adopt new techniques does not.</p>
+  <p>That is what this course is designed to build. Not a toolkit for 2026. A foundation that gets more valuable as the models get more capable.</p>
 </section>
 
 </main>
