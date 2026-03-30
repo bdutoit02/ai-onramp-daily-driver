@@ -284,8 +284,8 @@
 
 <!-- ── MAIN CONTENT ─────────────────────────────── -->
 <main>
-<h1>The 10-Step Onramp</h1>
-<p class="subtitle">Setting Up Your Daily Driver</p>
+<h1 id="main-heading">The 10-Step Onramp</h1>
+<p class="subtitle" id="main-subtitle">Setting Up Your Daily Driver</p>
 
 <!-- ── STEP 1 ───────────────────────────────────── -->
 <section class="step" id="step1">
@@ -755,6 +755,13 @@
 <script>
   const allSections = document.querySelectorAll('section.step');
   const navLinks = document.querySelectorAll('nav a');
+  const mainHeading = document.getElementById('main-heading');
+  const mainSubtitle = document.getElementById('main-subtitle');
+
+  const headings = {
+    'conceptual-guide': { title: 'AI Conceptual Guide', subtitle: '' },
+    _default: { title: 'The 10-Step Onramp', subtitle: 'Setting Up Your Daily Driver' }
+  };
 
   function showStep(id) {
     allSections.forEach(s => s.classList.remove('visible'));
@@ -763,6 +770,9 @@
     if (target) target.classList.add('visible');
     const link = document.querySelector('nav a[href="#' + id + '"]');
     if (link) link.classList.add('active');
+    const h = headings[id] || headings._default;
+    mainHeading.textContent = h.title;
+    mainSubtitle.textContent = h.subtitle;
     window.scrollTo({ top: 0, behavior: 'auto' });
   }
 
