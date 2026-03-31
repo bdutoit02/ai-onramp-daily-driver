@@ -262,15 +262,41 @@
   /* ── UNDERSTAND & EXPLORE ────────────────────────── */
   .ue-block { margin-top: 24px; }
 
+  .ue-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
   .ue-heading {
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .6px;
     color: var(--text-muted);
-    margin-bottom: 10px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--border);
+    margin: 0;
+  }
+
+  .ue-close-all {
+    font-size: 12px;
+    color: var(--text-muted);
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3px 9px;
+    cursor: pointer;
+    line-height: 1.4;
+    transition: background .15s, color .15s;
+    white-space: nowrap;
+  }
+
+  .ue-close-all:hover {
+    background: var(--accent-light);
+    color: var(--accent);
+    border-color: var(--accent);
   }
 
   details.ue-item {
@@ -372,7 +398,10 @@
   </div>
 
   <div class="ue-block">
-    <div class="ue-heading">Understand and Explore</div>
+    <div class="ue-header">
+      <div class="ue-heading">Understand and Explore</div>
+      <button class="ue-close-all" onclick="closeAllInStep(this)">&#x2715; Close all</button>
+    </div>
 
     <details class="ue-item">
       <summary>Getting set up</summary>
@@ -480,7 +509,10 @@
   </div>
 
   <div class="ue-block">
-    <div class="ue-heading">Understand and Explore</div>
+    <div class="ue-header">
+      <div class="ue-heading">Understand and Explore</div>
+      <button class="ue-close-all" onclick="closeAllInStep(this)">&#x2715; Close all</button>
+    </div>
 
     <details class="ue-item">
       <summary>Projects</summary>
@@ -523,7 +555,10 @@
   </div>
 
   <div class="ue-block">
-    <div class="ue-heading">Understand and Explore</div>
+    <div class="ue-header">
+      <div class="ue-heading">Understand and Explore</div>
+      <button class="ue-close-all" onclick="closeAllInStep(this)">&#x2715; Close all</button>
+    </div>
 
     <details class="ue-item">
       <summary>Artifacts</summary>
@@ -577,7 +612,10 @@
   </div>
 
   <div class="ue-block">
-    <div class="ue-heading">Understand and Explore</div>
+    <div class="ue-header">
+      <div class="ue-heading">Understand and Explore</div>
+      <button class="ue-close-all" onclick="closeAllInStep(this)">&#x2715; Close all</button>
+    </div>
 
     <details class="ue-item">
       <summary>Connectors</summary>
@@ -620,7 +658,10 @@
   </div>
 
   <div class="ue-block">
-    <div class="ue-heading">Understand and Explore</div>
+    <div class="ue-header">
+      <div class="ue-heading">Understand and Explore</div>
+      <button class="ue-close-all" onclick="closeAllInStep(this)">&#x2715; Close all</button>
+    </div>
 
     <details class="ue-item">
       <summary>Security essentials</summary>
@@ -651,7 +692,10 @@
   </div>
 
   <div class="ue-block">
-    <div class="ue-heading">Understand and Explore</div>
+    <div class="ue-header">
+      <div class="ue-heading">Understand and Explore</div>
+      <button class="ue-close-all" onclick="closeAllInStep(this)">&#x2715; Close all</button>
+    </div>
 
     <details class="ue-item">
       <summary>Basic chat technique</summary>
@@ -845,8 +889,22 @@
     _default: { title: 'The Onramp', subtitle: 'Setting Up Your Daily Driver' }
   };
 
+  function closeAllInStep(btnOrSection) {
+    // Accept either the button (from onclick) or a section element directly
+    const section = btnOrSection.closest
+      ? btnOrSection.closest('section.step')
+      : btnOrSection;
+    if (section) {
+      section.querySelectorAll('details').forEach(d => d.removeAttribute('open'));
+    }
+  }
+
   function showStep(id) {
-    allSections.forEach(s => s.classList.remove('visible'));
+    // Collapse all details in every section before switching
+    allSections.forEach(s => {
+      s.classList.remove('visible');
+      s.querySelectorAll('details').forEach(d => d.removeAttribute('open'));
+    });
     navLinks.forEach(a => a.classList.remove('active'));
     const target = document.getElementById(id);
     if (target) target.classList.add('visible');
