@@ -350,6 +350,48 @@
 
     section.step { padding: 22px 20px; }
   }
+
+  /* ── DOC SECTION (collapsible ## headings) ───────── */
+  details.doc-section {
+    border: 1px solid var(--border);
+    background: var(--section-bg);
+    margin: 0 0 8px;
+  }
+
+  details.doc-section > summary {
+    font-size: 16px;
+    font-weight: 600;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 11px 16px;
+  }
+
+  details.doc-section > summary::before {
+    content: "\25B6";
+    display: inline-block;
+    width: 18px;
+    font-size: 11px;
+    transition: transform .2s;
+  }
+
+  details.doc-section[open] > summary::before {
+    transform: rotate(90deg);
+  }
+
+  details.doc-section .collapsible-body h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 16px 0 6px;
+    color: var(--text);
+  }
+
+  details.doc-section .collapsible-body blockquote {
+    border-left: 3px solid var(--accent-light);
+    margin: 10px 0 10px 4px;
+    padding: 8px 16px;
+    color: var(--text-muted);
+    font-style: italic;
+  }
 </style>
 </head>
 <body>
@@ -374,6 +416,10 @@
   <h2 style="margin-top:24px;">AI Conceptual Guide</h2>
   <div class="nav-links">
     <a href="#conceptual-guide" data-group="conceptual">AI Conceptual Guide</a>
+  </div>
+  <h2 style="margin-top:24px;">Deep Research</h2>
+  <div class="nav-links">
+    <a href="#deep-research-1" data-group="deep-research">Session 3: Deep Research in the Wild</a>
   </div>
 </nav>
 
@@ -813,6 +859,162 @@
   <p><em>Part of the AI Onramps programme &mdash; Building AI literacy for working professionals</em></p>
 </section>
 
+<!-- ── DEEP RESEARCH SESSION 3 ──────────────────── -->
+<section class="step" id="deep-research-1">
+  <h2>Session 3: Deep Research in the Wild &mdash; What Canned Tools Can Do</h2>
+  <p class="subtitle" style="margin-bottom:24px;">Student Notes</p>
+
+  <details class="doc-section">
+    <summary>1. The Skilled User Frame</summary>
+    <div class="collapsible-body">
+      <p>As AI tools become more capable, the gap between casual users and skilled users widens. Skilled users are not necessarily more technical &mdash; they are more deliberate. They think clearly about three things:</p>
+      <p><strong>Input</strong> &mdash; the material you bring to the conversation: documents, data, files, screenshots. The raw substance the model works with.</p>
+      <p><strong>Direction</strong> &mdash; everything you say to the model: the question, the context, the instructions, the constraints, the format, the iteration. Direction is how you guide the model toward useful work.</p>
+      <p><strong>Evaluation</strong> &mdash; how you assess what comes back. Not &ldquo;does this look good?&rdquo; but structured, criteria-driven judgment applied consistently.</p>
+      <p>This session focuses on Evaluation. Direction becomes the focus of Session 4. Input becomes the focus of Session 5.</p>
+      <p>A note on why evaluation matters: AI outputs are increasingly polished and confident in tone. The easier they are to read, the harder it is to spot what is missing, overstated, or wrong. Evaluation is the skill that keeps you in control of the work &mdash; and it transfers across every tool you will ever use.</p>
+    </div>
+  </details>
+
+  <details class="doc-section">
+    <summary>2. Key Concepts</summary>
+    <div class="collapsible-body">
+      <h3>Deep Research</h3>
+      <p>Deep Research is a specific product feature &mdash; available in Claude, ChatGPT, and Perplexity &mdash; not simply a description of researching with AI. It was among the first applications outside of coding to combine three capabilities that had previously operated separately:</p>
+      <ul>
+        <li>Extended thinking</li>
+        <li>Agentic behaviour</li>
+        <li>Tool use</li>
+      </ul>
+      <p>When you trigger Deep Research, you are not sending a prompt to a language model and waiting for a response. You are initiating an autonomous research process that can run for several minutes, visit dozens of sources, and make hundreds of decisions before producing its output.</p>
+
+      <h3>Extended Thinking / Chain-of-Thought Reasoning</h3>
+      <p>Standard AI responses are generated fluidly, with no visible reasoning step. Extended thinking changes this: the model is given time and compute to plan its approach, break the problem down, and reason through it before producing output. Where visible &mdash; as in Claude&rsquo;s thinking indicator or ChatGPT&rsquo;s activity log &mdash; you are watching the model work, not just watching it write.</p>
+      <p>This is inference-time computation: the model doing more work per question rather than simply being a larger model.</p>
+
+      <h3>Agentic Behaviour</h3>
+      <p>An agent is a system that pursues a goal by taking a sequence of actions, using tools, and making decisions along the way. Deep Research tools behave agentically: they decide what to search for, choose which sources to read, extract what seems relevant, identify gaps, and search again. They are not following a fixed script &mdash; they are planning and replanning in response to what they find.</p>
+
+      <h3>Tool Use</h3>
+      <p>Agentic behaviour requires tools. In Deep Research, the primary tool is web search: the model calls the search tool, receives results, decides what to do with them, and calls it again as needed. The search&ndash;analyse&ndash;replan cycle &mdash; visible in ChatGPT&rsquo;s activity log &mdash; can repeat dozens of times in a single research run. This is the same architecture that underlies the more powerful agentic systems we will see in Session 6.</p>
+    </div>
+  </details>
+
+  <details class="doc-section">
+    <summary>3. The Evaluation Rubric</summary>
+    <div class="collapsible-body">
+      <p>Evaluation is not a general impression formed after reading. It is a structured assessment applied consistently against explicit criteria. The rubric below organises those criteria into three levels.</p>
+      <p>You will use this rubric for your homework after this session. You will use it again in Sessions 4 and 5 to evaluate work you have produced yourself.</p>
+
+      <h3>Process Quality &mdash; how did it research?</h3>
+      <ul>
+        <li><em>Breadth of sources</em> &mdash; did it draw on a wide range of relevant sources, or rely heavily on a narrow base?</li>
+        <li><em>Authority of sources</em> &mdash; are the sources credible, current, and appropriate for the question?</li>
+        <li><em>Geographic and sectoral specificity</em> &mdash; did it find sources directly relevant to the context, or did it generalise from elsewhere?</li>
+        <li><em>Transparency of reasoning</em> &mdash; can you see what it did, what it chose, and why?</li>
+      </ul>
+
+      <h3>Content Quality &mdash; what did it find?</h3>
+      <ul>
+        <li><em>Quality of insight extraction</em> &mdash; did it draw meaningful conclusions from its sources, or summarise superficially?</li>
+        <li><em>Domain coverage</em> &mdash; did it address the full scope of the question, or leave significant areas thin or absent?</li>
+        <li><em>Contextual accuracy</em> &mdash; did it handle the specific regulatory, institutional, and market context correctly?</li>
+        <li><em>Logical coherence</em> &mdash; do the findings hold together as an argument, or sit as disconnected observations?</li>
+      </ul>
+
+      <h3>Output Quality &mdash; what did it produce?</h3>
+      <ul>
+        <li><em>Structure and navigability</em> &mdash; is the report organised clearly and easy to use?</li>
+        <li><em>Specificity of recommendations</em> &mdash; are recommendations actionable, or generic enough to apply to any situation?</li>
+        <li><em>Caveats and limitations</em> &mdash; does the report acknowledge what it does not know, where data is incomplete, or where claims are uncertain?</li>
+        <li><em>Fitness for purpose</em> &mdash; could you hand this report to a senior client and defend every claim in it?</li>
+      </ul>
+
+      <p>That last question is the one that matters most for the kind of work this course is built around. A report that looks authoritative but cannot survive scrutiny is not a research output &mdash; it is a liability.</p>
+    </div>
+  </details>
+
+  <details class="doc-section">
+    <summary>4. The Session Demos</summary>
+    <div class="collapsible-body">
+      <p>This session demonstrates Deep Research using a single research brief submitted to three tools simultaneously. Watching all three run in parallel &mdash; and then evaluating what they produce &mdash; is the core of the session.</p>
+
+      <h3>The Research Brief</h3>
+      <blockquote>You are preparing a report for an organisation that provides training resources to banks in South Africa. The report should identify the key skills shortages emerging in the South African banking sector over the next three years, and recommend the training priorities that should shape the organisation&rsquo;s programme development.</blockquote>
+      <p>Note what this prompt does and does not do. It provides role context and a clear task. It does not specify sources, structure, depth, audience, or format. That absence of Direction is deliberate &mdash; we want to see what each tool does with minimal guidance.</p>
+
+      <h3>The Three Tools</h3>
+      <p><strong>Claude Research</strong></p>
+      <p>Before starting, Claude asks three clarifying questions: scope of the banking sector, target audience for the training, and preferred output format. This is Direction in action &mdash; from the model&rsquo;s side. The questions it asks reveal exactly what you should have specified in your prompt.</p>
+      <p>Claude produces two artefacts: the report itself, and a separate process artefact summarising its research plan and sources. Run time approximately 9 minutes.</p>
+
+      <p><strong>ChatGPT Deep Research</strong></p>
+      <p>ChatGPT generates a research plan immediately and begins executing against it. A live progress tracker shows which steps have been completed and which is active. On completion, an activity log is available showing the full reasoning and search cycle across the run &mdash; strategic source selection, autonomous workarounds for blocked content, and search&ndash;analyse&ndash;replan cycles throughout. 353 sources examined, 24 cited. Run time approximately 12 minutes.</p>
+      <p>The activity log is the richest illustration of extended thinking and agentic behaviour available in this session. Key observations:</p>
+      <ul>
+        <li>The model plans its approach before searching</li>
+        <li>It identifies and pursues primary sources &mdash; regulatory instruments, BANKSETA documents, bank job postings</li>
+        <li>When pages are blocked or PDFs inaccessible it finds alternatives without stopping</li>
+        <li>It monitors its own tool call budget and adjusts strategy accordingly</li>
+      </ul>
+
+      <p><strong>Perplexity Deep Research</strong></p>
+      <p>Perplexity provides live action descriptions as it runs &mdash; searching, extracting insights &mdash; but no research plan and no activity log. It is the fastest of the three at approximately 5 minutes. Output includes a report, downloadable artefact, citations, and relevant images located during the search. The most immediately accessible tool and the least process-transparent.</p>
+
+      <h3>The Evaluation Exercise</h3>
+      <p>Rather than reading three long reports side by side, we use a fourth AI &mdash; Claude, in a dedicated Project &mdash; to assist with the evaluation. This is itself a demonstration of Direction: Claude is given a specific role, the three reports as documents, and the rubric as its framework.</p>
+      <p>The evaluation proceeds in sequential steps, each producing an artefact that feeds the next:</p>
+      <ol>
+        <li><em>Structured summaries</em> &mdash; each report summarised to a common template, making comparison possible</li>
+        <li><em>Comparative analysis</em> &mdash; a structured comparison across all five template sections, surfacing similarities, differences, and gaps</li>
+        <li><em>Rankings</em> &mdash; the three reports ranked on seven criteria, with one-sentence justifications</li>
+      </ol>
+      <p><strong>Key findings from the evaluation:</strong></p>
+      <ul>
+        <li>All three reports look authoritative on first reading</li>
+        <li>One report uses the wrong time horizon without acknowledging it</li>
+        <li>The most strategically coherent report makes bold quantitative claims without a single source caveat</li>
+        <li>No report adequately acknowledges its own limitations or source bias</li>
+        <li>The rankings reveal genuine tensions: the report best suited for senior management presentation ranks last for transparency; the most operationally useful report ranks last for senior management suitability</li>
+        <li>No single report is sufficient for the full brief</li>
+      </ul>
+      <p>The critical point: <strong>without systematic evaluation you would not know any of this.</strong> A quick read would not expose these weaknesses. The rubric did.</p>
+    </div>
+  </details>
+
+  <details class="doc-section">
+    <summary>5. Homework</summary>
+    <div class="collapsible-body">
+      <p>Before Session 4, work through the following tasks.</p>
+
+      <h3>What You Have</h3>
+      <ul>
+        <li>The comparison document produced in the session &mdash; a structured analysis of all three reports across five dimensions</li>
+        <li>The rankings document &mdash; the three reports ranked on seven criteria with justifications</li>
+        <li>Access to the three full reports if you want to refer to them directly</li>
+      </ul>
+
+      <h3>The Task</h3>
+      <p>Apply the evaluation rubric to one of the three reports in detail. Choose whichever report interests you most.</p>
+      <p>Work through each of the three rubric levels &mdash; process quality, content quality, output quality &mdash; and for each criterion make a brief note of your assessment. You do not need to write formally. Bullet points are fine. The goal is to have thought carefully about the report before Session 4, not to produce a polished document.</p>
+
+      <h3>The Question to Bring to Session 4</h3>
+      <p>Having completed the evaluation, come prepared to answer this:</p>
+      <blockquote>Which of the three reports would you be most comfortable presenting to a senior client &mdash; and what would you need to change, add, or verify before you could stand behind it?</blockquote>
+      <p>There is no correct answer. The discussion will be more interesting if participants have reached different conclusions.</p>
+
+      <h3>A Prompt to Help You</h3>
+      <p>If you want to use AI to assist with your evaluation, here is a starting prompt:</p>
+      <blockquote>I am evaluating an AI-generated research report on skills shortages in the South African banking sector. I will paste the report below. Please assess it against the following criteria, working through each one in turn and noting both strengths and weaknesses: breadth and authority of sources, geographic and sectoral specificity, transparency of reasoning, quality of insight extraction, domain coverage, contextual accuracy, logical coherence, specificity of recommendations, caveats and limitations acknowledged, and fitness for purpose. Where you cannot assess a criterion from the report text alone, say so explicitly.</blockquote>
+      <p>Note the final instruction: <em>where you cannot assess a criterion from the report text alone, say so explicitly.</em> That instruction models the intellectual honesty you are looking for in the report itself.</p>
+
+      <h3>Looking Ahead</h3>
+      <p>Session 4 opens with a brief discussion of what you found. We will then move directly into building a controlled research process from scratch &mdash; one that addresses the weaknesses the evaluation exposed.</p>
+      <p>The question that will drive Session 4: <em>what would a research process look like if you were in control of every step?</em></p>
+    </div>
+  </details>
+</section>
+
 <!-- ── AI CONCEPTUAL GUIDE ─────────────────────── -->
 <section class="step" id="conceptual-guide">
   <h2>A Practitioner&rsquo;s Guide to LLMs: What They Are and How to Enhance Them</h2>
@@ -883,6 +1085,7 @@
     'qs5': { title: 'QS5: Keeping it safe', subtitle: 'Setting Up Your Daily Driver' },
     'qs6': { title: 'QS6: Basic chat technique', subtitle: 'Setting Up Your Daily Driver' },
     'conceptual-guide': { title: 'AI Conceptual Guide', subtitle: '' },
+    'deep-research-1': { title: 'Session 3: Deep Research in the Wild', subtitle: 'Deep Research' },
     'res-general': { title: 'General Links', subtitle: 'Additional Resources' },
     'res-study': { title: 'Further Study', subtitle: 'Additional Resources' },
     'res-security': { title: 'AI Security Essentials', subtitle: 'Additional Resources' },
