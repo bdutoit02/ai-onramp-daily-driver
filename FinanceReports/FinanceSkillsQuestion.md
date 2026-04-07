@@ -1,0 +1,1 @@
+You are preparing a report for an organisation that provides training resources to banks in South Africa. The report should identify the key skills shortages emerging in the South African banking sector over the next three years, and recommend the training priorities that should shape the organisation's programme development.

@@ -1,5 +1,2 @@
-# Word source documents — not needed in the web repo
-*.docx
-
 # Claude settings
 .claude/

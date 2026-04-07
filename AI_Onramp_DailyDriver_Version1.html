@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 10-Step Onramp &ndash; Setting Up Your Daily Driver</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sidebar-w: 260px;
+    --accent: #2c5f8a;
+    --accent-light: #e8f0f7;
+    --border: #d0d7de;
+    --bg: #fdfdfd;
+    --text: #1e1e1e;
+    --text-muted: #555;
+    --section-bg: #ffffff;
+    --quickstart-bg: #f0f7ee;
+    --quickstart-border: #7ab661;
+    --tips-bg: #fef9ec;
+    --tips-border: #d4a843;
+  }
+
+  html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--bg);
+  }
+
+  /* ── NAV SIDEBAR ─────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0;
+    width: var(--sidebar-w);
+    height: 100vh;
+    overflow-y: auto;
+    background: #f5f7fa;
+    border-right: 1px solid var(--border);
+    padding: 28px 18px 40px;
+    z-index: 100;
+  }
+
+  nav h2 {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  nav h2 + .nav-links + h2 {
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+  }
+
+  nav a {
+    display: block;
+    padding: 6px 10px;
+    margin-bottom: 2px;
+    border-radius: 5px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.4;
+    transition: background .15s, color .15s;
+  }
+
+  nav a:hover, nav a.active {
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  /* ── MAIN CONTENT ────────────────────────────── */
+  main {
+    margin-left: var(--sidebar-w);
+    max-width: 800px;
+    padding: 40px 48px 80px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  main > p.subtitle {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
+
+  /* ── STEP SECTIONS ───────────────────────────── */
+  section.step {
+    background: var(--section-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 32px 36px;
+    margin-bottom: 28px;
+    display: none;
+  }
+
+  section.step.visible {
+    display: block;
+  }
+
+  section.step h2 {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent-light);
+  }
+
+  section.step h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 8px;
+  }
+
+  section.step p {
+    margin-bottom: 12px;
+  }
+
+  section.step ul, section.step ol {
+    margin: 8px 0 14px 24px;
+  }
+
+  section.step li {
+    margin-bottom: 6px;
+  }
+
+  section.step a {
+    color: var(--accent);
+  }
+
+  /* ── TABLE ───────────────────────────────────── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 18px;
+    font-size: 15px;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+  }
+
+  th {
+    background: var(--accent-light);
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* ── COLLAPSIBLE DETAILS ─────────────────────── */
+  details {
+    border-radius: 6px;
+    margin: 16px 0 12px;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  details summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 10px 16px;
+    list-style: none;
+    user-select: none;
+    border-radius: 6px;
+    transition: background .15s;
+  }
+
+  details summary::-webkit-details-marker { display: none; }
+
+  details summary::before {
+    content: "\25B6";
+    display: inline-block;
+    width: 18px;
+    font-size: 11px;
+    transition: transform .2s;
+  }
+
+  details[open] summary::before {
+    transform: rotate(90deg);
+  }
+
+  details .collapsible-body {
+    padding: 10px 16px 14px 34px;
+    font-size: 15px;
+  }
+
+  details .collapsible-body p { margin-bottom: 8px; }
+  details .collapsible-body ul, details .collapsible-body ol { margin: 6px 0 10px 20px; }
+  details .collapsible-body li { margin-bottom: 5px; }
+
+  /* QuickStart variant */
+  details.quickstart {
+    background: var(--quickstart-bg);
+    border-left: 4px solid var(--quickstart-border);
+  }
+
+  details.quickstart summary {
+    color: #3a6e28;
+  }
+
+  /* Tips variant */
+  details.tips {
+    background: var(--tips-bg);
+    border-left: 4px solid var(--tips-border);
+  }
+
+  details.tips summary {
+    color: #8a6d1b;
+  }
+
+  /* ── MOBILE ──────────────────────────────────── */
+  @media (max-width: 900px) {
+    nav {
+      position: static;
+      width: 100%;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 18px;
+    }
+
+    nav .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px 6px;
+    }
+
+    nav a { font-size: 13px; padding: 4px 8px; }
+
+    main {
+      margin-left: 0;
+      padding: 24px 20px 60px;
+    }
+
+    section.step { padding: 22px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── SIDEBAR NAV ──────────────────────────────── -->
+<nav>
+  <h2>Onramp Steps</h2>
+  <div class="nav-links">
+    <a href="#step1" data-group="steps">1 &ndash; Get Set Up</a>
+    <a href="#step2" data-group="steps">2 &ndash; Free vs Pro</a>
+    <a href="#step3" data-group="steps">3 &ndash; Claude Applications</a>
+    <a href="#step4" data-group="steps">4 &ndash; Models</a>
+    <a href="#step5" data-group="steps">5 &ndash; Artifacts</a>
+    <a href="#step6" data-group="steps">6 &ndash; Projects</a>
+    <a href="#step7" data-group="steps">7 &ndash; Context &amp; Files</a>
+    <a href="#step8" data-group="steps">8 &ndash; Connectors</a>
+    <a href="#step9" data-group="steps">9 &ndash; Keeping It Safe</a>
+    <a href="#step10" data-group="steps">10 &ndash; Basic Chat Technique</a>
+    <a href="#step11" data-group="steps">11 &ndash; One Last Thing</a>
+  </div>
+  <h2 style="margin-top:24px;">Additional Resources</h2>
+  <div class="nav-links">
+    <a href="#res-general" data-group="resources">General Links</a>
+    <a href="#res-study" data-group="resources">Further Study</a>
+    <a href="#res-security" data-group="resources">AI Security Essentials</a>
+  </div>
+  <h2 style="margin-top:24px;">AI Conceptual Guide</h2>
+  <div class="nav-links">
+    <a href="#conceptual-guide" data-group="conceptual">AI Conceptual Guide</a>
+  </div>
+</nav>
+
+<!-- ── MAIN CONTENT ─────────────────────────────── -->
+<main>
+<h1 id="main-heading">The 10-Step Onramp</h1>
+<p class="subtitle" id="main-subtitle">Setting Up Your Daily Driver</p>
+
+<!-- ── STEP 1 ───────────────────────────────────── -->
+<section class="step" id="step1">
+  <h2>Step 1: Get Set Up &ndash; Web or Desktop</h2>
+
+  <p>Claude lives in the cloud. Your conversations, projects, and settings are all stored on Anthropic&rsquo;s servers, not on your machine &mdash; so whichever way you access Claude, you&rsquo;re working in the same place, with one account. That means you can start on the web today, switch to the desktop app next week, and everything is exactly where you left it.</p>
+
+  <p><strong>The default: start with the web.</strong> Go to <a href="https://claude.ai" target="_blank">claude.ai</a> and create an account. Clean, safe, nothing on your local machine. This is where you&rsquo;ll spend the next week.</p>
+
+  <p><strong>When you&rsquo;re ready: the desktop app.</strong> Download it from <a href="https://claude.ai" target="_blank">claude.ai</a>. It&rsquo;s the same Claude, a bit more convenient &mdash; sits in your taskbar, easier to make a daily habit. In chat mode it behaves identically to the web. You&rsquo;ll notice Code and Cowork in the sidebar &mdash; leave those for now, we&rsquo;ll get to them later in the course.</p>
+
+  <p>One practical note: if your organisation doesn&rsquo;t yet have an enterprise AI agreement, use a personal account for now. We&rsquo;ll cover the security and policy considerations shortly.</p>
+
+  <details class="quickstart">
+    <summary>QuickStart</summary>
+    <div class="collapsible-body">
+      <ol>
+        <li>In your browser, create a folder called &ldquo;AI Daily Driver&rdquo;.</li>
+        <li>Go to <a href="https://claude.ai" target="_blank">claude.ai</a>, <a href="https://chatgpt.com" target="_blank">chatgpt.com</a>, and <a href="https://www.perplexity.ai/" target="_blank">perplexity.ai</a> and sign up for the free plans. We will be following Claude in the course but it&rsquo;s useful and fun to play with a couple of others.</li>
+        <li>Save them all to the &ldquo;AI Daily Driver&rdquo; folder and put it somewhere prominent.</li>
+        <li>If you wish, install the Claude Desktop App, using the same account as the web app. Get it from <a href="https://claude.com/download" target="_blank">claude.com/download</a>.</li>
+      </ol>
+    </div>
+  </details>
+
+  <details class="tips">
+    <summary>Tips</summary>
+    <div class="collapsible-body">
+      <ul>
+        <li>Use any AI to help you in the subscription process, especially if you get stuck. This applies to any app you are downloading or installing. AI is almost always good at helping you navigate poorly designed interfaces, avoid bloatware, and make sense of decisions &mdash; permissions, settings, terms &mdash; that you&rsquo;re not really in a position to judge on your own. Get into the habit of pasting anything unclear into Claude before you click.</li>
+        <li>If you have multiple email addresses, think about which you want to use for your AI subscriptions.</li>
+        <li>You may wish to put the apps on your phone as well. Apart from daily chatting, phone apps are increasingly used to control long-running agentic processes without having to be at your machine.</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<!-- ── STEP 2 ───────────────────────────────────── -->
+<section class="step" id="step2">
+  <h2>Step 2: Subscription Level &ndash; Free vs Pro</h2>
+
+  <p>Free is fine for trying Claude out. But if you&rsquo;ve decided you want to build a real working relationship with it, get Pro. It&rsquo;s $20 a month and it&rsquo;s probably the highest-return $20 you&rsquo;ll spend on your professional development this year.</p>
+
+  <h3>What Pro gets you:</h3>
+  <ul>
+    <li><strong>Significantly higher usage limits</strong> &mdash; enough for sustained daily use without hitting a wall mid-task</li>
+    <li><strong>Access to the more powerful models</strong> including Opus and extended thinking mode</li>
+    <li><strong>Access to Research mode</strong></li>
+    <li><strong>More storage for Projects</strong></li>
+  </ul>
+
+  <p>Critically: it&rsquo;s a flat fee. You&rsquo;re not paying per token or per query. Use it as much as you like within the limits, and those limits are generous enough that most users never hit them in normal daily use. You may occasionally get throttled at peak times, but that&rsquo;s the exception not the rule.</p>
+
+  <p><strong>The habit argument:</strong> usage limits on Free don&rsquo;t just inconvenience you, they break the habit loop at exactly the moment you&rsquo;re trying to form it. Pro removes that friction entirely.</p>
+
+  <p><strong>The decision:</strong> unless you try Claude this week and decide it genuinely isn&rsquo;t for you, get Pro before the next session.</p>
+
+  <details class="quickstart">
+    <summary>QuickStart</summary>
+    <div class="collapsible-body">
+      <ol>
+        <li>In the left sidebar, click on your name at the bottom. Then click on <strong>Upgrade Plan</strong>.</li>
+        <li>Start with monthly until you know you are in for the long haul.</li>
+      </ol>
+    </div>
+  </details>
+
+  <details class="tips">
+    <summary>Tips</summary>
+    <div class="collapsible-body">
+      <p>The Pro limit is generous but not unlimited &mdash; if you hit a wall mid-session, switch to a lighter model temporarily rather than stopping work.</p>
+    </div>
+  </details>
+</section>
+
+<!-- ── STEP 3 ───────────────────────────────────── -->
+<section class="step" id="step3">
+  <h2>Step 3: The Claude Applications</h2>
+
+  <p>Claude comes in several forms, each optimised for a different kind of work. Here&rsquo;s the map:</p>
+
+  <table>
+    <thead>
+      <tr><th>Application</th><th>Optimised for</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Chat</strong> (web or desktop)</td>
+        <td>Your primary workspace. Handles everything from quick questions to deep research, complex analysis, and finished documents. With Projects, Artifacts, extended thinking, and Research mode, Chat is capable of serious sustained work</td>
+        <td>Everything in the cloud. Where you&rsquo;re starting</td>
+      </tr>
+      <tr>
+        <td><strong>Cowork</strong></td>
+        <td>Complex sustained work that requires access to your local machine: file organisation, scheduled tasks, browser automation, and multi-step workflows</td>
+        <td>Works locally. Later in the course</td>
+      </tr>
+      <tr>
+        <td><strong>Claude Code</strong></td>
+        <td>Writing, testing, running and deploying code. Works directly on codebases</td>
+        <td>Works locally. Day 5</td>
+      </tr>
+      <tr>
+        <td><strong>Claude for Excel</strong></td>
+        <td>Working with spreadsheet data directly in Excel</td>
+        <td>Still in beta. We&rsquo;ll demo later</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>For now: you&rsquo;re in Chat. The others are there when the course gets to them.</p>
+
+  <p>Note for desktop app users: Code and Cowork are visible in the sidebar from day one. Leave them alone until the course gets there.</p>
+
+  <details class="tips">
+    <summary>Tips</summary>
+    <div class="collapsible-body">
+      <p>Chat, despite the name, is very powerful and keeps getting more powerful. Be careful of following the hype around trendy Chat-enhancement wrappers and third-party add-ons. They often bring new problems, data exposure risks, and increased admin load. Build your skills in native Chat first.</p>
+    </div>
+  </details>
+</section>
+
+<!-- ── STEP 4 ───────────────────────────────────── -->
+<section class="step" id="step4">
+  <h2>Step 4: Models &ndash; Sonnet, Opus, or Haiku?</h2>
+
+  <p>When you start a conversation you can choose which model to use. For now there are three worth knowing:</p>
+
+  <ul>
+    <li><strong>Haiku</strong> &mdash; fast and light. Fine for simple, quick tasks but not what you want for serious work</li>
+    <li><strong>Sonnet</strong> &mdash; your default. Fast, highly capable, handles the vast majority of what you&rsquo;ll do day to day. Start here every time</li>
+    <li><strong>Opus</strong> &mdash; the most powerful. Use it when the task is genuinely complex or high stakes. Slower, and draws more from your monthly allocation</li>
+  </ul>
+
+  <p><strong>The rule:</strong> use Sonnet unless you have a specific reason to switch. You&rsquo;ll rarely need to.</p>
+
+  <p>Extended thinking and Research mode are also available but we&rsquo;ll cover those properly in later sessions &mdash; leave them alone for now.</p>
+</section>
+
+<!-- ── STEP 5 ───────────────────────────────────── -->
+<section class="step" id="step5">
+  <h2>Step 5: Artifacts</h2>
+
+  <p>Sometimes Claude&rsquo;s response isn&rsquo;t just text in the conversation &mdash; it produces a self-contained piece of work: a document, a table, a piece of code, a formatted report, an interactive page. These are called <strong>Artifacts</strong> and they appear in a separate panel alongside the conversation.</p>
+
+  <p><strong>Why it matters:</strong> an Artifact isn&rsquo;t just a response, it&rsquo;s a working document. You can ask Claude to revise it, extend it, reformat it &mdash; all while keeping the conversation going. The Artifact updates in place rather than producing a new block of text each time. You can also switch between the finished output and the underlying code if you want to see how it was built.</p>
+
+  <p><strong>What triggers an Artifact:</strong> Claude decides based on the nature of the output. Longer structured documents, code, and formatted content typically appear as Artifacts automatically.</p>
+
+  <p>Artifacts can be shared or published directly from Claude.</p>
+
+  <details class="tips">
+    <summary>Tips</summary>
+    <div class="collapsible-body">
+      <ul>
+        <li>When Claude produces an Artifact, don&rsquo;t just copy and paste it and move on. Stay in the conversation and refine it until it&rsquo;s actually what you need.</li>
+        <li>Even if Claude has decided not to show something as an artifact, you can ask it to.</li>
+        <li>Artifacts are &ldquo;updated in place&rdquo; &mdash; so there is only 1 version on display. But there is an updated version number and you can go back to earlier versions.</li>
+        <li>Artifacts can also be interactive. For this and other reasons, they can be used as mini-demos, in place, without having to create a demo page.</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<!-- ── STEP 6 ───────────────────────────────────── -->
+<section class="step" id="step6">
+  <h2>Step 6: Projects</h2>
+
+  <p>By default every conversation in Claude is isolated &mdash; it doesn&rsquo;t know what you discussed yesterday or last week. Projects fix that.</p>
+
+  <p>A Project is a persistent workspace with four elements:</p>
+  <ul>
+    <li><strong>A name and purpose</strong> &mdash; what the project is for</li>
+    <li><strong>Instructions</strong> &mdash; how you want Claude to behave within this project: your role, your preferences, your rules</li>
+    <li><strong>A knowledge base</strong> &mdash; files, documents, and reference material you upload once and Claude draws on whenever you need it. You can also connect GitHub repositories and Google Drive directly</li>
+    <li><strong>Chats</strong> &mdash; all the conversations you have within the project, kept together in one place</li>
+  </ul>
+
+  <p><strong>What this means in practice:</strong> instead of starting every conversation from scratch, you build a Project for each significant area of your work &mdash; a client, a research topic, a recurring task. Over time the Project accumulates context and becomes genuinely useful as a working environment rather than just a chat interface.</p>
+
+  <p><strong>Organising your chat history matters.</strong> A Project is only as useful as the discipline you bring to it. Name your files descriptively, keep your knowledge base current, and think of the Project as a living workspace rather than a filing cabinet. Unstructured chat history quickly becomes noise.</p>
+
+  <p>A note on collaboration: sharing Projects with colleagues requires a Team or Enterprise subscription. On a personal Pro account your Projects are private.</p>
+
+  <details class="quickstart">
+    <summary>QuickStart</summary>
+    <div class="collapsible-body">
+      <ol>
+        <li>Click on <strong>Projects</strong> in the left sidebar, then <strong>&ldquo;New project&rdquo;</strong>.</li>
+        <li>Give it a name and a description (&ldquo;what are you trying to achieve&rdquo;). This description is for you and coworkers; it is not referenced by Claude.</li>
+        <li>Populate <strong>Instructions</strong>. This is perhaps the key piece of information. This will guide Claude in any of the Chats created under this Project. It can be very detailed, if appropriate.</li>
+        <li>Populate <strong>Files</strong>, by drag and drop or upload. These files will be referenced by every chat in the project.</li>
+      </ol>
+    </div>
+  </details>
+
+  <details class="tips">
+    <summary>Tips</summary>
+    <div class="collapsible-body">
+      <ul>
+        <li>Instructions and files that are only relevant to a particular chat can be inserted directly into those Chats.</li>
+        <li>A Project also has a memory, populated by Claude as the Project evolves. But you can edit the memory yourself by adding stuff or removing stuff.</li>
+        <li>While &ldquo;Instructions&rdquo; and &ldquo;Files&rdquo; are the most obvious resources available to Claude in a Project, &ldquo;Memory&rdquo; is a powerful tool, especially in longer projects. If you are planning to build a Project that you use repeatedly over time, spend time finding out exactly how &ldquo;Project memory&rdquo; works (ask Claude!).</li>
+        <li>You need to think carefully about exactly how a Project is going to be used. You may want to start small and let it grow. Don&rsquo;t be afraid to start a new Project if you have misconceived the first iteration.</li>
+        <li>You can manage your Project space as it grows, by favouriting, deleting and archiving.</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<!-- ── STEP 7 ───────────────────────────────────── -->
+<section class="step" id="step7">
+  <h2>Step 7: Adding Stuff &ndash; Context and Files</h2>
+
+  <p>One of Claude&rsquo;s most underused capabilities: you don&rsquo;t have to explain everything in words. You can bring material directly into the conversation.</p>
+
+  <p><strong>Typed context</strong> &mdash; paste in a document, a data extract, an email thread, a set of notes. Claude reads it and works with it. This is often faster and more accurate than trying to describe something in your own words.</p>
+
+  <p><strong>Uploaded files</strong> &mdash; attach files directly to a conversation. Supported formats include PDF, DOCX, CSV, TXT, and common image formats like PNG and JPEG.</p>
+
+  <p><strong>Screenshots</strong> &mdash; you can paste or upload a screenshot directly into the conversation. Useful for sharing something visual without having to describe it &mdash; a chart, a UI, a document you can&rsquo;t easily export.</p>
+
+  <p><strong>The practical habit:</strong> before you ask Claude to help with something, ask yourself whether there&rsquo;s a document, file, or screenshot that would give it better raw material than your description alone.</p>
+
+  <p>The easiest and most intuitive methods are simply to copy and paste from your clipboard, or drag and drop a file, directly into the conversation.</p>
+
+  <details class="tips">
+    <summary>Tips</summary>
+    <div class="collapsible-body">
+      <p>As the course progresses, you&rsquo;ll pick up more powerful ways to bring material into Claude: Connectors (Step 8) give Claude persistent access to cloud services; Cowork and Code give Claude direct access to approved local directories. These become important when you&rsquo;re working with large datasets or information that changes frequently. For now, copy/paste and drag/drop will take you a long way.</p>
+    </div>
+  </details>
+</section>
+
+<!-- ── STEP 8 ───────────────────────────────────── -->
+<section class="step" id="step8">
+  <h2>Step 8: Connectors</h2>
+
+  <p>So far everything you&rsquo;ve brought into a conversation you&rsquo;ve had to actively add &mdash; typed context, uploaded files. Connectors are different: they give Claude persistent access to external services so the information is already there when you need it.</p>
+
+  <p>Connectors don&rsquo;t just let Claude read from external services &mdash; they allow Claude to act on your behalf too. That&rsquo;s the shift from assistant to informed collaborator.</p>
+
+  <p>There are two types:</p>
+  <ul>
+    <li><strong>Web connectors</strong> &mdash; connect cloud services like Google Drive, Gmail, and Google Calendar. Set up once in Settings, available across all your chats and Projects</li>
+    <li><strong>Desktop extensions</strong> &mdash; connect Claude to things on your local machine: your file system, local applications, and tools like the Chrome extension that lets Claude see your open tabs. These are available through the desktop app</li>
+  </ul>
+
+  <details class="quickstart">
+    <summary>QuickStart</summary>
+    <div class="collapsible-body">
+      <ol>
+        <li>Click on the <strong>+</strong> symbol in the main Chat interface, and go to <strong>&ldquo;Connectors&rdquo;</strong>. You can see what is already connected, and you can look at other options via <strong>&ldquo;Manage connectors&rdquo;</strong>.</li>
+        <li>Select a connector, click <strong>Connect</strong>, and follow the authentication steps.</li>
+      </ol>
+    </div>
+  </details>
+
+  <details class="tips">
+    <summary>Tips</summary>
+    <div class="collapsible-body">
+      <ul>
+        <li>You can also manage Connectors in the Settings menu (click on your name in the bottom left corner of the sidebar).</li>
+        <li>There are a lot of Connectors available and learning how to use them is complex. Start with one and don&rsquo;t rush into it. Gmail is a good choice. Hook it up and ask Claude some questions about your email history (&ldquo;Review all the important emails in the last month that seem to require some kind of response&rdquo;).</li>
+        <li>To check that a connector is properly set up and active, you can just ask Claude.</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<!-- ── STEP 9 ───────────────────────────────────── -->
+<section class="step" id="step9">
+  <h2>Step 9: Keeping It Safe</h2>
+
+  <p>Using Claude as a daily driver is low-risk for most people. But a few simple habits make it genuinely safe &mdash; and one or two omissions can cause real problems. This step covers what actually matters. The full picture is in the Security Essentials appendix, which is short and worth reading.</p>
+
+  <p><strong>Account security.</strong> The real risks are account-level, not platform-level. Two actions cover most of it: install a password manager (Bitwarden is free and excellent) and enable two-factor authentication on your Claude.ai account. Both are worth doing now.</p>
+
+  <p><strong>What you paste.</strong> When you paste text into Claude, you are sending it to a third-party server. For personal use this is almost always fine. For work data, ask yourself one question first: &ldquo;Would I be comfortable if my employer saw exactly what I just pasted?&rdquo; If the answer is no &mdash; or even maybe &mdash; use made-up data instead.</p>
+
+  <p><strong>Your employer&rsquo;s policy.</strong> Many organisations now have AI use policies. Check yours. Breaching it could have professional consequences regardless of any actual data leak.</p>
+
+  <details class="tips">
+    <summary>Tips</summary>
+    <div class="collapsible-body">
+      <p>Turn off training data use in Claude.ai settings. It takes thirty seconds. It makes little practical difference for most personal use, but it&rsquo;s a clean answer to have if your employer ever asks &mdash; and it&rsquo;s the kind of thing an AI use policy may require.</p>
+    </div>
+  </details>
+</section>
+
+<!-- ── STEP 10 ──────────────────────────────────── -->
+<section class="step" id="step10">
+  <h2>Step 10: Basic Chat Technique</h2>
+
+  <p>The single biggest mistake new users make: type a question, read the answer, close the chat. That&rsquo;s using Claude as a search engine. It&rsquo;s not what it&rsquo;s for.</p>
+
+  <h3>Three things to give Claude before every task:</h3>
+  <ul>
+    <li><strong>Context</strong> &mdash; who you are, what you&rsquo;re working on, why it matters</li>
+    <li><strong>Task</strong> &mdash; what you actually want Claude to do</li>
+    <li><strong>Guidelines</strong> &mdash; tone, format, length, constraints</li>
+  </ul>
+
+  <p>You don&rsquo;t need all three every time, but the habit of thinking in these terms immediately improves your results.</p>
+
+  <p><strong>Stay in the conversation.</strong> Claude&rsquo;s first response is a starting point, not a finished product. Push back, redirect, ask for alternatives. Sometimes, start from scratch in a new chat. The value compounds as the conversation develops.</p>
+
+  <p><strong>Fluency is not accuracy.</strong> Claude writes clearly and confidently even when it&rsquo;s wrong. A polished answer is not a correct answer. Verify anything that matters.</p>
+</section>
+
+<!-- ── STEP 11 ──────────────────────────────────── -->
+<section class="step" id="step11">
+  <h2>Step 11: One Last Thing</h2>
+
+  <p><strong>Open Claude before you open anything else in the morning.</strong></p>
+
+  <p>Not because you&rsquo;ll always have something specific to do with it. But because the habit of reaching for it first &mdash; before email, before your task list, before your browser &mdash; is what turns an occasional tool into a working partner.</p>
+
+  <p>The people who get the most out of Claude aren&rsquo;t the ones who use it for the biggest tasks. They&rsquo;re the ones who use it constantly, for small things and large, until the instinct to reach for it becomes automatic.</p>
+
+  <p><em>That&rsquo;s what this week is for.</em></p>
+</section>
+
+<!-- ── RESOURCE: General Links ─────────────────── -->
+<section class="step resource" id="res-general">
+  <h2>General Links</h2>
+
+  <h3>Videos</h3>
+  <ul>
+    <li><a href="https://www.youtube.com/watch?v=7xTGNNLPyMI" target="_blank">Karpathy: Deep dive into LLMs like ChatGPT</a></li>
+    <li><a href="https://www.youtube.com/watch?v=EWvNQjAaOHw" target="_blank">Karpathy: How I use LLMs</a></li>
+  </ul>
+
+  <h3>Essays</h3>
+  <ul>
+    <li><a href="https://darioamodei.com/essay/machines-of-loving-grace" target="_blank">Amodei: Machines of Loving Grace</a></li>
+    <li><a href="https://www.darioamodei.com/essay/the-adolescence-of-technology" target="_blank">Amodei: The Adolescence of Technology</a></li>
+  </ul>
+
+  <h3>Podcasts &amp; Newsletters</h3>
+  <ul>
+    <li><a href="https://aidailybrief.ai/episodes" target="_blank">AI Daily Brief Podcast</a></li>
+    <li><a href="https://www.exponentialview.co/" target="_blank">Azeem Azhar&rsquo;s Exponential View</a></li>
+    <li><a href="https://www.oneusefulthing.org/" target="_blank">Ethan Mollick &ndash; One Useful Thing</a></li>
+  </ul>
+</section>
+
+<!-- ── RESOURCE: Further Study ────────────────── -->
+<section class="step resource" id="res-study">
+  <h2>Further Study</h2>
+
+  <p>Platforms for deeper learning, training, and career advancement:</p>
+  <ul>
+    <li><a href="https://learn.deeplearning.ai/" target="_blank">DeepLearning.AI</a></li>
+    <li><a href="https://www.coursera.org/" target="_blank">Coursera</a></li>
+    <li><a href="https://www.anthropic.com/learn" target="_blank">Anthropic Learn</a></li>
+  </ul>
+</section>
+
+<!-- ── RESOURCE: AI Security Essentials ───────── -->
+<section class="step resource" id="res-security">
+  <h2>AI Security Essentials</h2>
+  <p class="subtitle" style="margin-bottom:24px;">A take-home guide for course participants</p>
+
+  <p>Using AI tools like Claude as a daily driver is low-risk for most people &mdash; but a few simple habits make it genuinely safe. This guide separates what actually matters from what you can stop worrying about.</p>
+
+  <h3>1. External Threats &mdash; Lower Risk Than You Think</h3>
+  <p>When you use a web-based AI tool like Claude.ai, you are trusting a well-resourced technology company to handle security on your behalf. Counterintuitively, this is safer than managing software locally &mdash; you are not responsible for keeping anything patched, configured, or updated.</p>
+  <p>Your conversation data is transmitted over an encrypted connection (TLS), so interception in transit is not a realistic risk. Anthropic&rsquo;s servers are not a likely target for someone trying to steal your specific data.</p>
+  <p>The real external risks are account-level, not platform-level:</p>
+  <ul>
+    <li><strong>Phishing</strong> &mdash; fake login pages designed to steal your credentials</li>
+    <li><strong>Password reuse</strong> &mdash; if one account is breached, others become vulnerable</li>
+    <li><strong>Device compromise</strong> &mdash; malware on your machine captures data before it reaches any server</li>
+  </ul>
+  <p><strong>Action: Two things to do now</strong></p>
+  <ul>
+    <li>Install Bitwarden (free, open source). One strong master password protects all your accounts, and you stop reusing passwords across AI tools and other services.</li>
+    <li>Enable two-factor authentication (2FA) on your Claude.ai account. This prevents account takeover even if your password is stolen.</li>
+  </ul>
+
+  <h3>2. Confidential Data &mdash; This Is Where Judgement Matters</h3>
+  <p>When you paste text into an AI chat window, you are sending it to a third-party server. For most personal use this is fine. For work data, it requires thought.</p>
+  <p>Ask yourself one question before pasting anything:</p>
+  <p><em>&ldquo;Would I be comfortable if my employer saw exactly what I just pasted into this chat?&rdquo;</em></p>
+  <p>If the answer is no &mdash; or even maybe &mdash; use made-up data instead. You can learn everything you need to learn with synthetic examples. Real work data adds risk and is rarely necessary.</p>
+  <p>Things to be aware of:</p>
+  <ul>
+    <li>Many employers now have AI use policies. Check yours. Breaching it could have professional consequences regardless of any actual data leak.</li>
+    <li>Regulated industries (healthcare, legal, finance, government) have specific data handling obligations that may apply even to informal use.</li>
+    <li>By default, AI providers may use conversations to improve their models. You can opt out of this in Claude.ai settings &mdash; worth doing as a matter of routine.</li>
+    <li>If your organisation needs to use AI with sensitive data legitimately, enterprise tiers (such as Claude for Work) have different contractual data protections.</li>
+  </ul>
+
+  <h3>3. A Built-In Safety Prompt</h3>
+  <p>Claude.ai lets you set a permanent system prompt &mdash; background instructions that apply to every conversation. As part of your setup, we will add an instruction that prompts Claude to flag inputs that look like real personal or work data (lists of names with numbers, email addresses, client records, etc.) and ask you whether you want to continue.</p>
+  <p>This is not a technical guardrail &mdash; it will not catch everything. But it creates a useful pause at exactly the moment you might otherwise act without thinking. Think of it as a seatbelt reminder chime, not a seatbelt.</p>
+
+  <h3>Your Security Checklist</h3>
+  <ul>
+    <li>Install Bitwarden and create a strong master password</li>
+    <li>Enable 2FA on Claude.ai (and any other AI accounts you create)</li>
+    <li>Check the training data opt-out setting in Claude.ai preferences</li>
+    <li>Find out if your employer has an AI use policy</li>
+    <li>Default to synthetic or anonymised data when practising &mdash; not real work data</li>
+    <li>Apply the one-question test before pasting anything sensitive</li>
+  </ul>
+
+  <p><em>Part of the AI Onramps programme &mdash; Building AI literacy for working professionals</em></p>
+</section>
+
+<!-- ── AI CONCEPTUAL GUIDE ─────────────────────── -->
+<section class="step" id="conceptual-guide">
+  <h2>A Practitioner&rsquo;s Guide to LLMs: What They Are and How to Enhance Them</h2>
+
+  <h3>Opening</h3>
+  <p>To use any tool well, you need an accurate mental model of what it is. This is especially true for LLMs, because the two most common mental models &mdash; &ldquo;it&rsquo;s just autocomplete&rdquo; and &ldquo;it&rsquo;s a superintelligence&rdquo; &mdash; both lead to predictable mistakes. We&rsquo;re going to build a better one.</p>
+  <p>The structure is simple: first, what kind of intelligence is an LLM? Then, how do we enhance it?</p>
+
+  <h3>A. What Kind of Intelligence Is an LLM?</h3>
+
+  <h3>A1. It&rsquo;s a neural network</h3>
+  <p>A neural network is a system of interconnected computational units, loosely inspired by neurons in the brain. Early AI systems &mdash; chess engines, expert systems &mdash; were rule-based: a developer wrote explicit rules, and the machine followed them. Neural networks work differently: instead of following rules, they learn from examples. Through a process called gradient descent, the system repeatedly adjusts its internal connections, taking small steps in the direction of better performance &mdash; like finding the lowest point in a hilly landscape by always stepping downhill &mdash; until it gets reliably better at the task.</p>
+  <p>This is deep learning &mdash; neural networks with many layers, where each layer learns to recognise increasingly abstract patterns. Early layers might detect edges in an image; deeper layers recognise faces. The key insight that unlocked practical deep learning was not new mathematics &mdash; it was scale. When you combine this architecture with enough data and enough computing power, something remarkable happens: capability emerges that nobody explicitly programmed.</p>
+
+  <h3>A2. It&rsquo;s a language model</h3>
+  <p>The second thing to understand is what this particular neural network was trained to do &mdash; and what that training produced.</p>
+  <p>The story begins with machine translation. In the 2010s, neural networks trained on parallel texts in different languages began outperforming rule-based translation systems. Researchers noticed something interesting: to translate well, the model had to develop rich internal representations of meaning, not just word-for-word mappings. Language was turning out to be a surprisingly powerful training signal.</p>
+  <p>The decisive architectural breakthrough came in 2017. A paper called <em>Attention Is All You Need</em> introduced the attention mechanism and the Transformer architecture &mdash; a design that lets the model consider every word in a passage in relation to every other word simultaneously, rather than processing language sequentially. Because attention allows for parallel processing in a way that pre-Transformer models did not, this made it possible to train on vastly larger datasets in parallel. You could go very big, very fast.</p>
+  <p>What followed was a decision to train these networks on an enormous fraction of the written internet &mdash; books, articles, code, conversation. The result is a model that has learned the statistical distribution of human language: what kinds of text follow from what other kinds of text, across essentially the full breadth of recorded human knowledge.</p>
+  <p>This is the key conceptual move: an LLM is not a database. It doesn&rsquo;t store facts and retrieve them. It has compressed the patterns of an enormous corpus into a set of internal weights, and when you prompt it, it generates a response by sampling from those learned patterns &mdash; predicting what a good continuation would look like.</p>
+  <p>This is genuinely powerful. Predicting what a good answer looks like, across the full range of human knowledge, requires rich internal representations of that knowledge. But it is also the source of the model&rsquo;s most important failure mode: hallucination. The model isn&rsquo;t lying when it produces a plausible-sounding but false citation. It has no mechanism to distinguish &ldquo;I know this&rdquo; from &ldquo;this fits the pattern of something I&rsquo;d know.&rdquo; It generates fluently in both cases. Confidence is not a signal of accuracy. This is not a bug to be patched &mdash; it is a property of the architecture. The right response is not to distrust the tool, but to understand when verification matters.</p>
+
+  <h3>Bridge</h3>
+  <p>So: a neural network, trained on human language, that models statistical distributions rather than storing facts. This base intelligence has characteristic strengths &mdash; fluency, breadth, pattern recognition across domains, tireless availability &mdash; and characteristic weaknesses &mdash; hallucination, no persistent memory, no reliable self-knowledge about the limits of its knowledge.</p>
+  <p>Enhancement is the natural response to that profile. And the idea of enhancing a base intelligence is not new. We have always built on top of the base intelligence we were given &mdash; through language, writing, mathematics, computation, and now AI. Each layer extended what came before. The same logic applies here.</p>
+
+  <h3>A brief aside &mdash; and then back to work</h3>
+  <p>We should note something that is easy to miss in the rush to use these tools: we now live alongside a genuinely new kind of intelligence. Not a smarter human. Not a dumber human. Something built on entirely different foundations &mdash; designed rather than evolved, trained on human artefacts rather than shaped by survival pressures, with a completely different profile of strengths and weaknesses.</p>
+  <p>We have, until very recently, shared the world only with other evolved intelligences &mdash; humans and animals, all shaped by the same basic pressures. Artificial intelligences are categorically different. They are behaviourally familiar, because they were trained on everything we wrote, but structurally alien.</p>
+  <p>The most useful approach is not to rank them against human intelligence, but to understand them on their own terms. What is this thing actually good at? What does it genuinely struggle with? That&rsquo;s the question that makes you a better user &mdash; and it&rsquo;s the question the rest of this session is designed to answer.</p>
+
+  <h3>B. Enhancing the Intelligence</h3>
+
+  <h3>B1. Model enhancements &mdash; what the builders do</h3>
+  <p>The base model &mdash; trained on the internet, predicting next tokens &mdash; is powerful but raw. It will complete any text in whatever direction the patterns suggest, including harmful, false, or simply unhelpful directions. Several layers of enhancement are applied before you interact with it.</p>
+  <p>Reinforcement learning from human feedback (RLHF) and related fine-tuning techniques shape the model&rsquo;s behaviour: making it helpful, honest, and safe. Human raters evaluate outputs; the model learns to produce outputs that score well. This is why Claude behaves like an assistant rather than a raw text predictor.</p>
+  <p>Explicit reasoning &mdash; sometimes called chain-of-thought &mdash; is the discovery that models perform dramatically better on complex problems when they are prompted, or trained, to think step by step before answering. Rather than jumping to a completion, the model works through intermediate steps. This is the basis of the &ldquo;extended thinking&rdquo; modes you may have encountered.</p>
+  <p>Inference-time scaling is the most recent development: rather than just training bigger models, you run more computation at the moment of answering &mdash; letting the model explore multiple reasoning paths, check its own work, or run longer internal deliberation. This has driven significant capability jumps in the last year.</p>
+  <p>Most recently, agentic capacity itself is becoming a builder-level enhancement &mdash; shipped as part of the foundation model rather than constructed by users. Claude Code, which autonomously plans and executes complex coding tasks, and Cowork, which automates file and task management for non-developers, are current examples. The boundary between &ldquo;what the model can do&rdquo; and &ldquo;what you have to build&rdquo; is shifting rapidly &mdash; a point we will return to.</p>
+
+  <h3>B2. User techniques &mdash; what you can do</h3>
+  <p>Context is the most important and most underused lever. The model has no persistent memory &mdash; everything it knows about your situation is what you put in front of it in the current conversation. Rich context produces dramatically better output. Most new users underinvest here.</p>
+  <p>Prompt engineering is the practice of structuring your inputs to guide the model&rsquo;s thinking and outputs. It ranges from simple (be specific, give examples, specify the format you want) to sophisticated (role assignment, chain-of-thought prompting, system prompts).</p>
+  <p>Tools and skills extend the model beyond its training data. A model with access to web search, code execution, or file systems can act in the world, not just generate text.</p>
+  <p>Agents are systems where the model plans and executes multi-step tasks autonomously &mdash; breaking a complex goal into steps, using tools along the way, and iterating until the job is done. This is where the technology is moving fastest, with agentic capabilities increasingly being built into the underlying models and agentic applications such as Claude Code.</p>
+
+  <h3>Coda: Why Understanding Matters More Than Technique</h3>
+  <p>There is a pattern worth naming before we finish.</p>
+  <p>Since ChatGPT went public in late 2022, the capability of foundation models has risen steeply and continuously. Things that required significant custom engineering 18 months ago are now handled natively &mdash; by the model itself, or by tools like Claude Code, or by agents that no longer need elaborate custom infrastructure to orchestrate. People and organisations that invested heavily in building technical workarounds for the limitations of 2023-era models have repeatedly found that investment overtaken by model improvements. The specific workaround becomes unnecessary. The Python pipeline someone spent months building gets replaced by a conversation.</p>
+  <p>This creates a real risk for anyone trying to develop AI capability: following the hype into deep investment in today&rsquo;s limitations, only to find the model outgrows them in six months.</p>
+  <p>The antidote is literacy. Understanding what the model actually is &mdash; how it learns, what it&rsquo;s good at, where it fails and why &mdash; compounds over time. It makes you a better user of today&rsquo;s models and a faster adapter to tomorrow&rsquo;s. Specific techniques become obsolete. The understanding that lets you evaluate and adopt new techniques does not.</p>
+  <p>That is what this course is designed to build. Not a toolkit for 2026. A foundation that gets more valuable as the models get more capable.</p>
+</section>
+
+</main>
+
+<script>
+  const allSections = document.querySelectorAll('section.step');
+  const navLinks = document.querySelectorAll('nav a');
+  const mainHeading = document.getElementById('main-heading');
+  const mainSubtitle = document.getElementById('main-subtitle');
+
+  const headings = {
+    'conceptual-guide': { title: 'AI Conceptual Guide', subtitle: '' },
+    _default: { title: 'The 10-Step Onramp', subtitle: 'Setting Up Your Daily Driver' }
+  };
+
+  function showStep(id) {
+    allSections.forEach(s => s.classList.remove('visible'));
+    navLinks.forEach(a => a.classList.remove('active'));
+    const target = document.getElementById(id);
+    if (target) target.classList.add('visible');
+    const link = document.querySelector('nav a[href="#' + id + '"]');
+    if (link) link.classList.add('active');
+    const h = headings[id] || headings._default;
+    mainHeading.textContent = h.title;
+    mainSubtitle.textContent = h.subtitle;
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+
+  navLinks.forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      showStep(a.getAttribute('href').substring(1));
+    });
+  });
+
+  // Show Step 1 on load
+  showStep('step1');
+</script>
+</body>
+</html>
