@@ -437,14 +437,14 @@
 
 <!-- ── SIDEBAR NAV ──────────────────────────────── -->
 <nav>
-  <button class="nav-group-btn" data-target="nav-cg">AI Conceptual Guide</button>
+  <button class="nav-group-btn" data-target="nav-cg">S1: AI Conceptual Guide</button>
   <div class="nav-sublinks" id="nav-cg">
     <a href="#cg-opening" data-group="conceptual">Opening</a>
     <a href="#cg-part-a" data-group="conceptual">A. What kind of intelligence?</a>
     <a href="#cg-part-b" data-group="conceptual">B. Enhancing the intelligence</a>
     <a href="#cg-coda" data-group="conceptual">Coda</a>
   </div>
-  <button class="nav-group-btn" data-target="nav-steps">Onramp Steps</button>
+  <button class="nav-group-btn" data-target="nav-steps">S2: AI Onramp</button>
   <div class="nav-sublinks" id="nav-steps">
     <a href="#qs1" data-group="steps">QS1 &ndash; Get up and running</a>
     <a href="#qs2" data-group="steps">QS2 &ndash; Set up your Projects</a>
@@ -453,7 +453,7 @@
     <a href="#qs5" data-group="steps">QS5 &ndash; Keeping it safe</a>
     <a href="#qs6" data-group="steps">QS6 &ndash; Basic chat technique</a>
   </div>
-  <button class="nav-group-btn" data-target="nav-dr">Deep Research 1: Canned</button>
+  <button class="nav-group-btn" data-target="nav-dr">S3: Deep Research 1: Canned</button>
   <div class="nav-sublinks" id="nav-dr">
     <a href="#dr1-s1" data-group="deep-research">1. The Skilled User Frame</a>
     <a href="#dr1-s2" data-group="deep-research">2. Key Concepts</a>
@@ -461,7 +461,7 @@
     <a href="#dr1-s4" data-group="deep-research">4. The Session Demos</a>
     <a href="#dr1-s5" data-group="deep-research">5. Homework</a>
   </div>
-  <button class="nav-group-btn" data-target="nav-dr2">Deep Research 2: Taking Control</button>
+  <button class="nav-group-btn" data-target="nav-dr2">S4: Deep Research 2: Directed</button>
   <div class="nav-sublinks" id="nav-dr2">
     <a href="#dr2-s1" data-group="deep-research2">1. Where We Are</a>
     <a href="#dr2-s2" data-group="deep-research2">2. The Process Architecture</a>
@@ -472,14 +472,14 @@
     <a href="#dr2-s7" data-group="deep-research2">7. The Direction Repertoire</a>
     <a href="#dr2-s8" data-group="deep-research2">8. Homework</a>
   </div>
-  <button class="nav-group-btn" data-target="nav-resources">Additional Resources</button>
+  <button class="nav-group-btn" data-target="nav-resources">A1: Additional Resources</button>
   <div class="nav-sublinks" id="nav-resources">
     <a href="#res-general" data-group="resources">General Links</a>
     <a href="#res-study" data-group="resources">Further Study</a>
     <a href="#res-security" data-group="resources">AI Security Essentials</a>
     <a href="#res-chat" data-group="resources">Session 4: Chat Notes for Show</a>
   </div>
-  <button class="nav-group-btn" data-target="nav-graphics">Graphics</button>
+  <button class="nav-group-btn" data-target="nav-graphics">A2: Graphics</button>
   <div class="nav-sublinks" id="nav-graphics">
     <a href="#graphic-1" data-group="graphics">Defensible Under Scrutiny</a>
     <a href="#graphic-2" data-group="graphics">Regulatory Drivers Timeline</a>
@@ -1915,35 +1915,35 @@
   const mainSubtitle = document.getElementById('main-subtitle');
 
   const headings = {
-    'qs1': { title: 'QS1: Get up and running', subtitle: 'Setting Up Your Daily Driver' },
-    'qs2': { title: 'QS2: Set up your Projects', subtitle: 'Setting Up Your Daily Driver' },
-    'qs3': { title: 'QS3: Core functionality', subtitle: 'Setting Up Your Daily Driver' },
-    'qs4': { title: 'QS4: Set up your Connectors', subtitle: 'Setting Up Your Daily Driver' },
-    'qs5': { title: 'QS5: Keeping it safe', subtitle: 'Setting Up Your Daily Driver' },
-    'qs6': { title: 'QS6: Basic chat technique', subtitle: 'Setting Up Your Daily Driver' },
-    'cg-opening': { title: 'AI Conceptual Guide', subtitle: 'Opening' },
-    'cg-part-a': { title: 'AI Conceptual Guide', subtitle: 'A. What Kind of Intelligence?' },
-    'cg-part-b': { title: 'AI Conceptual Guide', subtitle: 'B. Enhancing the Intelligence' },
-    'cg-coda': { title: 'AI Conceptual Guide', subtitle: 'Coda' },
-    'dr1-s1': { title: 'Session 3: Deep Research in the Wild', subtitle: 'The Skilled User Frame' },
-    'dr1-s2': { title: 'Session 3: Deep Research in the Wild', subtitle: 'Key Concepts' },
-    'dr1-s3': { title: 'Session 3: Deep Research in the Wild', subtitle: 'The Evaluation Rubric' },
-    'dr1-s4': { title: 'Session 3: Deep Research in the Wild', subtitle: 'The Session Demos' },
-    'dr1-s5': { title: 'Session 3: Deep Research in the Wild', subtitle: 'Homework' },
-    'res-general': { title: 'General Links', subtitle: 'Additional Resources' },
-    'res-study': { title: 'Further Study', subtitle: 'Additional Resources' },
-    'res-security': { title: 'AI Security Essentials', subtitle: 'Additional Resources' },
-    'res-chat': { title: 'Session 4: Chat Notes for Show', subtitle: 'Additional Resources' },
-    'dr2-s1': { title: 'Session 4: Taking Control', subtitle: 'Where We Are' },
-    'dr2-s2': { title: 'Session 4: Taking Control', subtitle: 'The Process Architecture' },
-    'dr2-s3': { title: 'Session 4: Taking Control', subtitle: 'Source Discovery and Curation' },
-    'dr2-s4': { title: 'Session 4: Taking Control', subtitle: 'Literature Review' },
-    'dr2-s5': { title: 'Session 4: Taking Control', subtitle: 'Analytical Synthesis' },
-    'dr2-s6': { title: 'Session 4: Taking Control', subtitle: 'The Report' },
-    'dr2-s7': { title: 'Session 4: Taking Control', subtitle: 'The Direction Repertoire' },
-    'dr2-s8': { title: 'Session 4: Taking Control', subtitle: 'Homework' },
-    'graphic-1': { title: 'Graphics', subtitle: 'Defensible Under Scrutiny' },
-    'graphic-2': { title: 'Graphics', subtitle: 'Regulatory Drivers Timeline' },
+    'qs1': { title: 'S2: AI Onramp', subtitle: 'QS1: Get up and running' },
+    'qs2': { title: 'S2: AI Onramp', subtitle: 'QS2: Set up your Projects' },
+    'qs3': { title: 'S2: AI Onramp', subtitle: 'QS3: Core functionality' },
+    'qs4': { title: 'S2: AI Onramp', subtitle: 'QS4: Set up your Connectors' },
+    'qs5': { title: 'S2: AI Onramp', subtitle: 'QS5: Keeping it safe' },
+    'qs6': { title: 'S2: AI Onramp', subtitle: 'QS6: Basic chat technique' },
+    'cg-opening': { title: 'S1: AI Conceptual Guide', subtitle: 'Opening' },
+    'cg-part-a': { title: 'S1: AI Conceptual Guide', subtitle: 'A. What Kind of Intelligence?' },
+    'cg-part-b': { title: 'S1: AI Conceptual Guide', subtitle: 'B. Enhancing the Intelligence' },
+    'cg-coda': { title: 'S1: AI Conceptual Guide', subtitle: 'Coda' },
+    'dr1-s1': { title: 'S3: Deep Research 1: Canned', subtitle: 'The Skilled User Frame' },
+    'dr1-s2': { title: 'S3: Deep Research 1: Canned', subtitle: 'Key Concepts' },
+    'dr1-s3': { title: 'S3: Deep Research 1: Canned', subtitle: 'The Evaluation Rubric' },
+    'dr1-s4': { title: 'S3: Deep Research 1: Canned', subtitle: 'The Session Demos' },
+    'dr1-s5': { title: 'S3: Deep Research 1: Canned', subtitle: 'Homework' },
+    'res-general': { title: 'General Links', subtitle: 'A1: Additional Resources' },
+    'res-study': { title: 'Further Study', subtitle: 'A1: Additional Resources' },
+    'res-security': { title: 'AI Security Essentials', subtitle: 'A1: Additional Resources' },
+    'res-chat': { title: 'Session 4: Chat Notes for Show', subtitle: 'A1: Additional Resources' },
+    'dr2-s1': { title: 'S4: Deep Research 2: Directed', subtitle: 'Where We Are' },
+    'dr2-s2': { title: 'S4: Deep Research 2: Directed', subtitle: 'The Process Architecture' },
+    'dr2-s3': { title: 'S4: Deep Research 2: Directed', subtitle: 'Source Discovery and Curation' },
+    'dr2-s4': { title: 'S4: Deep Research 2: Directed', subtitle: 'Literature Review' },
+    'dr2-s5': { title: 'S4: Deep Research 2: Directed', subtitle: 'Analytical Synthesis' },
+    'dr2-s6': { title: 'S4: Deep Research 2: Directed', subtitle: 'The Report' },
+    'dr2-s7': { title: 'S4: Deep Research 2: Directed', subtitle: 'The Direction Repertoire' },
+    'dr2-s8': { title: 'S4: Deep Research 2: Directed', subtitle: 'Homework' },
+    'graphic-1': { title: 'A2: Graphics', subtitle: 'Defensible Under Scrutiny' },
+    'graphic-2': { title: 'A2: Graphics', subtitle: 'Regulatory Drivers Timeline' },
     _default: { title: 'The Onramp', subtitle: 'Setting Up Your Daily Driver' }
   };
 
