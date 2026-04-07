@@ -8,7 +8,7 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --sidebar-w: 260px;
+    --sidebar-w: 290px;
     --accent: #2c5f8a;
     --accent-light: #e8f0f7;
     --border: #d0d7de;
@@ -444,14 +444,6 @@
 
 <!-- ── SIDEBAR NAV ──────────────────────────────── -->
 <nav>
-  <button class="nav-group-btn" data-target="nav-lec">Lecturer's Resources</button>
-  <div class="nav-sublinks" id="nav-lec">
-    <a href="#lec-l1" data-group="lecturer">L1: AI Conceptual Guide</a>
-    <a href="#lec-l2" data-group="lecturer">L2: AI Daily Driver</a>
-    <a href="#lec-l3" data-group="lecturer">L3: Deep Research: Canned</a>
-    <a href="#lec-l4" data-group="lecturer">L4: Deep Research: Directed</a>
-    <a href="#lec-brochure" data-group="lecturer">Course Brochure: 7 April</a>
-  </div>
   <button class="nav-group-btn" data-target="nav-cg">S1: AI Conceptual Guide</button>
   <div class="nav-sublinks" id="nav-cg">
     <a href="#cg-opening" data-group="conceptual">Opening</a>
@@ -498,6 +490,18 @@
   <div class="nav-sublinks" id="nav-graphics">
     <a href="#graphic-1" data-group="graphics">Defensible Under Scrutiny</a>
     <a href="#graphic-2" data-group="graphics">Regulatory Drivers Timeline</a>
+    <a href="#pdf-fluency-vocab" data-group="graphics">AI Fluency: Vocabulary Cheat Sheet</a>
+    <a href="#pdf-fluency-onepager" data-group="graphics">AI Fluency: Summary One-Pager</a>
+    <a href="#pdf-fluency-16x9" data-group="graphics">AI Fluency: Summary 16x9</a>
+    <a href="#pdf-genai-overview" data-group="graphics">Overview of Generative AI</a>
+  </div>
+  <button class="nav-group-btn" data-target="nav-lec">Lecturer's Resources</button>
+  <div class="nav-sublinks" id="nav-lec">
+    <a href="#lec-l1" data-group="lecturer">L1: AI Conceptual Guide</a>
+    <a href="#lec-l2" data-group="lecturer">L2: AI Daily Driver</a>
+    <a href="#lec-l3" data-group="lecturer">L3: Deep Research: Canned</a>
+    <a href="#lec-l4" data-group="lecturer">L4: Deep Research: Directed</a>
+    <a href="#lec-brochure" data-group="lecturer">Course Brochure: 7 April</a>
   </div>
 </nav>
 
@@ -2447,6 +2451,26 @@
   <p>Close: not a toolkit for 2026, a foundation that gets more valuable as the models get more capable. The course has built B2 literacy in the context of policy research. What you do with it from here is up to you</p>
 </section>
 
+<section class="step" id="pdf-fluency-vocab">
+  <h2>AI Fluency: Vocabulary Cheat Sheet</h2>
+  <iframe src="AI_Fluency_vocabulary_cheat_sheet.pdf" width="100%" height="900" style="border:none;display:block;"></iframe>
+</section>
+
+<section class="step" id="pdf-fluency-onepager">
+  <h2>AI Fluency: Summary One-Pager</h2>
+  <iframe src="1.2_AI_Fluency_Summary_One-Pager.pdf" width="100%" height="900" style="border:none;display:block;"></iframe>
+</section>
+
+<section class="step" id="pdf-fluency-16x9">
+  <h2>AI Fluency: Summary 16x9</h2>
+  <iframe src="1.2_AI_Fluency_Summary_16x9.pdf" width="100%" height="900" style="border:none;display:block;"></iframe>
+</section>
+
+<section class="step" id="pdf-genai-overview">
+  <h2>Overview of Generative AI</h2>
+  <iframe src="DD1_Handout__Overview_of_Generative_AI.pdf" width="100%" height="900" style="border:none;display:block;"></iframe>
+</section>
+
 </main>
 
 <script>
@@ -2489,7 +2513,11 @@
     'lec-l2':      { title: "Lecturer's Resources", subtitle: 'L2: AI Daily Driver' },
     'lec-l3':      { title: "Lecturer's Resources", subtitle: 'L3: Deep Research: Canned' },
     'lec-l4':      { title: "Lecturer's Resources", subtitle: 'L4: Deep Research: Directed' },
-    'lec-brochure':{ title: "Lecturer's Resources", subtitle: 'Course Brochure: 7 April' },
+    'lec-brochure':       { title: "Lecturer's Resources", subtitle: 'Course Brochure: 7 April' },
+    'pdf-fluency-vocab':  { title: 'A2: Graphics', subtitle: 'AI Fluency: Vocabulary Cheat Sheet' },
+    'pdf-fluency-onepager':{ title: 'A2: Graphics', subtitle: 'AI Fluency: Summary One-Pager' },
+    'pdf-fluency-16x9':   { title: 'A2: Graphics', subtitle: 'AI Fluency: Summary 16x9' },
+    'pdf-genai-overview': { title: 'A2: Graphics', subtitle: 'Overview of Generative AI' },
     _default: { title: 'The Onramp', subtitle: 'Setting Up Your Daily Driver' }
   };
 
