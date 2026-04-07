@@ -165,6 +165,13 @@
     margin-bottom: 8px;
   }
 
+  section.step h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 16px;
+    margin-bottom: 6px;
+  }
+
   section.step p {
     margin-bottom: 12px;
   }
@@ -437,6 +444,14 @@
 
 <!-- ── SIDEBAR NAV ──────────────────────────────── -->
 <nav>
+  <button class="nav-group-btn" data-target="nav-lec">Lecturer's Resources</button>
+  <div class="nav-sublinks" id="nav-lec">
+    <a href="#lec-l1" data-group="lecturer">L1: AI Conceptual Guide</a>
+    <a href="#lec-l2" data-group="lecturer">L2: AI Daily Driver</a>
+    <a href="#lec-l3" data-group="lecturer">L3: Deep Research: Canned</a>
+    <a href="#lec-l4" data-group="lecturer">L4: Deep Research: Directed</a>
+    <a href="#lec-brochure" data-group="lecturer">Course Brochure: 7 April</a>
+  </div>
   <button class="nav-group-btn" data-target="nav-cg">S1: AI Conceptual Guide</button>
   <div class="nav-sublinks" id="nav-cg">
     <a href="#cg-opening" data-group="conceptual">Opening</a>
@@ -1906,6 +1921,532 @@
   </div>
 </section>
 
+
+<section class="step" id="lec-l1">
+  <h2>L1: AI Conceptual Guide</h2>
+  <p>A Practitioner&#x27;s Guide to LLMs: What They Are and How to Enhance Them</p>
+  <p>Opening</p>
+  <p>To use any tool well, you need an accurate mental model of what it is. This is especially true for LLMs, because the two most common mental models -- &quot;it&#x27;s just autocomplete&quot; and &quot;it&#x27;s a superintelligence&quot; -- both lead to predictable mistakes. We&#x27;re going to build a better one.</p>
+  <p>The structure is simple: first, what kind of intelligence is an LLM? Then, how do we enhance it?</p>
+  <p>[Graphic 1: Table of contents -- the A/B framework displayed as a simple visual map: A. What kind of intelligence is an LLM? -&gt; A1: It&#x27;s a neural network / A2: It&#x27;s a language model. B. Enhancing the intelligence -&gt; B1: Model enhancements -- what the builders do / B2: User techniques -- what you can do.]</p>
+  <p>A. What Kind of Intelligence Is an LLM?</p>
+  <p>A1. It&#x27;s a neural network</p>
+  <p>A neural network is a system of interconnected computational units, loosely inspired by neurons in the brain. Early AI systems -- chess engines, expert systems -- were rule-based: a developer wrote explicit rules, and the machine followed them. Neural networks work differently: instead of following rules, they learn from examples. Through a process called gradient descent, the system repeatedly adjusts its internal connections, taking small steps in the direction of better performance -- like finding the lowest point in a hilly landscape by always stepping downhill -- until it gets reliably better at the task.</p>
+  <p>This is deep learning -- neural networks with many layers, where each layer learns to recognise increasingly abstract patterns. Early layers might detect edges in an image; deeper layers recognise faces. The key insight that unlocked practical deep learning was not new mathematics -- it was scale. When you combine this architecture with enough data and enough computing power, something remarkable happens: capability emerges that nobody explicitly programmed.</p>
+  <p>[Graphic 2: Simple neural network diagram -- nodes arranged in input, hidden, and output layers, with connections between them. Clean and minimal.]</p>
+  <p>[Graphic 3: Gradient descent landscape -- a 3D hilly surface with a ball at the top rolling downhill toward the lowest point. Label the lowest point &quot;best performance&quot;.]</p>
+  <p>[Graphic 4: Deep learning layers -- a multi-layer matrix progressing left to right. First layers labeled &quot;edge detectors&quot;, middle layers &quot;shapes and parts&quot;, final layers &quot;faces / objects&quot;. Optionally show a sample image on the left and a recognised output on the right.]</p>
+  <p>A2. It&#x27;s a language model</p>
+  <p>The second thing to understand is what this particular neural network was trained to do -- and what that training produced.</p>
+  <p>The story begins with machine translation. In the 2010s, neural networks trained on parallel texts in different languages began outperforming rule-based translation systems. Researchers noticed something interesting: to translate well, the model had to develop rich internal representations of meaning, not just word-for-word mappings. Language was turning out to be a surprisingly powerful training signal.</p>
+  <p>The decisive architectural breakthrough came in 2017. A paper called Attention Is All You Need introduced the attention mechanism and the Transformer architecture -- a design that lets the model consider every word in a passage in relation to every other word simultaneously, rather than processing language sequentially. Because attention allows for parallel processing in a way that pre-Transformer models did not, this made it possible to train on vastly larger datasets in parallel. You could go very big, very fast.</p>
+  <p>What followed was a decision to train these networks on an enormous fraction of the written internet -- books, articles, code, conversation. The result is a model that has learned the statistical distribution of human language: what kinds of text follow from what other kinds of text, across essentially the full breadth of recorded human knowledge.</p>
+  <p>This is the key conceptual move: an LLM is not a database. It doesn&#x27;t store facts and retrieve them. It has compressed the patterns of an enormous corpus into a set of internal weights, and when you prompt it, it generates a response by sampling from those learned patterns -- predicting what a good continuation would look like.</p>
+  <p>This is genuinely powerful. Predicting what a good answer looks like, across the full range of human knowledge, requires rich internal representations of that knowledge. But it is also the source of the model&#x27;s most important failure mode: hallucination. The model isn&#x27;t lying when it produces a plausible-sounding but false citation. It has no mechanism to distinguish &quot;I know this&quot; from &quot;this fits the pattern of something I&#x27;d know.&quot; It generates fluently in both cases. Confidence is not a signal of accuracy. This is not a bug to be patched -- it is a property of the architecture. The right response is not to distrust the tool, but to understand when verification matters.</p>
+  <p>[Graphic 5: Attention mechanism -- a short sentence with lines connecting each word to every other word, with line weight indicating strength of relationship. Note: consider live demo using an interactive attention visualiser.]</p>
+  <p>[Graphic 6: Compute growth -- a chart showing the steep increase in compute used for training major models from roughly 2012 to present. Log scale recommended.]</p>
+  <p>[Graphic 7: Corpus size -- a graphic conveying the scale of training data: books, web pages, code, conversation, all feeding into the model. Could be a simple flow diagram or a proportional area chart showing relative sources.]</p>
+  <p>[Graphic 8: Sentence completion with probabilities -- a partial sentence (e.g. &quot;The capital of France is...&quot;) with a list of possible next words and their assigned probabilities shown as a ranked list or bar chart. Illustrates both what &quot;learning a distribution&quot; means and why hallucination happens -- the model picks the most probable continuation, not necessarily the most accurate one.]</p>
+  <p>Bridge</p>
+  <p>So: a neural network, trained on human language, that models statistical distributions rather than storing facts. This base intelligence has characteristic strengths -- fluency, breadth, pattern recognition across domains, tireless availability -- and characteristic weaknesses -- hallucination, no persistent memory, no reliable self-knowledge about the limits of its knowledge.</p>
+  <p>Enhancement is the natural response to that profile. And the idea of enhancing a base intelligence is not new. We have always built on top of the base intelligence we were given -- through language, writing, mathematics, computation, and now AI. Each layer extended what came before. The same logic applies here.</p>
+  <p>A brief aside -- and then back to work</p>
+  <p>We should note something that is easy to miss in the rush to use these tools: we now live alongside a genuinely new kind of intelligence. Not a smarter human. Not a dumber human. Something built on entirely different foundations -- designed rather than evolved, trained on human artefacts rather than shaped by survival pressures, with a completely different profile of strengths and weaknesses.</p>
+  <p>We have, until very recently, shared the world only with other evolved intelligences -- humans and animals, all shaped by the same basic pressures. Artificial intelligences are categorically different. They are behaviourally familiar, because they were trained on everything we wrote, but structurally alien.</p>
+  <p>The most useful approach is not to rank them against human intelligence, but to understand them on their own terms. What is this thing actually good at? What does it genuinely struggle with? That&#x27;s the question that makes you a better user -- and it&#x27;s the question the rest of this session is designed to answer.</p>
+  <p>[Graphic 9: Two-column contrast -- Evolved intelligence vs Artificial intelligence. Rows might include: origin (natural selection vs designed and trained), training signal (survival and reproduction vs human-generated text), memory (embodied and episodic vs none by default), strengths (navigation, social cognition, embodied action vs language, pattern recognition, breadth, availability), weaknesses (limited working memory, slow computation vs hallucination, no persistent memory, no self-knowledge of limits). Framed explicitly as a comparison, not a ranking.]</p>
+  <p>[Graphic idea to develop: a timeline of intelligences -- from early animals through humans through narrow AI through LLMs. Needs further thought before production.]</p>
+  <p>B. Enhancing the Intelligence</p>
+  <p>B1. Model enhancements -- what the builders do</p>
+  <p>The base model -- trained on the internet, predicting next tokens -- is powerful but raw. It will complete any text in whatever direction the patterns suggest, including harmful, false, or simply unhelpful directions. Several layers of enhancement are applied before you interact with it.</p>
+  <p>Reinforcement learning from human feedback (RLHF) and related fine-tuning techniques shape the model&#x27;s behaviour: making it helpful, honest, and safe. Human raters evaluate outputs; the model learns to produce outputs that score well. This is why Claude behaves like an assistant rather than a raw text predictor.</p>
+  <p>Explicit reasoning -- sometimes called chain-of-thought -- is the discovery that models perform dramatically better on complex problems when they are prompted, or trained, to think step by step before answering. Rather than jumping to a completion, the model works through intermediate steps. This is the basis of the &quot;extended thinking&quot; modes you may have encountered.</p>
+  <p>Inference-time scaling is the most recent development: rather than just training bigger models, you run more computation at the moment of answering -- letting the model explore multiple reasoning paths, check its own work, or run longer internal deliberation. This has driven significant capability jumps in the last year.</p>
+  <p>Most recently, agentic capacity itself is becoming a builder-level enhancement -- shipped as part of the foundation model rather than constructed by users. Claude Code, which autonomously plans and executes complex coding tasks, and Cowork, which automates file and task management for non-developers, are current examples. The boundary between &quot;what the model can do&quot; and &quot;what you have to build&quot; is shifting rapidly -- a point we will return to.</p>
+  <p>[Graphic 10: RLHF before/after -- two-column comparison. Left: a raw base model response to a prompt, completing text in an unhelpful or inappropriate direction. Right: the same prompt answered by an RLHF-trained model, responding helpfully and safely. No process diagram -- just the contrast.]</p>
+  <p>[Graphic 11: Chain-of-thought -- a worked example showing a moderately complex question (e.g. a simple multi-step reasoning problem). Left column: question -&gt; direct answer (incorrect). Right column: question -&gt; step 1 -&gt; step 2 -&gt; step 3 -&gt; answer (correct). Steps should be concrete and legible, not generic placeholders.]</p>
+  <p>[Graphic 12: Capability timeline -- a chart showing the steep increase in model capability from 2022 to present, keyed to specific model releases (GPT-3.5/ChatGPT, GPT-4, Claude 2, Gemini, Claude 3, o1, Claude 3.5, and so on). Annotate key capability jumps. Log scale or qualitative capability axis.]</p>
+  <p>B2. User techniques -- what you can do</p>
+  <p>Context is the most important and most underused lever. The model has no persistent memory -- everything it knows about your situation is what you put in front of it in the current conversation. Rich context produces dramatically better output. Most new users underinvest here.</p>
+  <p>Prompt engineering is the practice of structuring your inputs to guide the model&#x27;s thinking and outputs. It ranges from simple (be specific, give examples, specify the format you want) to sophisticated (role assignment, chain-of-thought prompting, system prompts).</p>
+  <p>Tools and skills extend the model beyond its training data. A model with access to web search, code execution, or file systems can act in the world, not just generate text.</p>
+  <p>Agents are systems where the model plans and executes multi-step tasks autonomously -- breaking a complex goal into steps, using tools along the way, and iterating until the job is done. This is where the technology is moving fastest, with agentic capabilities increasingly being built into the underlying models and agentic applications such as Claude Code.</p>
+  <p>[Graphic 13: Context window -- a simple visual showing the conversation window as the model&#x27;s entire world. Everything inside the window is visible to the model; everything outside is dark. Annotate: system prompt, conversation history, documents added by user, current query.]</p>
+  <p>[Graphic 14: Prompt engineering before/after -- two columns, same underlying request. Left: a weak, vague prompt and a mediocre output. Right: a well-structured prompt with context, role, and format specified, and a significantly better output. Keep the example concrete and recognisable to a professional audience.]</p>
+  <p>[Graphic 15: The harness -- a diagram showing the model at the centre, with tools radiating out (web search, code execution, file systems, memory). Around the outside: an agent loop -- goal -&gt; plan -&gt; tool use -&gt; check -&gt; iterate. Labels distinguish what the builders provide (the model, native tools) from what the user configures (context, prompt, additional tools). This graphic visually summarises the entire B section.]</p>
+  <p>Coda: Why Understanding Matters More Than Technique</p>
+  <p>There is a pattern worth naming before we finish.</p>
+  <p>Since ChatGPT went public in late 2022, the capability of foundation models has risen steeply and continuously. Things that required significant custom engineering 18 months ago are now handled natively -- by the model itself, or by tools like Claude Code, or by agents that no longer need elaborate custom infrastructure to orchestrate. People and organisations that invested heavily in building technical workarounds for the limitations of 2023-era models have repeatedly found that investment overtaken by model improvements. The specific workaround becomes unnecessary. The Python pipeline someone spent months building gets replaced by a conversation.</p>
+  <p>This creates a real risk for anyone trying to develop AI capability: following the hype into deep investment in today&#x27;s limitations, only to find the model outgrows them in six months.</p>
+  <p>The antidote is literacy. Understanding what the model actually is -- how it learns, what it&#x27;s good at, where it fails and why -- compounds over time. It makes you a better user of today&#x27;s models and a faster adapter to tomorrow&#x27;s. Specific techniques become obsolete. The understanding that lets you evaluate and adopt new techniques does not.</p>
+  <p>That is what this course is designed to build. Not a toolkit for 2026. A foundation that gets more valuable as the models get more capable.</p>
+  <p>[Graphic 16: Capability curve -- a steep upward trajectory of model capability from late 2022 to present. Annotate specific inflection points with examples of things that became obsolete or native at each stage: e.g. &quot;custom orchestration pipelines,&quot; &quot;manual retrieval systems,&quot; &quot;bespoke fine-tuning for basic tasks.&quot; The visual argument: the curve keeps rising, and workarounds keep being absorbed.]</p>
+</section>
+
+<section class="step" id="lec-l2">
+  <h2>L2: AI Daily Driver</h2>
+  <p>The 10-Step Onramp -- Setting Up Your Daily Driver</p>
+  <p>Step 1: Get set up -- web or desktop</p>
+  <p>Claude lives in the cloud. Your conversations, projects, and settings are all stored on Anthropic&#x27;s servers, not on your machine -- so whichever way you access Claude, you&#x27;re working in the same place, with one account. That means you can start on the web today, switch to the desktop app next week, and everything is exactly where you left it.</p>
+  <p>The default: start with the web. Go to claude.ai and create an account. Clean, safe, nothing on your local machine. This is where you&#x27;ll spend the next week.</p>
+  <p>When you&#x27;re ready: the desktop app. Download it from claude.ai. It&#x27;s the same Claude, a bit more convenient -- sits in your taskbar, easier to make a daily habit. In chat mode it behaves identically to the web. You&#x27;ll notice Code and Cowork in the sidebar -- leave those for now, we&#x27;ll get to them later in the course.</p>
+  <p>One practical note: if your organisation doesn&#x27;t yet have an enterprise AI agreement, use a personal account for now. We&#x27;ll cover the security and policy considerations shortly.</p>
+  <p>QuickStart</p>
+  <ul>
+    <li>In your browser, create a folder called &quot;AI Daily Driver&quot;.</li>
+    <li>Go to https://claude.ai; https://chatgpt.com; and https://www.perplexity.ai/ and sign up for the free plans</li>
+    <li>We will be following Claude in the course but its useful and fun to play with a couple of others.</li>
+    <li>Save them all to the &quot;AI Daily Driver&quot; folder and put it somewhere prominent.</li>
+    <li>If you wish, install the Claude Desktop App, using the same account as the web app.  Get it from https://claude.com/download.</li>
+  </ul>
+  <p>Tips</p>
+  <ul>
+    <li>Use any AI to help you in the subscription process, especially if you get stuck. This applies to any app you are downloading or installing. AI is almost always good at helping you navigate poorly designed interfaces, avoid bloatware, and make sense of decisions -- permissions, settings, terms -- that you&#x27;re not really in a position to judge on your own. Get into the habit of pasting anything unclear into Claude before you click.</li>
+    <li>If you have multiple email addresses, think about which you want to use for your AI subscriptions.</li>
+    <li>You may wish to put the apps on your phone as well.  Apart from daily chatting, phone apps are increasingly used to control long-running agentic processes without having to be at your machine.</li>
+  </ul>
+  <p>Step 2: Subscription level -- Free vs Pro</p>
+  <p>Free is fine for trying Claude out. But if you&#x27;ve decided you want to build a real working relationship with it, get Pro. It&#x27;s $20 a month and it&#x27;s probably the highest-return $20 you&#x27;ll spend on your professional development this year.</p>
+  <p>Here&#x27;s what Pro gets you:</p>
+  <p>Significantly higher usage limits -- enough for sustained daily use without hitting a wall mid-task</p>
+  <p>Access to the more powerful models including Opus and extended thinking mode</p>
+  <p>Access to Research mode</p>
+  <p>More storage for Projects</p>
+  <p>Critically: it&#x27;s a flat fee. You&#x27;re not paying per token or per query. Use it as much as you like within the limits, and those limits are generous enough that most users never hit them in normal daily use. You may occasionally get throttled at peak times, but that&#x27;s the exception not the rule.</p>
+  <p>The habit argument: usage limits on Free don&#x27;t just inconvenience you, they break the habit loop at exactly the moment you&#x27;re trying to form it. Pro removes that friction entirely.</p>
+  <p>The decision: unless you try Claude this week and decide it genuinely isn&#x27;t for you, get Pro before the next session.</p>
+  <p>QuickStart</p>
+  <ul>
+    <li>In the left side-bar, click on your name at the bottom.  Then click on Upgrade Plan.  </li>
+    <li>Start with monthly until you know you are in for the long haul.</li>
+  </ul>
+  <p>Tips</p>
+  <ul>
+    <li>The Pro limit is generous but not unlimited -- if you hit a wall mid-session, switch to a lighter model temporarily rather than stopping work</li>
+  </ul>
+  <p>Step 3: The Claude applications</p>
+  <p>Claude comes in several forms, each optimised for a different kind of work. Here&#x27;s the map:</p>
+  <p>For now: you&#x27;re in Chat. The others are there when the course gets to them.</p>
+  <p>Note for desktop app users: Code and Cowork are visible in the sidebar from day one. Leave them alone until the course gets there.</p>
+  <p>Tips</p>
+  <ul>
+    <li>Chat, despite the name, is very powerful and keeps getting more powerful. Be careful of following the hype around trendy Chat-enhancement wrappers and third-party add-ons. They often bring new problems, data exposure risks, and increased admin load. Build your skills in native Chat first.</li>
+  </ul>
+  <p>Step 4: Models -- Sonnet, Opus, or Haiku?</p>
+  <p>When you start a conversation you can choose which model to use. For now there are three worth knowing:</p>
+  <p>Haiku -- fast and light. Fine for simple, quick tasks but not what you want for serious work</p>
+  <p>Sonnet -- your default. Fast, highly capable, handles the vast majority of what you&#x27;ll do day to day. Start here every time</p>
+  <p>Opus -- the most powerful. Use it when the task is genuinely complex or high stakes. Slower, and draws more from your monthly allocation</p>
+  <p>The rule: use Sonnet unless you have a specific reason to switch. You&#x27;ll rarely need to.</p>
+  <p>Extended thinking and Research mode are also available but we&#x27;ll cover those properly in later sessions -- leave them alone for now.</p>
+  <p>Step 5: Artifacts</p>
+  <p>Sometimes Claude&#x27;s response isn&#x27;t just text in the conversation -- it produces a self-contained piece of work: a document, a table, a piece of code, a formatted report, an interactive page. These are called Artifacts and they appear in a separate panel alongside the conversation.</p>
+  <p>Why it matters: an Artifact isn&#x27;t just a response, it&#x27;s a working document. You can ask Claude to revise it, extend it, reformat it -- all while keeping the conversation going. The Artifact updates in place rather than producing a new block of text each time. You can also switch between the finished output and the underlying code if you want to see how it was built.</p>
+  <p>What triggers an Artifact: Claude decides based on the nature of the output. Longer structured documents, code, and formatted content typically appear as Artifacts automatically.  </p>
+  <p>Artifacts can be shared or published directly from Claude.</p>
+  <p>Tips</p>
+  <ul>
+    <li>When Claude produces an Artifact, don&#x27;t just copy and paste it and move on. Stay in the conversation and refine it until it&#x27;s actually what you need. </li>
+    <li>Even if Claude has decided not to show something as an artifact, you can ask it to.</li>
+    <li>Artifacts are &quot;updated in place&quot; - so there is only 1 version on display.  But there is an updated version number and you can go back to earlier versions.</li>
+    <li>Artifacts can also be interactive.  For this an other reasons, they can be used as mini-demos, in place, without having to create a demo page.</li>
+  </ul>
+  <p>Step 6: Projects</p>
+  <p>By default every conversation in Claude is isolated -- it doesn&#x27;t know what you discussed yesterday or last week. Projects fix that.</p>
+  <p>A Project is a persistent workspace with four elements:</p>
+  <p>A name and purpose -- what the project is for</p>
+  <p>Instructions -- how you want Claude to behave within this project: your role, your preferences, your rules</p>
+  <p>A knowledge base -- files, documents, and reference material you upload once and Claude draws on whenever you need it. You can also connect GitHub repositories and Google Drive directly</p>
+  <p>Chats -- all the conversations you have within the project, kept together in one place</p>
+  <p>What this means in practice: instead of starting every conversation from scratch, you build a Project for each significant area of your work -- a client, a research topic, a recurring task. Over time the Project accumulates context and becomes genuinely useful as a working environment rather than just a chat interface.</p>
+  <p>Organising your chat history matters. A Project is only as useful as the discipline you bring to it. Name your files descriptively, keep your knowledge base current, and think of the Project as a living workspace rather than a filing cabinet. Unstructured chat history quickly becomes noise.</p>
+  <p>A note on collaboration: sharing Projects with colleagues requires a Team or Enterprise subscription. On a personal Pro account your Projects are private.</p>
+  <p>QuickStart</p>
+  <ul>
+    <li>Click on Projects in the left side-bar, then &quot;New project&quot;</li>
+    <li>Give it a name and a description (&quot;what are you trying to achieve&quot;).  This description is for you and coworkers, it is not referenced by Claude</li>
+    <li>Populate &quot;Instructions&quot;.  This is perhaps the key piece of information.  This will guide Claude in any of the Chats created under this Project.  It can be very detailed, if appropriate.</li>
+    <li> Populate &quot;files&quot;, by drag and drop or upload.  These files will be referenced by every chat in the project.</li>
+  </ul>
+  <p>Tips</p>
+  <ul>
+    <li>Instructions and files that are only relevant to a particular chat can be inserted directly into those Chats.</li>
+    <li>A Project also has a memory, populated by Claude as the Project evolves. But you can edit the memory yourself by adding stuff or removing stuff.</li>
+    <li>While &quot;Instructions&quot; and &quot;Files&quot; are the most obvious resources available to Claude in a Project, &quot;Memory&quot; is a powerful tool, especially in longer projects.  If you are planning to build a Project that you use repeatedly over time, spend time finding out exactly how &quot;Project memory&quot; works (ask Claude!).</li>
+    <li>You need to think carefully about exactly how a Project is going to be used.  You may want to start small and let it grow.  Don&#x27;t be afraid to start a new Project if you have misconceived the first iteration.</li>
+    <li>You can manage your Project space as it grows, by favouriting, deleting and archiving.</li>
+  </ul>
+  <p>Step 7: Adding stuff -- context and files</p>
+  <p>One of Claude&#x27;s most underused capabilities: you don&#x27;t have to explain everything in words. You can bring material directly into the conversation.</p>
+  <p>Typed context -- paste in a document, a data extract, an email thread, a set of notes. Claude reads it and works with it. This is often faster and more accurate than trying to describe something in your own words.</p>
+  <p>Uploaded files -- attach files directly to a conversation. Supported formats include PDF, DOCX, CSV, TXT, and common image formats like PNG and JPEG.</p>
+  <p>Screenshots -- you can paste or upload a screenshot directly into the conversation. Useful for sharing something visual without having to describe it -- a chart, a UI, a document you can&#x27;t easily export.</p>
+  <p>The practical habit: before you ask Claude to help with something, ask yourself whether there&#x27;s a document, file, or screenshot that would give it better raw material than your description alone.</p>
+  <p>The easiest and most intuitive methods are simply to copy and paste from your clipboard, or drag and drop a file, directly into the conversation.</p>
+  <p>Tips</p>
+  <ul>
+    <li>As the course progresses, you&#x27;ll pick up more powerful ways to bring material into Claude: Connectors (Step 8) give Claude persistent access to cloud services; Cowork and Code give Claude direct access to approved local directories. These become important when you&#x27;re working with large datasets or information that changes frequently. For now, copy/paste and drag/drop will take you a long way.</li>
+  </ul>
+  <p>Step 8: Connectors</p>
+  <p>So far everything you&#x27;ve brought into a conversation you&#x27;ve had to actively add -- typed context, uploaded files. Connectors are different: they give Claude persistent access to external services so the information is already there when you need it.</p>
+  <p>Connectors don&#x27;t just let Claude read from external services -- they allow Claude to act on your behalf too. That&#x27;s the shift from assistant to informed collaborator.</p>
+  <p>There are two types:</p>
+  <p>Web connectors -- connect cloud services like Google Drive, Gmail, and Google Calendar. Set up once in Settings, available across all your chats and Projects</p>
+  <p>Desktop extensions -- connect Claude to things on your local machine: your file system, local applications, and tools like the Chrome extension that lets Claude see your open tabs. These are available through the desktop app</p>
+  <p>Quick Start</p>
+  <ul>
+    <li>Click on the + symbol in the main Chat interface, and go to &quot;Connectors&quot;.  You can see what is already connected, and you can look at other options via &quot;Manage connectors&quot;.</li>
+    <li>Select a connector, click Connect, and follow the authentication steps.</li>
+  </ul>
+  <p>Tips:</p>
+  <ul>
+    <li>You can also manage Connectors in the Settings menu (click on your name in the bottom left corner of the side-bar.</li>
+    <li>There are a lot of Connectors available and learning how to use them is complex.  Start with one and don&#x27;t rush into it.  Gmail is a good choice.  Hook it up and ask Claude some questions about your email history (&quot;Review all the important emails in the last month that seem to require some kind of response&quot;).</li>
+    <li>To check that a connector is properly set up and active, you can just ask Claude.</li>
+  </ul>
+  <p>Step 9: Keeping it safe</p>
+  <p>Using Claude as a daily driver is low-risk for most people. But a few simple habits make it genuinely safe -- and one or two omissions can cause real problems. This step covers what actually matters. The full picture is in the Security Essentials appendix, which is short and worth reading.</p>
+  <p>Account security. The real risks are account-level, not platform-level. Two actions cover most of it: install a password manager (Bitwarden is free and excellent) and enable two-factor authentication on your Claude.ai account. Both are worth doing now.</p>
+  <p>What you paste. When you paste text into Claude, you are sending it to a third-party server. For personal use this is almost always fine. For work data, ask yourself one question first: &quot;Would I be comfortable if my employer saw exactly what I just pasted?&quot; If the answer is no -- or even maybe -- use made-up data instead.</p>
+  <p>Your employer&#x27;s policy. Many organisations now have AI use policies. Check yours. Breaching it could have professional consequences regardless of any actual data leak.</p>
+  <p>Tips</p>
+  <p>Turn off training data use in Claude.ai settings. It takes thirty seconds. It makes little practical difference for most personal use, but it&#x27;s a clean answer to have if your employer ever asks -- and it&#x27;s the kind of thing an AI use policy may require.</p>
+  <p>Step 10: Basic chat technique</p>
+  <p>The single biggest mistake new users make: type a question, read the answer, close the chat. That&#x27;s using Claude as a search engine. It&#x27;s not what it&#x27;s for.</p>
+  <p>Three things to give Claude before every task:</p>
+  <p>Context -- who you are, what you&#x27;re working on, why it matters</p>
+  <p>Task -- what you actually want Claude to do</p>
+  <p>Guidelines -- tone, format, length, constraints</p>
+  <p>You don&#x27;t need all three every time, but the habit of thinking in these terms immediately improves your results.</p>
+  <p>Stay in the conversation. Claude&#x27;s first response is a starting point, not a finished product. Push back, redirect, ask for alternatives. Sometimes, start from scratch in a new chat. The value compounds as the conversation develops.</p>
+  <p>Fluency is not accuracy. Claude writes clearly and confidently even when it&#x27;s wrong. A polished answer is not a correct answer. Verify anything that matters.</p>
+  <p>Step 11: One last thing</p>
+  <p>Open Claude before you open anything else in the morning.</p>
+  <p>Not because you&#x27;ll always have something specific to do with it. But because the habit of reaching for it first -- before email, before your task list, before your browser -- is what turns an occasional tool into a working partner.</p>
+  <p>The people who get the most out of Claude aren&#x27;t the ones who use it for the biggest tasks. They&#x27;re the ones who use it constantly, for small things and large, until the instinct to reach for it becomes automatic.</p>
+  <p>That&#x27;s what this week is for.</p>
+</section>
+
+<section class="step" id="lec-l3">
+  <h2>L3: Deep Research: Canned</h2>
+  <p>SESSION 3: Deep Research in the Wild -- What Canned Tools Can Do Phase 1: Lecturer&#x27;s Notes</p>
+  <p>OVERVIEW</p>
+  <p>Goal: Participants see what state-of-the-art canned research tools can produce, learn that impressive-looking outputs contain serious hidden weaknesses, and leave convinced that evaluation is a genuine skill -- and that control matters.</p>
+  <p>Takeaway: Canned tools are powerful but opaque. Systematic evaluation exposes what a quick read never would. The logical next step is taking control of the process.</p>
+  <p>The IDE arc: This session focuses on Evaluation. Direction is raised at the close. Input becomes the focus of Session 5.</p>
+  <p>Timing: Approximately 2 hours.</p>
+  <p>SECTION 1 -- The skilled user frame (10 minutes)</p>
+  <p>Goal: Give participants an observational stance before the demos run. They are not passive observers -- they are evaluators in training.</p>
+  <p>Introduce the three things a skilled AI user does:</p>
+  <p>Input -- the material you bring: documents, data, files, screenshots. The raw stuff the model works with.</p>
+  <p>Direction -- everything you say to the model: the question, the context, the instructions, the constraints, the format, the iteration.</p>
+  <p>Evaluation -- how you assess what comes back: not just &quot;does it look good?&quot; but structured, criteria-driven judgment.</p>
+  <p>Tell participants explicitly: today is about Evaluation. We are going to watch some impressive tools do serious work, and your job is to watch critically. By the end of the session you will have a framework for doing that -- and homework to practise it.</p>
+  <p>On literacy: evaluation is the most durable of the three skills. Prompting techniques evolve, tools change, but the ability to assess AI output critically transfers across every tool participants will ever use. It becomes more important as outputs get more polished and harder to challenge on first reading.</p>
+  <p>Transition: &quot;Let&#x27;s give these tools something to work on.&quot;</p>
+  <p>SECTION 2 -- The research brief (5 minutes)</p>
+  <p>Goal: Frame the research question and demonstrate good prompt construction before submitting.</p>
+  <p>Introduce the research context: your organisation provides training resources to banks in South Africa. You have been asked to produce a report identifying key skills shortages emerging in the sector over the next three years, and recommending training priorities for programme development.</p>
+  <p>Show the base prompt:</p>
+  <p>You are preparing a report for an organisation that provides training resources to banks in South Africa. The report should identify the key skills shortages emerging in the South African banking sector over the next three years, and recommend the training priorities that should shape the organisation&#x27;s programme development.</p>
+  <p>Point out what this prompt does and doesn&#x27;t do:</p>
+  <p>It provides role context and a clear task</p>
+  <p>It does not specify sources, structure, depth, audience, or format</p>
+  <p>That absence of Direction is deliberate -- we want to see what the tools do with minimal guidance</p>
+  <p>Transition: &quot;Let&#x27;s submit this simultaneously to all three tools and see what happens.&quot;</p>
+  <p>SECTION 3 -- The live demos (20-25 minutes, mostly waiting)</p>
+  <p>Goal: Submit the prompt, then use the wait productively. Extended thinking, agentic behaviour and tool use are explained here -- not as abstractions but as observable phenomena.</p>
+  <p>Submit the prompt to all three tools simultaneously:</p>
+  <p>Claude Research (Claude Chat, Research mode on)</p>
+  <p>ChatGPT Deep Research</p>
+  <p>Perplexity Deep Research</p>
+  <p>While the tools run -- the conceptual payload:</p>
+  <p>Extended thinking / chain-of-thought: The model is not retrieving an answer from a database. It is constructing one. Where visible, draw attention to the thinking indicator. The model is breaking the question down, identifying what it needs to know, planning its approach. This is inference-time computation -- the model doing more work per question rather than simply being larger. Contrast with a standard chat response which produces output immediately with no visible reasoning step.</p>
+  <p>Agentic behaviour: These tools are not generating text -- they are acting. They are deciding what to search for, choosing sources, reading pages, forming a view, going back for more. Name this explicitly: this is an agent. It has a goal, it has tools, it is making sequential decisions to pursue that goal. Participants are watching autonomous behaviour, not autocomplete.</p>
+  <p>Tool use: The agent is using web search as a tool. It calls the tool, receives results, decides what to do with them, calls it again if needed. Point at this loop as it happens in ChatGPT&#x27;s live progress tracker -- the most visible illustration of the search-analyse-replanning cycle.</p>
+  <p>What each tool shows during the run:</p>
+  <p>Claude -- clarifying questions before starting (scope, audience, format). A process artefact alongside the report summarising the research plan and sources. Slower -- approximately 9 minutes.</p>
+  <p>ChatGPT -- a live priority/progress tracker that doubles as a plan. A detailed activity log afterwards showing the full 12-minute reasoning and search cycle, including strategic replanning when tool calls run low and blocked pages are encountered.</p>
+  <p>Perplexity -- live action descriptions as it runs, approximately 5 minutes. Clean report output with citations and relevant images located during search. Fastest, least process-transparent.</p>
+  <p>Teaching points to land during the wait:</p>
+  <p>Claude&#x27;s clarifying questions are Direction in action -- from the model&#x27;s side. The questions it asks reveal exactly what you should have specified in your prompt. Note this: we will come back to it.</p>
+  <p>ChatGPT&#x27;s activity log is the richest illustration of extended reasoning and agentic behaviour available in the session. Show it briefly -- the scale alone is striking -- then present the five-point summary: visible planning intelligence, strategic source selection, autonomous workarounds for blocked content, self-correction under constraints, and search-analyse-replan cycles throughout.</p>
+  <p>Transition when results arrive: &quot;Right -- we have three reports. Before we read them, we need a way to assess them properly.&quot;</p>
+  <p>SECTION 4 -- Building the evaluation rubric (15 minutes)</p>
+  <p>Goal: Introduce structured evaluation as a skill. Build or present the rubric explicitly so participants understand the criteria before applying them.</p>
+  <p>The instinct when an AI produces a polished report is to read it and form an impression. That is not evaluation. Evaluation requires explicit criteria applied consistently.</p>
+  <p>Introduce the three-level rubric:</p>
+  <p>Process quality -- how did it research?</p>
+  <p>Breadth and authority of sources</p>
+  <p>Geographic and sectoral specificity -- did it find South African banking sources or generalise?</p>
+  <p>Transparency of reasoning -- can you see what it did and why?</p>
+  <p>Content quality -- what did it find?</p>
+  <p>Quality of insight extraction from sources</p>
+  <p>Coverage of the relevant skills domains</p>
+  <p>Handling of SA-specific regulatory and institutional context</p>
+  <p>Logical coherence of findings</p>
+  <p>Output quality -- what did it produce?</p>
+  <p>Structure and navigability</p>
+  <p>Specificity of recommendations -- actionable or generic?</p>
+  <p>Appropriate caveats and limitations acknowledged</p>
+  <p>Fitness for purpose -- could you hand this to a client?</p>
+  <p>Note on building vs presenting: depending on time and group energy, you can either present this rubric directly or build it interactively -- ask participants what they would want to know about a research report before trusting it, then organise their answers into the three levels. The interactive version takes longer but produces stronger ownership of the framework.</p>
+  <p>SECTION 5 -- The evaluation in practice (20 minutes)</p>
+  <p>Goal: Demonstrate the evaluation process using a dedicated Claude Project. Show participants what systematic AI-assisted evaluation looks like.</p>
+  <p>Explain the setup: rather than reading three long reports side by side, we are going to use a fourth AI -- Claude -- to help us evaluate all three. This is itself an illustration of Direction: we are giving Claude a specific role, specific documents, and a specific framework, and asking it to do structured analytical work.</p>
+  <p>Walk through the evaluation Project and the task sequence:</p>
+  <p>Step 1 -- Structured summaries Submit each report for summarisation to a common template: research scope and framing, key skills domains identified, main findings per domain, training recommendations, caveats and limitations. Note that Claude handles truncated documents autonomously -- identifies the gap, retrieves the missing section, confirms completeness. Point at this as agentic behaviour at a smaller scale.</p>
+  <p>Step 2 -- Comparative analysis Using the three summaries, generate a structured comparison across all five template sections. The output is a detailed comparison document surfacing similarities, differences, gaps, and cross-cutting observations.</p>
+  <p>Step 3 -- Rankings Ask Claude to rank the three reports on seven criteria: breadth of domain coverage, quality and authority of sources, accuracy and precision of claims, extent to which the brief was addressed, operational usefulness for programme design, suitability for presentation to senior management, and transparency and intellectual honesty.</p>
+  <p>Present the key findings from the rankings -- particularly the tensions:</p>
+  <p>Claude ranks 1st for senior management presentation, 3rd for transparency</p>
+  <p>ChatGPT ranks 1st for operational usefulness, 3rd for senior management suitability</p>
+  <p>No single report is sufficient for the full brief</p>
+  <p>The most useful synthesis would combine elements of all three</p>
+  <p>Land the critical finding: all three reports look authoritative on first reading. Without this evaluation process you would not know about the hidden weaknesses. One report uses the wrong time horizon without acknowledging it. The most strategically coherent report makes bold quantitative claims without a single source caveat. No report adequately acknowledges its own limitations or source bias.</p>
+  <p>SECTION 6 -- The closing argument (10 minutes)</p>
+  <p>Goal: Convert the evaluation findings into the argument for Session 4. Leave participants with productive dissatisfaction.</p>
+  <p>Canned deep research tools are impressive. For many tasks they are entirely sufficient. But for something as subtle and complex as this research question -- one that requires SA-specific regulatory knowledge, current labour market data, and recommendations defensible to a sophisticated client -- they fall short in ways that only systematic evaluation reveals.</p>
+  <p>Notice also what the evaluation process itself required: a dedicated Project, structured prompting, sequential steps feeding forward into each other, and human judgment at every stage. That is not something a canned tool gave us. We built it deliberately.</p>
+  <p>This is the argument for Direction -- and for Input. Not better prompts into the same canned tools, but a controlled, step-by-step research process where:</p>
+  <p>Every source is chosen deliberately</p>
+  <p>Every output is reviewed before the next step begins</p>
+  <p>Offline and confidential material can be integrated safely</p>
+  <p>The final report is one you can defend claim by claim to a senior audience</p>
+  <p>That is what Session 4 teaches.</p>
+  <p>Introduce the homework:</p>
+  <p>Participants take away the comparison document and the rankings. Their task: read both, apply the rubric to one of the three reports in detail, and come to Session 4 with a view on which report they would be most comfortable presenting to a senior client -- and why.</p>
+  <p>The question to bring: what would you need to change, add, or verify before you could stand behind this report?</p>
+  <p>That question is the bridge to Session 4.</p>
+</section>
+
+<section class="step" id="lec-l4">
+  <h2>L4: Deep Research: Directed</h2>
+  <p>SESSION 4: Taking Control -- Building a Research Process</p>
+  <p>Lecturer&#x27;s Notes</p>
+  <h3>OVERVIEW</h3>
+  <p>Goal: Participants see how a controlled, step-by-step research process produces output that is defensible under scrutiny -- and understand why each step in the process contributes to that defensibility.</p>
+  <p>Takeaway: Canned tools produce polished reports that hide their weaknesses. A directed process produces transparent reports that show their evidence, acknowledge their gaps, and can be defended claim by claim. The difference is Direction and Input, applied deliberately at every stage.</p>
+  <p>The IDE arc: This session foregrounds Direction. Every step in the research process requires a different kind of instruction, shaped by what that step is trying to produce. Input is present throughout -- source curation is an Input skill. Evaluation is woven in but not foregrounded as it was in Session 3.</p>
+  <p>Apps: Claude Chat, Claude Project, Claude Research mode.</p>
+  <p>Timing: Approximately 2 hours.</p>
+  <p>Pre-prepared materials: The lecturer has run the entire process in advance and has the following outputs ready to show: a Deep Research source list, a training knowledge source list, a consolidated source quality audit (CSV), a curated source list, a source-by-source literature review, an analytical synthesis, and a final report. The lecturer also has the chat transcript from the design discussion with Claude, with key moves highlighted.</p>
+  <h3>STEP 1 -- Bridge from Session 3 (5 minutes)</h3>
+  <p>Goal: Connect Session 3&#x27;s findings to what this session will build. Brief -- participants already have the context.</p>
+  <p>Two-line bridge: In Session 3 we saw that canned deep research tools produce reports that look authoritative but contain hidden weaknesses -- inconsistent time horizons, unsourced quantitative claims, no acknowledgment of limitations. The homework question was: what would you need to change, add, or verify before you could stand behind one of those reports? This session answers that question.</p>
+  <p>Quick check: ask 2-3 participants which report they chose and what their main concern was. Don&#x27;t dwell -- use their answers to confirm the themes (source quality, transparency, defensibility) and move on.</p>
+  <p>Restate the IDE frame briefly: Session 3 was about Evaluation. Today is about Direction -- and you&#x27;ll see that Direction is not one skill, it&#x27;s a repertoire. Different stages of a research process need different kinds of instruction, and understanding why each instruction is shaped the way it is matters more than memorising templates.</p>
+  <p>Transition: &quot;Before we start building, I want to show you how I designed this process -- with Claude&#x27;s help.&quot;</p>
+  <h3>STEP 2 -- Designing the process with Claude (15 minutes)</h3>
+  <p>Goal: Show participants that the research process itself was designed collaboratively with Claude, and highlight the key design decisions that shaped it.</p>
+  <p>This step uses the highlighted chat transcript from the lecturer&#x27;s design discussion with Claude. The point is not to read through the transcript but to show selected moves that illustrate how a skilled user thinks about process design.</p>
+  <p>The setup: Explain that before running any research, you sat down with Claude and asked: what should a directed research process look like for this question? You brought your own ideas about the steps, and Claude helped refine them.</p>
+  <p>Key moves to highlight from the transcript:</p>
+  <ul>
+    <li>The source discovery pipeline. You started with a simple idea -- ask an AI for sources, then review them -- and refined it into a multi-sweep process: Deep Research sweep, training knowledge sweep, human knowledge sweep, quality check, human curation. Each sweep catches different things. Show how this emerged through the conversation, not as a pre-formed plan.</li>
+    <li>The distinction between synthesis and report. Claude pushed back on collapsing the literature review and report into a single step, arguing that the synthesis (organising evidence by theme) and the report (taking a position) are different cognitive tasks. If you skip the synthesis, you lose visibility into whether claims are well-supported or resting on a single source. This distinction shaped the process.</li>
+    <li>The instruction repertoire. Point at 3-4 of the actual instructions used in the process and note how different they are: a minimal instruction for the DR sweep (deliberately under-specified to see what the tool finds), a constraint instruction for the literature review (only use these sources, do not search for more), an analytical instruction for the synthesis (organise and assess, don&#x27;t conclude), and a highly opinionated instruction for the report (audience, structure, tone, evidence-handling rules). Each is shaped by what that step needs to produce.</li>
+    <li>The alternative architectures. Briefly mention that the process you designed is bottom-up (gather sources, synthesise, then shape a report). An alternative is top-down (define what a good answer looks like, decompose into sub-questions, then research each one). A hybrid combines both. There is no single correct process -- the point is that you design one deliberately rather than typing a question into a canned tool and hoping for the best.</li>
+  </ul>
+  <p>Teaching point to land: The design discussion itself is Direction. Before you write a single research prompt, you&#x27;re directing Claude to help you think about what the process should be. This is the highest-leverage use of Direction -- getting the architecture right before you start building.</p>
+  <p>Transition: &quot;Now let me show you the process in action. We&#x27;ll go step by step.&quot;</p>
+  <h3>STEP 3 -- Source discovery and curation (25 minutes)</h3>
+  <p>Goal: Walk through the five-part source discovery pipeline, demonstrating each part with pre-prepared outputs. This is the most novel part of the process and the one most different from canned tools.</p>
+  <p>Explain the pipeline overview: five parts, each catching things the others miss, with a clear product at the end -- a ranked, curated, quality-checked source list.</p>
+  <h4>3.1 -- Deep Research sweep</h4>
+  <p>What it does: Run DR on the research question with minimal direction. Harvest the source list. Discard the report.</p>
+  <p>Live demo: Submit the research question to Claude Research mode. While it runs (8-9 minutes), explain what&#x27;s happening: DR is being used as a search engine with judgment, not as a report writer. It will find sources based on its real-time web access and its own assessment of relevance. After 2-3 minutes of watching the tool calls, cut to the pre-prepared output.</p>
+  <p>Show the output: The DR source list -- 73 sources in this case. Point out the &quot;520 sources&quot; display: this is the number of pages DR visited during its search, not the number it cited. Participants will see this number and assume it means something it doesn&#x27;t.</p>
+  <p>Teaching point: We are using a powerful tool for a narrow purpose. The report DR produces is exactly the kind of output Session 3 showed us we can&#x27;t fully trust. But the source list is valuable -- it&#x27;s a broad sweep of what&#x27;s out there.</p>
+  <h4>3.2 -- Training knowledge sweep</h4>
+  <p>What it does: In standard chat (not DR), give Claude the research question and the DR source list. Ask it to identify authoritative sources, institutions, reports, and authors that are relevant but missing from the list.</p>
+  <p>Show the instruction and output: The instruction specifically asks Claude to think about regulatory bodies, industry associations, consulting firms, academic research centres, and recurring sector publications. The output was approximately 40 additional sources across 10 categories.</p>
+  <p>Key finding to present: Claude identified three major gaps in the DR source list: the Big 5 banks&#x27; own annual integrated reports were entirely absent, some sources cited in the DR report&#x27;s body text didn&#x27;t appear in its own source list (an internal inconsistency), and an entire category of practical data (recruitment firm salary guides) was missing. These are three different failure modes caught in a single pass.</p>
+  <p>Teaching point: This step taps a different knowledge base from DR. The model&#x27;s training knowledge includes awareness of authoritative institutions, recurring reports, and key publications that a real-time web search might not surface. The overlap between the two sweeps is incomplete -- that&#x27;s the point.</p>
+  <h4>3.3 -- Human knowledge sweep</h4>
+  <p>What it does: The researcher adds sources from their own domain knowledge -- reports they&#x27;ve seen cited, institutions they know are active, niche publications, known experts.</p>
+  <p>Note for delivery: This step was skipped in the demo run because no domain-specific knowledge was available. In a real research engagement, this is where the researcher&#x27;s expertise earns its place. Mention that this is also where the Session 3 homework lands naturally -- participants identified source gaps in the canned reports, and their domain knowledge feeds in here.</p>
+  <h4>3.4 -- Source quality check</h4>
+  <p>What it does: Give Claude the combined source list and ask it to check each source for: URL accessibility, publication date, whether it&#x27;s a primary or secondary source, institutional credibility, and direct relevance to the research question.</p>
+  <p>Show the instruction: Walk through the column definitions -- Status, Date, Type, Credibility, Relevance, Source Sweep, Recommendation, Notes. Point out that the instruction specifies the output format explicitly (CSV with defined columns) and asks for an actionable recommendation (Keep / Query / Remove) rather than just annotation.</p>
+  <p>Show the output: The source audit CSV. Key statistics: 115 sources checked, 61 Keep, 40 Query, 14 Remove. Only 62 confirmed live URLs. Of the 42 training knowledge sources, only 18 had confirmed live URLs -- validating the concern that training knowledge produces good institutional names but unreliable URLs.</p>
+  <p>Practical lesson: This step hit tool call limits repeatedly because Claude was checking 115 URLs one by one. Each tool call triggers a full context re-read. The workaround was clicking &quot;continue&quot; multiple times. A better approach for production use would be a Python script that handles mechanical URL checks and reserves AI calls for the judgment tasks (credibility, relevance). Name this as a practical limitation participants will encounter.</p>
+  <h4>3.5 -- Human curation</h4>
+  <p>What it does: The researcher reviews the annotated list and assigns each source a rank: A (essential), B (important), C (useful), D (ignore). Removes sources that failed the quality check. Adds any final sources prompted by the review.</p>
+  <p>Show the decision: In this case, a tight filter was applied: keep only sources with Status = Live and Recommendation = Keep. This produced 40 sources -- a clean, defensible list with an even split of 20 primary and 20 secondary sources.</p>
+  <p>Teaching point: This is where human judgment is irreplaceable. The AI can check URLs and assess credibility, but deciding which sources matter most for this specific question and this specific audience is a human call. The A-D ranking in a real engagement would reflect the researcher&#x27;s understanding of the client&#x27;s priorities and the question&#x27;s demands.</p>
+  <p>Step 3 close -- the product: We now have something no canned tool gives us: a transparent, quality-checked, human-curated source list. Every source is there for a reason. Every source has been verified. The list is defensible -- if a client asks &quot;why did you use this source?&quot; or &quot;why didn&#x27;t you use that one?&quot;, we can answer.</p>
+  <p>Note for recurring research: This source list becomes a maintained asset. The expensive multi-sweep discovery process runs once. On subsequent runs, the task is simpler: check the canonical list for health, and search for new publications from known institutions. The process gets faster and the list gets better over time.</p>
+  <p>Transition: &quot;We have our sources. Now we need to find out what they actually say.&quot;</p>
+  <h3>STEP 4 -- Literature review (10 minutes)</h3>
+  <p>Goal: Show how a constrained instruction produces a source-by-source digest that preserves what each source actually says before any synthesis occurs.</p>
+  <p>What it does: Ask Claude to read each of the 40 curated sources and produce a focused summary of each, concentrating on content relevant to the research question. No integration, no synthesis -- just a structured digest of what each source says.</p>
+  <p>Show the instruction: Point out its key features: it tells Claude to summarise each source individually, not to integrate knowledge across sources, and not to add any sources beyond the curated list. It frames the task as writing a &quot;Review of the Literature&quot; section, not answering the research question.</p>
+  <p>The DR constraint problem: This instruction was run in DR mode because Claude needed web access to read the URLs. The instruction explicitly told DR not to search for additional sources. DR acknowledged the constraint (&quot;you want a source-by-source literature review covering only the URLs you&#x27;ve provided&quot;) but then visited 443 sources during the run. However, the final output respected the output constraint -- it reported on only the 40 specified sources. Lesson: DR may not respect process constraints even when it respects output constraints. For production work, consider whether standard chat with web search gives more control.</p>
+  <p>Show the output briefly: 40 individual source summaries, each focused on skills-relevant content. Some are clearly based on actually reading the page (detailed data, specific figures). Others -- particularly landing pages like SABRIC and Stats SA -- read more like Claude filled in from training knowledge because the page itself didn&#x27;t have extractable content. This distinction is worth noting but doesn&#x27;t invalidate the output.</p>
+  <p>Transition: &quot;We now know what each source says individually. The next step is to look across all of them and find the patterns.&quot;</p>
+  <h3>STEP 5 -- Analytical synthesis (15 minutes)</h3>
+  <p>Goal: Show how a synthesis organised by theme -- not by source -- produces the analytical backbone for the report. Demonstrate why this step exists separately from both the literature review and the report.</p>
+  <p>What it does: Takes the 40 source summaries and organises them by theme, assessing evidence strength, surfacing tensions between sources, and identifying gaps.</p>
+  <p>Why this is a separate step: If you go straight from source summaries to a report, Claude will do the synthesis implicitly and you lose visibility into the analytical layer. You can&#x27;t see whether a recommendation is well-supported by multiple sources or built on a single data point. The synthesis makes the evidence structure visible.</p>
+  <p>Show the instruction: It has four explicit tasks: identify major themes and note which sources support each; flag conflicting data and divergent assessments; identify evidence gaps; and note where evidence is strong versus where it rests on a single source. Crucially, it says &quot;do not make recommendations -- organise and assess.&quot;</p>
+  <p>Show key findings from the synthesis output:</p>
+  <ul>
+    <li>11 themes identified, each with an explicit evidence-strength rating</li>
+    <li>Cybersecurity is the best-evidenced shortage (multiple primary sources converging), but the specific 30,000-person deficit figure comes from a single paywalled commercial report</li>
+    <li>AI/ML demand has strong directional consensus but no quantified estimate of the gap</li>
+    <li>Two Fortinet-authored articles that appear to be independent sources are actually the same organisation citing the same data -- the synthesis catches this</li>
+    <li>IT spending figures for Standard Bank appear at four different values across sources due to different reporting boundaries -- flagged as a tension, not silently resolved</li>
+    <li>Nine significant evidence gaps identified, including the absence of the Big 5 banks&#x27; own annual reports</li>
+  </ul>
+  <p>Teaching point: This synthesis is the analytical backbone of the report. A senior analyst receiving this document can see exactly what the evidence supports and where it&#x27;s weak. Compare this to the canned reports from Session 3 -- those reports presented claims with uniform confidence regardless of evidence strength. This synthesis distinguishes between what we know, what we infer, and what we don&#x27;t know. That distinction is what makes the final report defensible under scrutiny.</p>
+  <p>Transition: &quot;We have the evidence base. Now we shape it into a report.&quot;</p>
+  <h3>STEP 6 -- The report (20 minutes)</h3>
+  <p>Goal: Show how a highly opinionated instruction produces a report that inherits the transparency of the process that built it. Demonstrate the difference between this report and the canned outputs from Session 3.</p>
+  <p>Show the instruction: This is the most detailed instruction in the process. Walk through its key elements:</p>
+  <ul>
+    <li>Audience and purpose: A senior leadership team at a Big 5 bank. The report demonstrates analytical capability, not a sales pitch. This shapes tone, level of detail, and what can be assumed.</li>
+    <li>Explicit structure: Seven sections specified, each with a clear function -- from executive summary through evidence gaps to a prioritised training framework.</li>
+    <li>Evidence-handling rules: Where evidence is strong, say so. Where it rests on a single source, say that too. Do not present weak evidence with the same confidence as strong evidence. Where the synthesis identified tensions, do not resolve them silently.</li>
+    <li>The no-filler rule: No generic paragraphs about the importance of digital transformation. No filler about the rapidly evolving landscape. Every paragraph must contain a specific claim, a specific piece of evidence, or a specific judgment.</li>
+  </ul>
+  <p>Show the report output: Walk through the key sections, pointing out how the instruction shaped the output:</p>
+  <ul>
+    <li>The executive summary ranks five skills shortage areas explicitly, with evidence strength noted for each</li>
+    <li>The regulatory drivers table provides a scannable overview of six simultaneous regulatory changes with timelines and evidence ratings</li>
+    <li>The evidence gaps section acknowledges what the analysis cannot tell us -- including the absence of primary bank workforce data and salary benchmarking</li>
+    <li>The training priorities framework ranks investment areas with commentary explaining why each is positioned where it is, and what would change the ranking</li>
+    <li>The closing paragraph argues that structural shortages require long-duration training pipelines, not short courses -- a position grounded in the Absa Cybersecurity Academy&#x27;s three-year programme</li>
+  </ul>
+  <p>The critical comparison: Put this report alongside the canned reports from Session 3. The canned reports are slicker. They read more fluently. But:</p>
+  <ul>
+    <li>This report knows what it doesn&#x27;t know. The canned reports present all claims with equal confidence.</li>
+    <li>This report distinguishes strong evidence from weak. The canned reports do not.</li>
+    <li>This report surfaces contradictions (four different IT spending figures for Standard Bank, the Fortinet double-counting). The canned reports hide them.</li>
+    <li>This report has a transparent, auditable source base. The canned reports selected sources autonomously with no human oversight.</li>
+    <li>This report is defensible under scrutiny. The canned reports are not.</li>
+  </ul>
+  <p>That last point is the core argument of this session. Defensible under scrutiny is the standard that separates professional research from impressive-looking output. Everything in this process -- the multi-sweep source discovery, the quality audit, the human curation, the separated synthesis, the evidence-graded report -- contributes to defensibility.</p>
+  <p>Transition: &quot;Let me step back and show you the full process architecture.&quot;</p>
+  <h3>STEP 7 -- The process as a whole (15 minutes)</h3>
+  <p>Goal: Step back from the details and show the full research process as an architecture. Connect it to the IDE framework and to the skills participants are developing.</p>
+  <p>Present the full process map. Show all steps in sequence with their products:</p>
+  <ul>
+    <li>DR sweep -&gt; Raw source list (73 sources)</li>
+    <li>Training knowledge sweep -&gt; Supplementary source list (40 sources)</li>
+    <li>Human knowledge sweep -&gt; Combined source list</li>
+    <li>Source quality check -&gt; Annotated source audit (115 sources, with status, credibility, relevance)</li>
+    <li>Human curation -&gt; Curated source list (40 sources, ranked)</li>
+    <li>Literature review -&gt; Source-by-source digest</li>
+    <li>Analytical synthesis -&gt; Thematic analysis with evidence ratings, tensions, gaps</li>
+    <li>Report -&gt; Defensible, evidence-graded output</li>
+  </ul>
+  <p>The funnel: The process has a clear shape -- wide at the top (cast a broad net for sources), narrowing through quality checks and curation, synthesised into themes, then shaped into a report. Each step reduces volume and increases quality.</p>
+  <p>The Direction repertoire: Review the different kinds of instruction used across the process:</p>
+  <ul>
+    <li>Minimal direction (DR sweep) -- deliberately under-specified to see what the tool finds on its own</li>
+    <li>Knowledge elicitation (training knowledge sweep) -- asking Claude to critique a list against its own training</li>
+    <li>Structured audit (quality check) -- explicit column definitions, output format, actionable recommendations</li>
+    <li>Constraint instruction (literature review) -- telling Claude what not to do (don&#x27;t add sources, don&#x27;t synthesise)</li>
+    <li>Analytical instruction (synthesis) -- organise and assess, don&#x27;t conclude</li>
+    <li>Opinionated instruction (report) -- audience, structure, tone, evidence-handling rules, no-filler constraint</li>
+  </ul>
+  <p>Each instruction is shaped by what it needs to produce. A minimal instruction for the DR sweep would be wrong for the report. An opinionated instruction for the DR sweep would constrain the search prematurely. Understanding why each instruction is shaped the way it is -- that is Direction as a skill.</p>
+  <p>Input and Evaluation, present but not foregrounded: Source curation (steps 3.3-3.5) is Input in action -- deciding what material the model works with. Evaluation is woven throughout: assessing source quality, checking whether DR respected constraints, reviewing the synthesis for accuracy. But the foreground skill today has been Direction -- the craft of telling an AI what to do at each stage of a complex process.</p>
+  <p>The recurring research point: This process is designed for a first run. On subsequent runs -- monthly, quarterly -- the source discovery pipeline gets lighter (check the canonical list, search for new publications), while the synthesis and report steps remain the core work. The process gets faster and the source list gets better over time. For a training organisation serving banks, this is a sustainable research capability, not a one-off exercise.</p>
+  <h3>STEP 8 -- Close and bridge to Session 5 (10 minutes)</h3>
+  <p>Goal: Land the session&#x27;s argument, introduce the homework, and set up Session 5.</p>
+  <p>The argument: Today you&#x27;ve seen a complete directed research process -- from source discovery to a finished report. Every step was transparent. Every source was chosen deliberately. Every claim in the final report can be traced back through the synthesis to specific sources in the curated list. The report acknowledges what the evidence supports and what it doesn&#x27;t. It is defensible under scrutiny.</p>
+  <p>That is what Direction and Input, applied deliberately, produce. Not a better prompt into a canned tool -- a structured, multi-step process where human judgment and AI capability combine at every stage.</p>
+  <p>What&#x27;s missing: The report we produced is strong on online sources -- regulatory publications, news coverage, consulting analyses, survey data. But several of the evidence gaps the synthesis identified point to material that isn&#x27;t freely available on the web: the Big 5 banks&#x27; annual integrated reports, internal workforce data, confidential survey results, salary benchmarking data. For serious policy research, this kind of offline and confidential material is often where the most valuable evidence lives.</p>
+  <p>That is the problem Session 5 addresses: how do you bring offline and confidential material into an AI-assisted research workflow safely? How do you clean messy spreadsheets, anonymise sensitive data, process documents that can&#x27;t go into a web-connected tool, and integrate the findings with your online research?</p>
+  <p>Homework:</p>
+  <ul>
+    <li>Read the final report and the analytical synthesis side by side. Identify two places where you think the report&#x27;s claims are well-supported by the synthesis and two places where you think it overreaches or understates.</li>
+    <li>Think about your own work: what research question would benefit from this kind of directed process? What sources would go into your curated list? Come to Session 5 with a question in mind.</li>
+  </ul>
+  <p>The question to bring: What offline or confidential material would strengthen this report -- and how would you handle it safely?</p>
+  <p>That question is the bridge to Session 5.</p>
+</section>
+
+<section class="step" id="lec-brochure">
+  <h2>Course Brochure: 7 April</h2>
+  <p>Session 1: A Practitioner&#x27;s Guide to Thinking About Gen AI</p>
+  <p>Goal: Build the mental models that make everything else in the course work.</p>
+  <p>Takeaway: An LLM is a new kind of intelligence -- not a search engine, not a human. You&#x27;ve been given a powerful enhanced base. B2 is what you can do with it, and that&#x27;s what this course teaches.</p>
+  <p>Flow:</p>
+  <p>What an LLM actually is: a neural network trained to predict language, not a database or a search engine. The Transformer breakthrough and why scale changed everything</p>
+  <p>What that architecture produces: fluency, breadth, pattern recognition -- and hallucination as a structural property, not a bug to be fixed</p>
+  <p>A new kind of intelligence: behaviourally familiar, structurally alien. Not smarter/dumber human -- categorically different</p>
+  <p>The three-layer frame: Base Model (A) -&gt; Builder enhancements (B1) -&gt; User enhancements (B2)</p>
+  <p>B1: RLHF, chain-of-thought reasoning, inference-time scaling, emerging agentic capacity -- this is what you&#x27;re actually working with today, not the raw 2022 model</p>
+  <p>B2: context, prompting, tools, agents -- preview only, not taught here. This is the territory the rest of the course covers</p>
+  <p>Coda: literacy compounds, techniques become obsolete. This course builds the foundation, not a 2026 toolkit</p>
+  <p>Close: everything from Session 3 onwards is B2, in the context of policy research</p>
+  <p>Session 2: Bringing AI to the Table -- Setting Up Your Daily Driver</p>
+  <p>Goal: Every participant leaves with a configured, working daily driver.</p>
+  <p>Takeaway: You have a working setup, a first Project, and the security basics in place. The course can now assume you&#x27;re operational.</p>
+  <p>Apps: Claude Chat, Claude Project, (ChatGPT, Gemini)</p>
+  <p>Flow:</p>
+  <p>Brief comparison: Claude vs ChatGPT vs Gemini -- enough to make a confident choice, not a deep dive. Claude is the recommendation</p>
+  <p>The Onramp: opinionated and guided -- &quot;this will get you to a good place, not the only place&quot;</p>
+  <p>Get set up and subscribe: web first, desktop when ready, Pro strongly recommended</p>
+  <p>Claude applications: Chat is the primary workspace, Code and Cowork deferred</p>
+  <p>Models: Sonnet as default, when to reach for Opus, extended thinking and Research mode seeded for later</p>
+  <p>Artifacts: self-contained outputs, stay in the conversation and refine</p>
+  <p>Projects: persistent workspaces -- the shift from isolated chats to an organised working environment</p>
+  <p>Adding stuff: typed context, files, screenshots -- bring material rather than describe it</p>
+  <p>Connectors: persistent access to external services, start with one</p>
+  <p>Keeping it safe: Bitwarden, 2FA, training data opt-out, the one-question test, employer policy</p>
+  <p>Basic chat technique: context/task/guidelines, stay in the conversation, fluency ≠ accuracy</p>
+  <p>One last thing: open Claude first every morning</p>
+  <p>Session 3: Deep Research in the Wild -- What Canned Tools Can Do</p>
+  <p>Goal: Participants see what state-of-the-art AI research tools can produce, are shown that impressive-looking outputs contain serious hidden weaknesses, and leave wanting more control than canned tools give them.</p>
+  <p>Takeaway: Canned tools are powerful but opaque. Systematic evaluation exposes what a quick read never would. The logical next step is taking control of the process.</p>
+  <p>Apps: Claude Research, ChatGPT Deep Research, Perplexity Deep Research, Claude Project (for evaluation).</p>
+  <p>Flow:</p>
+  <p>The skilled user frame -- Input, Direction, Evaluation. This session focuses on Evaluation</p>
+  <p>A single research brief submitted simultaneously to all three tools with minimal Direction</p>
+  <p>While the tools run: extended thinking, agentic behaviour, and tool use explained as observable phenomena</p>
+  <p>Building the evaluation rubric: process quality, content quality, output quality</p>
+  <p>A dedicated Claude Project used to produce structured summaries, a comparative analysis, and rankings across seven criteria</p>
+  <p>Key finding: no single report is sufficient; tensions between reports are sharp and non-obvious</p>
+  <p>Close: the evaluation process itself -- Project, structured prompting, sequential steps -- is the argument for Session 4</p>
+  <p>Session 4: Taking Control -- Building a Research Process</p>
+  <p>Goal: Participants see how a controlled, step-by-step research process produces output that is defensible under scrutiny -- and understand why each step contributes to that defensibility.</p>
+  <p>Takeaway: Canned tools produce polished reports that hide their weaknesses. A directed process produces transparent reports that show their evidence, acknowledge their gaps, and can be defended claim by claim. The difference is Direction and Input, applied deliberately at every stage.</p>
+  <p>The IDE arc: This session foregrounds Direction. Input is present throughout. Evaluation is woven in but not foregrounded.</p>
+  <p>Apps: Claude Chat, Claude Project, Claude Research mode.</p>
+  <p>Flow:</p>
+  <p>Bridge from Session 3: canned tools are impressive but not defensible under scrutiny. The homework question -- what would you need to change? -- is the entry point</p>
+  <p>Designing the process with Claude: the research process itself is developed collaboratively. Key design decisions highlighted: the multi-sweep source pipeline, the separation of synthesis from report, the instruction repertoire, alternative process architectures (bottom-up, top-down, hybrid)</p>
+  <p>Source discovery and curation: a five-part pipeline -- DR sweep, training knowledge sweep, human knowledge sweep, source quality check, human curation. Each catches what the others miss. Product: a transparent, ranked, verified source list</p>
+  <p>Literature review: Claude reads and summarises each curated source individually. No synthesis, no integration -- a structured digest preserving what each source says on its own terms</p>
+  <p>Analytical synthesis: evidence reorganised by theme, with evidence-strength ratings, tensions between sources surfaced, and gaps identified. The analytical backbone of the report</p>
+  <p>The report: a highly opinionated instruction specifying audience, structure, evidence-handling rules, and a no-filler constraint produces a defensible, evidence-graded output</p>
+  <p>The process as a whole: the full architecture reviewed -- the funnel shape, the Direction repertoire (six distinct instruction types), the recurring research point</p>
+  <p>Close: the report is strong on online sources but the evidence gaps point to offline and confidential material. That is the problem Session 5 addresses</p>
+  <p>Session 5: Enriching the Research -- Offline Material and the Final Report</p>
+  <p>Goal: Integrate offline and confidential material into the research workflow and produce a complete, publishable report.</p>
+  <p>Takeaway: A full policy research workflow -- online and offline, controlled and auditable -- is achievable with current tools. This is what serious AI-assisted research looks like. Comments on an integrated human-AI team.</p>
+  <p>Apps: Claude Chat, Claude Project, Claude for Excel</p>
+  <p>Flow:</p>
+  <p>The offline problem: confidential data, messy spreadsheets, material that can&#x27;t go into a web-connected tool without careful handling</p>
+  <p>Separate Project for offline material: take messy spreadsheets, clean them, anonymise the data, write up the findings -- Claude as data processing partner throughout</p>
+  <p>Integration: bring the offline findings into the main research Project. How the two workstreams combine at the reporting stage</p>
+  <p>Final report: incorporating everything -- online research, literature review, offline data, graphics. Cleaning up, formatting, evaluating</p>
+  <p>Human and AI evaluation of the final product: applying the Evaluation skill from Session 3 to something participants have actually built</p>
+  <p>An integrated human-AI team.</p>
+  <p>Close: you now have a complete research workflow. But we&#x27;ve been doing this step by step, with humans in the loop throughout. What if you could hand more of this to an autonomous system?</p>
+  <p>Session 6: The Horizon -- Agentic Teams and One-Shot Building</p>
+  <p>Goal: Show participants where AI-assisted work is heading, through two ambitious live demos.</p>
+  <p>Takeaway: The workflow you&#x27;ve built manually over Sessions 3-5 is already being automated. Coding is being transformed in real time. Both are further than you think and closer than you think.</p>
+  <p>Flow:</p>
+  <p>Part 1: a fully agentic research team -- lightweight live demo of an autonomous multi-agent system running the kind of research workflow participants have just done manually. Not a lecture about agents -- a demonstration of them. Discussion: what does this mean for the hybrid human-AI team? What do humans still own?</p>
+  <p>Part 2: Claude Code one-shot build -- give Claude Code a single instruction and watch a working app take shape. The app facilitates discussion of the research report participants have produced -- so it&#x27;s grounded in something real. Explore, stress-test, modify</p>
+  <p>Close: not a toolkit for 2026, a foundation that gets more valuable as the models get more capable. The course has built B2 literacy in the context of policy research. What you do with it from here is up to you</p>
+</section>
+
 </main>
 
 <script>
@@ -1944,6 +2485,11 @@
     'dr2-s8': { title: 'S4: Deep Research 2: Directed', subtitle: 'Homework' },
     'graphic-1': { title: 'A2: Graphics', subtitle: 'Defensible Under Scrutiny' },
     'graphic-2': { title: 'A2: Graphics', subtitle: 'Regulatory Drivers Timeline' },
+    'lec-l1':      { title: "Lecturer's Resources", subtitle: 'L1: AI Conceptual Guide' },
+    'lec-l2':      { title: "Lecturer's Resources", subtitle: 'L2: AI Daily Driver' },
+    'lec-l3':      { title: "Lecturer's Resources", subtitle: 'L3: Deep Research: Canned' },
+    'lec-l4':      { title: "Lecturer's Resources", subtitle: 'L4: Deep Research: Directed' },
+    'lec-brochure':{ title: "Lecturer's Resources", subtitle: 'Course Brochure: 7 April' },
     _default: { title: 'The Onramp', subtitle: 'Setting Up Your Daily Driver' }
   };
 
