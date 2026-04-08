@@ -526,35 +526,9 @@
     <button class="nav-sub-btn" data-subtarget="nav-agentic">Agentic Session Demo</button>
     <div class="nav-sub-sublinks" id="nav-agentic">
       <a href="#res-banking-app" data-group="resources">Banking Regulation App</a>
-      <button class="nav-sub-btn" data-subtarget="nav-proc-log">Process Log</button>
-      <div class="nav-sub-sublinks" id="nav-proc-log">
-        <a href="#res-log-1" data-group="resources">Step 1: Regulatory Landscape Scan</a>
-        <a href="#res-log-2" data-group="resources">Step 2: Digital Skills Research</a>
-        <a href="#res-log-3" data-group="resources">Step 3: Significance Assessment</a>
-        <a href="#res-log-4" data-group="resources">Step 4: Report Synthesis</a>
-        <a href="#res-log-5" data-group="resources">Summary of Workflow</a>
-        <a href="#res-log-6" data-group="resources">Agent Usage Statistics</a>
-      </div>
-      <button class="nav-sub-btn" data-subtarget="nav-reg-rep">Reg Report</button>
-      <div class="nav-sub-sublinks" id="nav-reg-rep">
-        <a href="#res-rep-1" data-group="resources">Executive Summary</a>
-        <a href="#res-rep-2" data-group="resources">Methodology</a>
-        <a href="#res-rep-3" data-group="resources">1. Joint Standard 2 of 2024</a>
-        <a href="#res-rep-4" data-group="resources">2. Joint Standard 1 of 2023</a>
-        <a href="#res-rep-5" data-group="resources">3. Basel III Post-Crisis Reforms</a>
-        <a href="#res-rep-6" data-group="resources">Cross-Cutting Analysis</a>
-        <a href="#res-rep-7" data-group="resources">Limitations</a>
-        <a href="#res-rep-8" data-group="resources">Sources</a>
-      </div>
-      <button class="nav-sub-btn" data-subtarget="nav-claude-md">CLAUDE.md</button>
-      <div class="nav-sub-sublinks" id="nav-claude-md">
-        <a href="#res-claude-1" data-group="resources">How You Work</a>
-        <a href="#res-claude-2" data-group="resources">Sub-Agent Roles</a>
-        <a href="#res-claude-3" data-group="resources">Principles</a>
-        <a href="#res-claude-4" data-group="resources">Process Log Format</a>
-        <a href="#res-claude-5" data-group="resources">Step Format</a>
-        <a href="#res-claude-6" data-group="resources">Output Format</a>
-      </div>
+      <a href="#res-log" data-group="resources">Process Log</a>
+      <a href="#res-rep" data-group="resources">Reg Report</a>
+      <a href="#res-claude" data-group="resources">CLAUDE.md</a>
     </div>
   </div>
   <button class="nav-group-btn" data-target="nav-graphics">A2: Graphics</button>
@@ -2549,382 +2523,6 @@
   <iframe src="BankingRegulationApp.html" width="100%" height="900" style="border:none;display:block;"></iframe>
 </section>
 
-<section class="step" id="res-log-1">
-  <h2>Step 1: Regulatory Landscape Scan</h2>
-  <p><strong>Agent type</strong>: Researcher</p>
-  <p><strong>Task assigned</strong>: Identify all notable regulatory changes, directives, guidelines, and policy updates affecting the South African banking sector issued since January 2024. Focus on SARB, PA, FSCA, FIC, National Treasury, and relevant legislation. For each change, record: name/title, issuing body, effective date, brief description, and any technology/digital component.</p>
-  <p><strong>Key findings</strong>: The agent identified over 30 distinct regulatory changes across multiple bodies, grouped into 8 categories:</p>
-  <ul>
-    <li><strong>SARB/PA</strong>: Basel III reforms (effective July 2025), FRTB/CVA roadmap, model risk management focus, third-party risk/BaaS guidance, climate risk guidance, CoDI launch (April 2024), cloud computing consultation, NPS reform, PA Regulatory Strategy 2025-2030</li>
-    <li><strong>Joint Standards (PA + FSCA)</strong>: IT Governance and Risk Management (Joint Standard 1 of 2023, effective Nov 2024), Cybersecurity and Cyber Resilience (Joint Standard 2 of 2024, effective June 2025), Cloud Computing guidance (Joint Communication 2 of 2025), AI in Financial Sector report (Nov 2025)</li>
-    <li><strong>FSCA</strong>: Open Finance position paper (March 2024), CASP licensing (ongoing), regulation plans</li>
-    <li><strong>FIC</strong>: Guidance Note 7A on AML/CFT compliance, Directive 9 (crypto travel rule, effective April 2025)</li>
-    <li><strong>National Treasury/Legislation</strong>: AML Amendment Bill, FATF grey list exit (Oct 2025), Climate Change Act (commenced March 2025), COFI Bill, NPS Bill, NCA amendment regulations</li>
-    <li><strong>Information Regulator</strong>: Amended POPIA Regulations (April 2025), escalated enforcement</li>
-    <li><strong>IFWG</strong>: Stablecoin landscape diagnostic, regulatory sandbox</li>
-  </ul>
-  <p><strong>Decision</strong>: Proceed to Sub-task 2 -- research the specific digital skills implications of these regulatory changes. The landscape scan is thorough and provides a strong foundation. The most digitally significant changes appear to be: (1) Joint Standard on IT Governance, (2) Joint Standard on Cybersecurity, (3) AI report/emerging AI governance, (4) Cloud computing guidance, (5) Open Finance framework, (6) Basel III data/systems requirements, and (7) POPIA amendments. The next researcher should focus on the digital skills demands created by these.</p>
-  <p>---</p>
-</section>
-
-<section class="step" id="res-log-2">
-  <h2>Step 2: Digital Skills Implications Research</h2>
-  <p><strong>Agent type</strong>: Researcher</p>
-  <p><strong>Task assigned</strong>: For each of the 8 most digitally significant regulatory changes identified in Step 1, research: (1) what specific digital skills are now required, (2) who in the bank needs them, (3) whether formal training/certification is mandated, (4) compliance timelines, and (5) industry commentary on the skills gap. Also research BankSETA skills plans, BASA position papers, consulting firm reports, and university programmes developed to meet these requirements.</p>
-  <p><strong>Key findings</strong>: The agent produced a detailed analysis for each regulatory change:</p>
-  <ul>
-    <li><strong>Joint Standard 1 (IT Governance)</strong>: Requires IT governance frameworks (COBIT/ITIL/ISO 27001 alignment), IT risk management, business continuity skills. Board must approve IT strategy. IT head must have &quot;requisite skills and experience.&quot; Comprehensive training programme mandated. Effective Nov 2024.</li>
-    <li><strong>Joint Standard 2 (Cybersecurity)</strong>: Requires cybersecurity strategy development, asset classification, DLP, incident response, threat monitoring. <strong>Annual cybersecurity awareness training mandated for board and all staff.</strong> CSIR survey: 63% of cyber roles unfilled, 35,000 vacancies nationally. Effective June 2025.</li>
-    <li><strong>AI Report</strong>: Banks lead AI adoption at 52% but 53% of staff lack sufficient AI training. 37-39% lack governance frameworks. 21% don&#x27;t use explainability methods. No binding standard yet but signals future regulation.</li>
-    <li><strong>Cloud Computing (JC2)</strong>: Requires cloud architecture, governance, vendor risk management, data sovereignty skills. Guidance now; binding standard in development.</li>
-    <li><strong>Open Finance</strong>: Requires API development, consent management, digital identity skills. Phased: voluntary then mandatory.</li>
-    <li><strong>Basel III</strong>: Requires quantitative risk modelling, data engineering, regulatory reporting upgrades. 43% of unfilled banking positions due to lack of relevant education.</li>
-    <li><strong>POPIA Amendments</strong>: Requires consent management tech, DSAR handling across channels (including WhatsApp), privacy management. Effective immediately April 2025.</li>
-    <li><strong>PA Strategy 2025-2030</strong>: Signals AI governance, cloud, cyber, crypto as strategic focus areas.</li>
-  </ul>
-  <p>Additional findings:</p>
-  <ul>
-    <li><strong>King V Code</strong> (effective Jan 2026) makes data/technology/AI a standalone governance pillar -- boards must be &quot;technologically literate.&quot;</li>
-    <li><strong>BankSETA</strong>: 43% of unfilled positions due to skills/education gaps. Cybersecurity flagged as most critical gap. Declining maths/science pass rates reduce pipeline.</li>
-    <li><strong>IOBSA</strong>: Identifies 5 key future banker skills -- data analytics, digital platform management, cybersecurity, CX design, RegTech.</li>
-    <li><strong>Absa Cybersecurity Academy</strong>: 3-year programme with 12 international certifications; new cohort July 2024.</li>
-    <li><strong>UWC</strong>: Launched SA&#x27;s first PG Diploma in Fintech Law and Regulation (Oct 2025).</li>
-    <li>Cross-cutting skills demand matrix shows <strong>data governance</strong> is required by almost all regulatory changes, followed by <strong>board digital literacy</strong> and <strong>cybersecurity</strong>.</li>
-  </ul>
-  <p><strong>Decision</strong>: The research is comprehensive and provides strong material for the Analyst. Proceed to Sub-task 3 -- dispatch the Analyst to evaluate and rank the regulatory changes by significance to digital skills requirements, selecting and justifying the top three.</p>
-  <p>---</p>
-</section>
-
-<section class="step" id="res-log-3">
-  <h2>Step 3: Significance Assessment</h2>
-  <p><strong>Agent type</strong>: Analyst</p>
-  <p><strong>Task assigned</strong>: Evaluate each of the 8 identified regulatory changes against three criteria -- (a) breadth of impact across the sector, (b) urgency of compliance timeline, (c) scale of the new digital skills gap created -- using a 1-5 scoring scale. Select and justify the top three most significant changes. Note close calls and caveats.</p>
-  <p><strong>Key findings</strong>: The Analyst produced a rigorous scored evaluation:</p>
-  <p>| Rank | Regulatory Change | Breadth | Urgency | Skills Gap | Composite |</p>
-  <p>|------|-------------------|---------|---------|------------|-----------|</p>
-  <p>| 1 | Joint Standard 2 of 2024 -- Cybersecurity &amp; Cyber Resilience | 5 | 5 | 5 | <strong>15</strong> |</p>
-  <p>| 2 | Joint Standard 1 of 2023 -- IT Governance &amp; Risk Management | 5 | 5 | 3 | <strong>13</strong> |</p>
-  <p>| 3 | Basel III Post-Crisis Reforms | 3 | 5 | 4 | <strong>12</strong> |</p>
-  <p>| 4 | Amended POPIA Regulations | 4 | 5 | 2 | 11 |</p>
-  <p>| 5 | Cloud Computing Guidance | 4 | 2 | 3 | 9 |</p>
-  <p>| 6 | AI Report | 3 | 1 | 4 | 8 |</p>
-  <p>| 7 | Open Finance Recommendations | 3 | 1 | 3 | 7 |</p>
-  <p>| 8 | King V Code | 3 | 2 | 2 | 7 |</p>
-  <p><strong>Top three justifications:</strong></p>
-  <ul>
-    <li><strong>Cybersecurity (JS2)</strong>: Perfect 15/15 -- universal sector scope, binding and in force, mandates annual training at all levels including board, and faces the most severe skills gap (63% of cyber roles unfilled, 35,000 national vacancies).</li>
-    <li><strong>IT Governance (JS1)</strong>: 13/15 -- same universal scope and binding status, but skills gap is incremental (established disciplines like COBIT/ITIL/ISO 27001) rather than novel. Foundational -- failure here undermines compliance with JS2, cloud, and AI standards.</li>
-    <li><strong>Basel III</strong>: 12/15 -- narrower scope (banks only, specialist roles) but maximum urgency and deep specialist skills gap. Quantitative modelling, data engineering, and model validation skills are structurally scarce due to declining maths/science pass rates.</li>
-  </ul>
-  <p><strong>Close calls</strong>: POPIA amendments (11/15) narrowly missed -- high urgency but incremental skills demands. AI report has highest future potential but zero current binding force.</p>
-  <p><strong>Decision</strong>: The analysis is thorough and well-reasoned. Proceed to Sub-task 4 -- dispatch the Synthesiser to produce the final report.</p>
-  <p>---</p>
-</section>
-
-<section class="step" id="res-log-4">
-  <h2>Step 4: Final Report Synthesis</h2>
-  <p><strong>Agent type</strong>: Synthesiser</p>
-  <p><strong>Task assigned</strong>: Produce a polished, well-structured research report answering the original question. Draw on all findings from Steps 1-3. Include an executive summary, methodology note, detailed section for each of the top three regulatory changes, cross-cutting analysis, limitations, and sources. Target audience: professional readers familiar with banking and regulation but not necessarily SA regulatory specialists.</p>
-  <p><strong>Key findings</strong>: The Synthesiser produced a complete report (~4,000 words) structured as follows:</p>
-  <ul>
-    <li><strong>Executive summary</strong> framing the convergence of regulatory intensity and skills scarcity</li>
-    <li><strong>Methodology</strong> explaining the three-criteria scoring framework</li>
-    <li><strong>Three detailed sections</strong> covering JS2 (Cybersecurity), JS1 (IT Governance), and Basel III, each with subsections on requirements, skills demanded, skills gap evidence, and compliance timeline</li>
-    <li><strong>Cross-cutting analysis</strong> addressing layered demands, King V governance implications, the structural pipeline problem (declining STEM pass rates), and near-miss regulatory changes (POPIA, AI)</li>
-    <li><strong>Limitations</strong> acknowledging data availability, methodological variation, ranking sensitivity, regulatory pipeline, and sector focus</li>
-    <li><strong>Sources</strong> organised by category</li>
-  </ul>
-  <p><strong>Decision</strong>: Report is complete and meets the brief. Write final outputs to <code>report.md</code> and <code>process_log.md</code>.</p>
-  <p>---</p>
-</section>
-
-<section class="step" id="res-log-5">
-  <h2>Summary of Workflow</h2>
-  <p>| Step | Agent Type | Sub-task | Outcome |</p>
-  <p>|------|-----------|----------|---------|</p>
-  <p>| 1 | Researcher | Regulatory landscape scan | 30+ regulatory changes identified across 8 categories |</p>
-  <p>| 2 | Researcher | Digital skills implications | Detailed skills analysis for 8 key changes + industry/education context |</p>
-  <p>| 3 | Analyst | Significance assessment | Scored ranking; top 3 selected with explicit justification |</p>
-  <p>| 4 | Synthesiser | Final report | Complete research report produced |</p>
-  <p><strong>Total agents dispatched</strong>: 4 (2 Researchers, 1 Analyst, 1 Synthesiser)</p>
-  <p><strong>Plan adjustments</strong>: None required -- research proceeded as planned. No gaps or unexpected findings required re-dispatch or additional agents.</p>
-  <p><strong>Files produced</strong>: <code>report.md</code>, <code>process_log.md</code></p>
-  <p>---</p>
-</section>
-
-<section class="step" id="res-log-6">
-  <h2>Agent Usage Statistics</h2>
-  <p>| Step | Agent | Tool Uses | Tokens | Duration |</p>
-  <p>|------|-------|-----------|--------|----------|</p>
-  <p>| 1 | Researcher (regulatory scan) | 61 | 77.9k | 14m 9s |</p>
-  <p>| 2 | Researcher (digital skills) | 67 | 69.7k | 10m 33s |</p>
-  <p>| 3 | Analyst (significance ranking) | 0 | 21.1k | 1m 54s |</p>
-  <p>| 4 | Synthesiser (final report) | 0 | 21.4k | 1m 44s |</p>
-  <p>| <strong>Total</strong> | <strong>4 agents</strong> | <strong>128</strong> | <strong>190.1k</strong> | <strong>28m 19s</strong> |</p>
-  <p>The two Researchers did the heavy lifting -- 128 tool uses between them (mostly web searches and page fetches), consuming ~78% of tokens and ~87% of wall time. The Analyst and Synthesiser used zero tools, working entirely from the material passed to them and completing in under 2 minutes each.</p>
-</section>
-
-<section class="step" id="res-rep-1">
-  <h2>Executive Summary</h2>
-  <p>Since January 2024, South African banking has entered a period of unprecedented regulatory intensity around digital capability. Three regulatory changes stand out for their combined breadth, binding force, and skills implications: the <strong>Joint Standard on Cybersecurity and Cyber Resilience</strong> (JS2 of 2024), the <strong>Joint Standard on IT Governance and Risk Management</strong> (JS1 of 2023, effective November 2024), and the <strong>Basel III Post-Crisis Reforms</strong> (effective July 2025). Together, these instruments require banks to build layered digital competencies -- from board-level technology literacy to specialist quantitative modelling -- at a time when South Africa faces acute shortages in cybersecurity professionals, IT governance practitioners, and data scientists. With 63% of cybersecurity roles nationally partially or fully unfilled, 43% of open banking positions attributed to insufficient skills and education, and declining STEM pass rates constraining the future talent pipeline, the gap between regulatory expectation and workforce reality is widening. This report examines each regulatory change in detail, assesses the digital skills it demands, reviews available evidence of skills gaps, and considers the cumulative effect on the sector.</p>
-  <p>---</p>
-</section>
-
-<section class="step" id="res-rep-2">
-  <h2>Methodology</h2>
-  <p>This report synthesises publicly available regulatory texts, supervisory communications, sector skills plans, industry surveys, and consulting firm analyses published between January 2024 and April 2026. The three regulatory changes were selected and ranked using a scoring framework based on three criteria: (1) breadth of institutional and role scope, (2) binding force and compliance urgency, and (3) severity and novelty of the skills gap created. Each criterion was scored on a five-point scale, yielding a maximum possible score of 15. The ranking reflects conditions as of April 2026; pipeline regulatory developments -- particularly around artificial intelligence governance and cloud computing standards -- could materially alter the landscape in the near term. All sources are cited inline and collected at the end of this report.</p>
-  <p>---</p>
-</section>
-
-<section class="step" id="res-rep-3">
-  <h2>1. Joint Standard 2 of 2024: Cybersecurity and Cyber Resilience</h2>
-  <p><strong>Score: 15/15 -- the highest-impact regulatory change assessed</strong></p>
-  <h4>What It Requires</h4>
-  <p>Issued jointly by the Prudential Authority (PA) and the Financial Sector Conduct Authority (FSCA), Joint Standard 2 of 2024 was published on 17 May 2024 and became effective on <strong>1 June 2025</strong>. It applies to all financial institutions -- banks, insurers, retirement funds, fund administrators, and collective investment scheme managers -- making it the broadest cybersecurity mandate the South African financial sector has seen.</p>
-  <p>The Standard establishes minimum requirements across the full cybersecurity lifecycle. Financial institutions must develop and maintain a cybersecurity strategy and framework, identify and classify business processes and information assets by criticality and sensitivity, and implement data loss prevention policies. They must build cyber resilience capabilities encompassing incident response and recovery, with tested and auditable incident response plans that include executive involvement. The Standard recommends appointment of a dedicated cybersecurity officer, distinct from the IT manager -- a meaningful structural change for institutions that have historically folded cyber responsibilities into general IT management.</p>
-  <p>Critically, the Standard mandates <strong>comprehensive cybersecurity awareness training annually</strong> for governing bodies and all users. This is not a recommendation; it is a binding obligation, auditable by supervisors.</p>
-  <h4>What Skills It Demands</h4>
-  <p>The skills footprint of JS2 is exceptionally broad, spanning strategic, technical, and organisational domains:</p>
-  <ul>
-    <li><strong>Cybersecurity strategy and framework development</strong> -- the ability to design, document, and maintain an enterprise-wide cybersecurity programme aligned to the institution&#x27;s risk appetite</li>
-    <li><strong>Cyber risk assessment</strong> -- systematic identification, quantification, and prioritisation of cyber threats</li>
-    <li><strong>Information asset classification</strong> -- cataloguing data and systems by criticality and sensitivity, a prerequisite for proportionate controls</li>
-    <li><strong>Network security and data loss prevention (DLP)</strong> -- technical implementation of perimeter and internal controls</li>
-    <li><strong>Incident response and recovery</strong> -- the operational capability to detect, contain, eradicate, and recover from cyber incidents, including forensic analysis</li>
-    <li><strong>Cybersecurity awareness programme design</strong> -- pedagogical skills to develop training that meets the Standard&#x27;s annual, all-levels requirement</li>
-    <li><strong>Threat intelligence and monitoring</strong> -- continuous surveillance of the threat landscape and integration of intelligence into defensive posture</li>
-  </ul>
-  <p>These skills are required at every level of the organisation. Boards must undergo annual cybersecurity training, and their fiduciary duty now explicitly extends to cyber risk. Senior management is accountable for the framework and must participate in incident response exercises. IT and security teams bear the burden of technical implementation. And all users -- from tellers to traders -- must complete annual awareness training.</p>
-  <h4>Evidence of the Skills Gap</h4>
-  <p>The skills gap in cybersecurity is the most acute of any domain examined in this report.</p>
-  <p>The <strong>CSIR 2024 National Cybersecurity Survey</strong> paints a stark picture: 63% of cybersecurity roles nationally are partially or fully unfilled, amounting to approximately 35,000 vacant cybersecurity positions across the economy. Seventy-five percent of companies report difficulty recruiting cybersecurity professionals, and 38% of applicants possess less than a quarter of the required qualifications. This is not a marginal shortfall; it is a structural deficit.</p>
-  <p>The <strong>Deloitte/AFIS 2024 African Financial Industry Barometer</strong> reinforces this from a sector-specific perspective: 59% of African financial institutions identify cybercrime as a major threat, and 70% believe cybersecurity skills shortages create additional risk -- a candid acknowledgement that the workforce cannot keep pace with the threat environment.</p>
-  <p>Some institutions are investing in proprietary training pipelines. <strong>Absa&#x27;s Cybersecurity Academy</strong>, a three-year programme leading to twelve international certifications, represents the most ambitious initiative of its kind in South African banking. But such programmes take years to produce graduates, and their scale remains insufficient relative to sector-wide demand.</p>
-  <h4>Compliance Timeline</h4>
-  <p>The Standard became effective on <strong>1 June 2025</strong>. Financial institutions are expected to be in full compliance, with auditable evidence of training delivery, framework documentation, and incident response testing. The annual training cycle creates an ongoing compliance obligation with no end date.</p>
-  <p>---</p>
-</section>
-
-<section class="step" id="res-rep-4">
-  <h2>2. Joint Standard 1 of 2023: IT Governance and Risk Management</h2>
-  <p><strong>Score: 13/15 -- the foundational governance architecture</strong></p>
-  <h4>What It Requires</h4>
-  <p>Also issued jointly by the PA and FSCA, Joint Standard 1 of 2023 became effective on <strong>15 November 2024</strong> -- meaning it is already in force. Like JS2, it applies to all financial institutions, not just banks.</p>
-  <p>The Standard requires governing bodies to approve the institution&#x27;s IT strategy and mandates comprehensive oversight of IT internal controls and risk management by senior management. IT governance and risk management practices must be proportionate to the institution&#x27;s size, complexity, and risk profile -- a principles-based requirement that demands judgement rather than mechanical compliance.</p>
-  <p>A notable structural requirement is that the IT function must be headed by a <strong>qualified individual</strong> who is part of senior management and possesses &quot;requisite skills and experience.&quot; This elevates the IT leadership role from a technical function to a strategic governance position.</p>
-  <p>The Standard further requires a <strong>comprehensive IT governance and risk management training programme for all levels</strong>, reviewed annually. The IT governance framework itself must be reviewed at least annually.</p>
-  <h4>What Skills It Demands</h4>
-  <p>JS1&#x27;s skills demands span governance, risk, and technical domains:</p>
-  <ul>
-    <li><strong>IT governance frameworks</strong> -- practical familiarity with standards such as COBIT, ITIL, and ISO 27001, and the ability to adapt them to institutional context</li>
-    <li><strong>IT risk management</strong> -- the full cycle of identification, assessment, mitigation, and monitoring of IT-related risks</li>
-    <li><strong>IT strategy development</strong> -- aligning technology investment with business objectives and regulatory requirements</li>
-    <li><strong>Change management and incident response</strong> -- controlled processes for system changes and structured responses to IT incidents</li>
-    <li><strong>Data protection and privacy</strong> -- alignment with the Protection of Personal Information Act (POPIA) and emerging data governance expectations</li>
-    <li><strong>Business continuity and disaster recovery</strong> -- ensuring operational resilience under adverse conditions</li>
-    <li><strong>IT audit and assurance</strong> -- the ability to evaluate and provide independent assurance over IT controls</li>
-  </ul>
-  <p>Boards must approve IT strategy and undergo IT risk training. Senior management must execute IT internal controls. The IT head must demonstrably possess the &quot;requisite skills and experience&quot; -- a requirement that, while not specifying particular qualifications, creates a de facto professional standard. Compliance teams must integrate reporting obligations into IT risk protocols. And all staff must participate in the mandated training programme.</p>
-  <h4>Evidence of the Skills Gap</h4>
-  <p>The skills gap for IT governance is real but different in character from the cybersecurity gap. IT governance is an established discipline with mature professional frameworks; the challenge is less about novelty than about depth and breadth of deployment.</p>
-  <p><strong>KPMG</strong> has noted that smaller financial institutions struggle most with compliance, owing to limited in-house IT governance capability. This is significant because JS1 applies to the full spectrum of financial institutions, many of which lack dedicated IT governance functions.</p>
-  <p><strong>BankSETA data</strong> attributes 43% of unfilled banking positions to a lack of relevant experience and education -- a figure that encompasses IT governance roles among others. The principles-based nature of the Standard adds a further complication: determining what constitutes &quot;adequate&quot; skills in context is itself a judgement call that requires experienced professionals. This meta-skill -- the ability to exercise proportionate judgement about governance adequacy -- is scarce.</p>
-  <h4>Compliance Timeline</h4>
-  <p>JS1 has been <strong>in force since 15 November 2024</strong>. Institutions that have not yet achieved compliance are already operating outside the Standard&#x27;s requirements. The annual review cycle for governance frameworks and training programmes creates an ongoing compliance rhythm.</p>
-  <h4>The Relationship Between JS1 and JS2</h4>
-  <p>It is worth emphasising that JS1 is <strong>foundational</strong> to JS2. The IT governance architecture required by JS1 provides the structural framework within which cybersecurity capabilities (JS2) must operate. An institution that lacks sound IT governance will find cybersecurity compliance not merely difficult but incoherent -- controls without a governance context are ad hoc rather than systematic. Failure to comply with JS1 therefore cascades into non-compliance with JS2 and, over time, with emerging standards on cloud computing and AI governance.</p>
-  <p>---</p>
-</section>
-
-<section class="step" id="res-rep-5">
-  <h2>3. Basel III Post-Crisis Reforms</h2>
-  <p><strong>Score: 12/15 -- the specialist quantitative challenge</strong></p>
-  <h4>What It Requires</h4>
-  <p>Gazetted by the National Treasury and effective <strong>1 July 2025</strong>, the remaining Basel III post-crisis reforms (sometimes referred to as &quot;Basel IV&quot; in industry shorthand) implement the final tranche of internationally agreed prudential standards. Unlike the Joint Standards, these reforms apply specifically to <strong>licensed banks</strong>, not the broader financial sector.</p>
-  <p>The reforms encompass several technically demanding workstreams: revised standardised and internal ratings-based (IRB) approaches for credit risk, a new operational risk framework, an updated leverage ratio, and the introduction of an output floor -- phasing in at 60% from July 2025. The Prudential Authority&#x27;s Communication 18 of 2024 further specifies requirements for market risk systems upgrades under the Fundamental Review of the Trading Book (FRTB) and credit valuation adjustment (CVA) frameworks.</p>
-  <p>In practical terms, compliance requires <strong>significant data infrastructure and risk modelling systems upgrades</strong>, revised credit risk calculation engines, new regulatory reporting formats, and market risk systems that can accommodate FRTB requirements.</p>
-  <h4>What Skills It Demands</h4>
-  <p>Basel III compliance demands a concentration of specialist quantitative and data skills:</p>
-  <ul>
-    <li><strong>Quantitative risk modelling</strong> -- development and calibration of credit, market, and operational risk models to revised specifications</li>
-    <li><strong>Data infrastructure and engineering</strong> -- the collection, storage, processing, and quality assurance of the granular data required by new reporting standards</li>
-    <li><strong>Regulatory reporting and disclosure</strong> -- production of accurate, timely reports in formats prescribed by the Prudential Authority</li>
-    <li><strong>Capital adequacy analytics</strong> -- the ability to calculate and optimise capital requirements under multiple simultaneous constraints</li>
-    <li><strong>Model validation</strong> -- independent assessment of model performance, assumptions, and limitations</li>
-    <li><strong>Systems integration</strong> -- connecting upgraded risk systems with existing banking infrastructure</li>
-  </ul>
-  <p>The primary skills burden falls on risk management teams, quantitative analysts, and data and IT teams. Finance teams must adapt to new reporting requirements. Boards and senior management need sufficient understanding to exercise strategic oversight and challenge management&#x27;s assumptions -- a demand reinforced by King V&#x27;s technology governance pillar (discussed below).</p>
-  <h4>Evidence of the Skills Gap</h4>
-  <p><strong>KPMG</strong> has explicitly highlighted the need for &quot;investment in data, systems, and processes&quot; among South African banks preparing for Basel III reforms. <strong>BankSETA</strong> has identified the need for specialised Basel IV training programmes, acknowledging that existing professional development infrastructure is insufficient.</p>
-  <p>The 43% figure for unfilled banking positions due to skills deficits applies here as well, but the deeper concern is structural. <strong>Declining mathematics and physical sciences pass rates at secondary level</strong> are reducing the pipeline for quantitative roles. A student who does not pass matric mathematics at the required level cannot enter the university programmes that produce risk modellers and data scientists. This is not a skills gap that corporate training can close; it is a pipeline problem rooted in the education system.</p>
-  <p><strong>McKinsey</strong> projects a persistent AI and data talent shortage in Sub-Saharan Africa through at least 2030 -- a forecast that encompasses the quantitative professionals needed for Basel III compliance. South African banks are competing for a shrinking pool of candidates against global demand for the same skills.</p>
-  <h4>Compliance Timeline</h4>
-  <p>The reforms became effective on <strong>1 July 2025</strong>, with the output floor phasing in from 60% at that date. Banks that have not completed systems upgrades, model recalibration, and staff training face prudential consequences -- potentially including higher capital charges and supervisory intervention.</p>
-  <p>---</p>
-</section>
-
-<section class="step" id="res-rep-6">
-  <h2>Cross-Cutting Analysis: The Cumulative Effect</h2>
-  <h4>Layered Demands, Compounding Gaps</h4>
-  <p>The three regulatory changes described above do not operate in isolation. They impose <strong>layered and interdependent demands</strong> on the same institutions, often on the same teams, within overlapping timeframes.</p>
-  <p>Consider the position of a mid-tier South African bank in mid-2025. It must simultaneously:</p>
-  <ul>
-    <li><strong>Maintain and enhance IT governance architecture</strong> under JS1, which has been in force since November 2024</li>
-    <li><strong>Achieve cybersecurity compliance</strong> under JS2 by 1 June 2025, building on the governance foundation of JS1</li>
-    <li><strong>Complete Basel III systems upgrades</strong> by 1 July 2025, requiring data infrastructure investments that must also satisfy JS1&#x27;s governance requirements and JS2&#x27;s data protection standards</li>
-    <li><strong>Continue meeting obligations</strong> under POPIA (including recent amendments), cloud computing guidance from the PA, and sector-specific conduct standards</li>
-  </ul>
-  <p>Each layer draws on a partially overlapping but distinct skills base. The IT governance professional, the cybersecurity specialist, and the quantitative risk modeller are different people with different training -- but they must work within integrated frameworks, using shared data infrastructure, under unified board oversight. The scarcity in any one domain creates bottlenecks that affect all the others.</p>
-  <h4>Board-Level Skills and King V</h4>
-  <p>The <strong>King V Code on Corporate Governance</strong>, effective January 2026, amplifies the board-level skills demands created by all three regulatory changes. King V establishes data, technology, and AI as a standalone governance pillar, asserting that boards must be &quot;technologically literate, not just financially literate.&quot; This is not a regulatory standard with direct enforcement mechanisms, but it sets a governance expectation that the PA and FSCA are likely to reference in supervisory assessments.</p>
-  <p>The practical implication is significant: boards can no longer delegate technology decisions entirely to management. Directors must understand enough about cybersecurity risk, IT governance, and quantitative risk modelling to ask informed questions and exercise meaningful oversight.</p>
-  <h4>The Pipeline Problem</h4>
-  <p>The <strong>BankSETA Sector Skills Plans</strong> for 2024-2025 and 2025-2030 identify cybersecurity, data analytics, and digital platform management as the most critical skills gaps in banking. The <strong>Institute of Bankers in South Africa (IOBSA)</strong> has identified five key future banker skills: data analytics and interpretation, digital platform management, cybersecurity and data protection, customer experience design, and regulatory technology (RegTech).</p>
-  <p>These assessments are consistent with a broad consulting firm consensus. <strong>PwC, EY, KPMG, Deloitte, Accenture, and McKinsey</strong> all flag the convergence of regulatory technology demands and workforce skills gaps as a defining challenge for South African banking. IT spending is tracking above inflation. Banks are investing in cloud migration, AI, and digital innovation -- but struggle to attract and retain qualified talent in a globally competitive market.</p>
-  <p>The root of the problem extends beyond the banking sector. Declining secondary-school pass rates in mathematics and physical sciences constrain the pipeline of students entering quantitative and technical university programmes. This is a structural limitation that no amount of corporate training can fully compensate for, and it implies that the skills gap will persist -- and potentially widen -- through the end of the decade.</p>
-  <h4>What Was Excluded and Why</h4>
-  <p>Two regulatory developments came close to inclusion in this analysis but fell short on the scoring criteria:</p>
-  <ul>
-    <li><strong>POPIA Amendments</strong> (scored 11/15) carry high urgency -- they were immediately effective with no transition period -- but impose incremental rather than transformative skills demands on institutions that have already invested in POPIA compliance since 2021.</li>
-    <li><strong>The AI in Financial Sector report</strong> by the FSCA and PA (scored 8/15) has the highest future potential of any development assessed. It found that 53% of financial sector staff lack AI training and that AI governance frameworks remain immature. However, it carries zero binding regulatory force today. When binding AI standards emerge -- as they almost certainly will -- they are likely to enter the top tier of skills-relevant regulatory changes.</li>
-  </ul>
-  <p>---</p>
-</section>
-
-<section class="step" id="res-rep-7">
-  <h2>Limitations</h2>
-  <p>This analysis is subject to several important limitations:</p>
-  <ul>
-    <li><strong>Data availability.</strong> The report relies on publicly available sources as of April 2026. Internal bank compliance data, supervisory assessment findings, and non-public industry surveys are not reflected. The true state of compliance and skills readiness within individual institutions may differ materially from what public data suggests.</li>
-  </ul>
-  <ul>
-    <li><strong>Methodological variation in skills gap data.</strong> Statistics cited from different sources -- the CSIR cybersecurity survey, BankSETA sector skills plans, Deloitte/AFIS barometer -- use different methodologies, sample frames, and timeframes. Direct comparison between figures should be made cautiously.</li>
-  </ul>
-  <ul>
-    <li><strong>Ranking sensitivity.</strong> The significance ranking is based on three defined criteria (scope, binding force, skills gap severity), each equally weighted. Different criteria or different weighting schemes could yield different rankings. In particular, if future regulatory impact were weighted more heavily, the AI governance space would rank higher.</li>
-  </ul>
-  <ul>
-    <li><strong>Regulatory pipeline.</strong> Several developments in the regulatory pipeline -- binding AI governance standards, a formal cloud computing standard, and the Conduct of Financial Institutions (COFI) Bill -- could substantially alter the skills landscape upon implementation. This report captures a point-in-time assessment.</li>
-  </ul>
-  <ul>
-    <li><strong>Sector focus.</strong> The analysis focuses on the banking sector specifically. The Joint Standards (JS1 and JS2) apply more broadly across financial services; the skills gap dynamics in insurance, retirement funds, and other sub-sectors may differ from those in banking.</li>
-  </ul>
-  <p>---</p>
-</section>
-
-<section class="step" id="res-rep-8">
-  <h2>Sources</h2>
-  <p><strong>Regulatory instruments and supervisory communications:</strong></p>
-  <ul>
-    <li>Joint Standard 2 of 2024 (Cybersecurity and Cyber Resilience) -- Prudential Authority and FSCA</li>
-    <li>Joint Standard 1 of 2023 (IT Governance and Risk Management) -- Prudential Authority and FSCA</li>
-    <li>Basel III Post-Crisis Reforms -- National Treasury Gazette; Prudential Communication 18 of 2024 (SARB)</li>
-    <li>PA Regulatory Strategy 2025-2030 -- South African Reserve Bank</li>
-  </ul>
-  <p><strong>Legal and compliance analyses:</strong></p>
-  <ul>
-    <li>Michalsons -- analysis of JS2 cybersecurity requirements</li>
-    <li>ITLawCo -- commentary on Joint Standards</li>
-    <li>ENSafrica -- legal analysis of IT governance requirements</li>
-    <li>Masthead -- compliance guidance on JS1</li>
-    <li>LawLibrary -- regulatory text and commentary</li>
-  </ul>
-  <p><strong>Industry surveys and research:</strong></p>
-  <ul>
-    <li>CSIR 2024 National Cybersecurity Survey</li>
-    <li>Deloitte/AFIS 2024 African Financial Industry Barometer</li>
-    <li>BankSETA Sector Skills Plans 2024-2025 and 2025-2030</li>
-    <li>BASA Integrated Annual Report 2024 and Transformation Report 2024</li>
-    <li>IOBSA -- Regulatory and Compliance Expectations; Fintech Revolution 2025</li>
-  </ul>
-  <p><strong>Consulting firm analyses:</strong></p>
-  <ul>
-    <li>PwC Major Banks Analysis, March 2026</li>
-    <li>EY South Africa Banking 2025</li>
-    <li>KPMG Basel III Post-Crisis Reforms Discussion 2025</li>
-    <li>McKinsey -- Snapshot of African Banking</li>
-    <li>Accenture Banking Trends 2025</li>
-  </ul>
-  <p><strong>Governance and education:</strong></p>
-  <ul>
-    <li>King V Code on Corporate Governance -- Institute of Directors South Africa, October 2025</li>
-    <li>Absa Cybersecurity Academy</li>
-    <li>UWC Postgraduate Diploma in Fintech Law and Regulation</li>
-    <li>CIO South Africa -- industry reporting on cybersecurity compliance</li>
-    <li>Monocle Solutions -- Basel III implementation analysis</li>
-  </ul>
-</section>
-
-<section class="step" id="res-claude-1">
-  <h2>How You Work</h2>
-  <ul>
-    <li><strong>Receive the research question</strong> from the user.</li>
-    <li><strong>Design a research plan</strong>: break the question into 3-5 specific sub-tasks. Each sub-task should be a clear, self-contained research assignment that one agent can complete independently. Write the plan out before executing it.</li>
-    <li><strong>Dispatch sub-agents</strong>: for each sub-task, spawn a specialist agent with a focused brief. Each agent receives only its own task -- not the full plan.</li>
-    <li><strong>Collect and review</strong>: as each agent returns its findings, assess whether the sub-task has been adequately addressed. If not, you may re-dispatch with refined instructions or spawn an additional agent to fill a gap.</li>
-    <li><strong>Synthesise</strong>: once all sub-tasks are complete, spawn a synthesis agent to produce the final report from the collected findings.</li>
-    <li><strong>Produce outputs</strong>: deliver the final report and the process log.</li>
-  </ul>
-</section>
-
-<section class="step" id="res-claude-2">
-  <h2>Sub-Agent Roles</h2>
-  <p>You have three types of specialist agent available:</p>
-  <h4>Researcher</h4>
-  <ul>
-    <li><strong>Purpose</strong>: find and extract relevant information on a specific sub-topic</li>
-    <li><strong>Instructions to give</strong>: a clear question, the scope of what to look for, and any constraints (e.g. geographic focus, time period, source preferences)</li>
-    <li><strong>Expected output</strong>: a structured summary of findings with key points, relevant details, and source attribution where possible</li>
-  </ul>
-  <h4>Analyst</h4>
-  <ul>
-    <li><strong>Purpose</strong>: evaluate, compare, or identify patterns in material already gathered</li>
-    <li><strong>Instructions to give</strong>: the material to analyse, the specific analytical question, and the criteria or framework to apply</li>
-    <li><strong>Expected output</strong>: a structured assessment with explicit reasoning, not just conclusions</li>
-  </ul>
-  <h4>Synthesiser</h4>
-  <ul>
-    <li><strong>Purpose</strong>: produce a coherent final output from multiple inputs</li>
-    <li><strong>Instructions to give</strong>: all gathered material, the original research question, and any format or audience requirements</li>
-    <li><strong>Expected output</strong>: a clear, well-structured report that addresses the original question, draws on all the research, and acknowledges limitations</li>
-  </ul>
-</section>
-
-<section class="step" id="res-claude-3">
-  <h2>Principles</h2>
-  <ul>
-    <li><strong>Plan before acting.</strong> Always write out your research plan before dispatching any agents.</li>
-    <li><strong>Sequential, not parallel.</strong> Dispatch agents one at a time. Review each output before deciding what to do next. Later agents may need to account for what earlier agents found.</li>
-    <li><strong>Adapt the plan.</strong> If an agent&#x27;s findings reveal something unexpected or expose a gap, adjust the remaining plan. Document why.</li>
-    <li><strong>Stay transparent.</strong> Every decision you make -- which agents to dispatch, what instructions to give them, how you adjusted the plan -- should be visible in the process log.</li>
-    <li><strong>Acknowledge limits.</strong> If a sub-task cannot be adequately addressed, say so in the final report rather than papering over it.</li>
-  </ul>
-</section>
-
-<section class="step" id="res-claude-4">
-  <h2>Process Log Format</h2>
-  <p>Maintain a running process log as you work. For each step, record:</p>
-  <p><code>`</code></p>
-</section>
-
-<section class="step" id="res-claude-5">
-  <h2>Step [N]: [Brief description]</h2>
-  <p><strong>Agent type</strong>: Researcher / Analyst / Synthesiser</p>
-  <p><strong>Task assigned</strong>: [The brief you gave the agent]</p>
-  <p><strong>Key findings</strong>: [Summary of what came back]</p>
-  <p><strong>Decision</strong>: [What you decided to do next, and why]</p>
-  <p><code>`</code></p>
-</section>
-
-<section class="step" id="res-claude-6">
-  <h2>Output Format</h2>
-  <p>When complete, produce two files in the project directory:</p>
-  <ul>
-    <li><code>report.md</code> -- the final research report</li>
-    <li><code>process_log.md</code> -- the complete process log showing all steps, agent dispatches, and decisions</li>
-  </ul>
-</section>
-
 <section class="step" id="lec-s6">
   <h2>Session 6: Agentic Demo</h2>
   <p>SESSION 6: The Horizon -- Agentic Teams and One-Shot Building</p>
@@ -3104,6 +2702,341 @@
   <p>Part of the AI Onramps programme  •  Building AI literacy for working professionals</p>
 </section>
 
+
+<section class="step" id="res-log">
+  <h2>Process Log</h2>
+  <p><strong>Research question</strong>: &quot;What are the three most significant regulatory changes affecting digital skills requirements in South African banking since January 2024?&quot;</p>
+  <p>---</p>
+  <h3>Step 1: Regulatory Landscape Scan</h3>
+  <p><strong>Agent type</strong>: Researcher</p>
+  <p><strong>Task assigned</strong>: Identify all notable regulatory changes, directives, guidelines, and policy updates affecting the South African banking sector issued since January 2024. Focus on SARB, PA, FSCA, FIC, National Treasury, and relevant legislation. For each change, record: name/title, issuing body, effective date, brief description, and any technology/digital component.</p>
+  <p><strong>Key findings</strong>: The agent identified over 30 distinct regulatory changes across multiple bodies, grouped into 8 categories:</p>
+  <ul>
+    <li><strong>SARB/PA</strong>: Basel III reforms (effective July 2025), FRTB/CVA roadmap, model risk management focus, third-party risk/BaaS guidance, climate risk guidance, CoDI launch (April 2024), cloud computing consultation, NPS reform, PA Regulatory Strategy 2025-2030</li>
+    <li><strong>Joint Standards (PA + FSCA)</strong>: IT Governance and Risk Management (Joint Standard 1 of 2023, effective Nov 2024), Cybersecurity and Cyber Resilience (Joint Standard 2 of 2024, effective June 2025), Cloud Computing guidance (Joint Communication 2 of 2025), AI in Financial Sector report (Nov 2025)</li>
+    <li><strong>FSCA</strong>: Open Finance position paper (March 2024), CASP licensing (ongoing), regulation plans</li>
+    <li><strong>FIC</strong>: Guidance Note 7A on AML/CFT compliance, Directive 9 (crypto travel rule, effective April 2025)</li>
+    <li><strong>National Treasury/Legislation</strong>: AML Amendment Bill, FATF grey list exit (Oct 2025), Climate Change Act (commenced March 2025), COFI Bill, NPS Bill, NCA amendment regulations</li>
+    <li><strong>Information Regulator</strong>: Amended POPIA Regulations (April 2025), escalated enforcement</li>
+    <li><strong>IFWG</strong>: Stablecoin landscape diagnostic, regulatory sandbox</li>
+  </ul>
+  <p><strong>Decision</strong>: Proceed to Sub-task 2 -- research the specific digital skills implications of these regulatory changes. The landscape scan is thorough and provides a strong foundation. The most digitally significant changes appear to be: (1) Joint Standard on IT Governance, (2) Joint Standard on Cybersecurity, (3) AI report/emerging AI governance, (4) Cloud computing guidance, (5) Open Finance framework, (6) Basel III data/systems requirements, and (7) POPIA amendments. The next researcher should focus on the digital skills demands created by these.</p>
+  <p>---</p>
+  <h3>Step 2: Digital Skills Implications Research</h3>
+  <p><strong>Agent type</strong>: Researcher</p>
+  <p><strong>Task assigned</strong>: For each of the 8 most digitally significant regulatory changes identified in Step 1, research: (1) what specific digital skills are now required, (2) who in the bank needs them, (3) whether formal training/certification is mandated, (4) compliance timelines, and (5) industry commentary on the skills gap. Also research BankSETA skills plans, BASA position papers, consulting firm reports, and university programmes developed to meet these requirements.</p>
+  <p><strong>Key findings</strong>: The agent produced a detailed analysis for each regulatory change:</p>
+  <ul>
+    <li><strong>Joint Standard 1 (IT Governance)</strong>: Requires IT governance frameworks (COBIT/ITIL/ISO 27001 alignment), IT risk management, business continuity skills. Board must approve IT strategy. IT head must have &quot;requisite skills and experience.&quot; Comprehensive training programme mandated. Effective Nov 2024.</li>
+    <li><strong>Joint Standard 2 (Cybersecurity)</strong>: Requires cybersecurity strategy development, asset classification, DLP, incident response, threat monitoring. <strong>Annual cybersecurity awareness training mandated for board and all staff.</strong> CSIR survey: 63% of cyber roles unfilled, 35,000 vacancies nationally. Effective June 2025.</li>
+    <li><strong>AI Report</strong>: Banks lead AI adoption at 52% but 53% of staff lack sufficient AI training. 37-39% lack governance frameworks. 21% don&#x27;t use explainability methods. No binding standard yet but signals future regulation.</li>
+    <li><strong>Cloud Computing (JC2)</strong>: Requires cloud architecture, governance, vendor risk management, data sovereignty skills. Guidance now; binding standard in development.</li>
+    <li><strong>Open Finance</strong>: Requires API development, consent management, digital identity skills. Phased: voluntary then mandatory.</li>
+    <li><strong>Basel III</strong>: Requires quantitative risk modelling, data engineering, regulatory reporting upgrades. 43% of unfilled banking positions due to lack of relevant education.</li>
+    <li><strong>POPIA Amendments</strong>: Requires consent management tech, DSAR handling across channels (including WhatsApp), privacy management. Effective immediately April 2025.</li>
+    <li><strong>PA Strategy 2025-2030</strong>: Signals AI governance, cloud, cyber, crypto as strategic focus areas.</li>
+  </ul>
+  <p>Additional findings:</p>
+  <ul>
+    <li><strong>King V Code</strong> (effective Jan 2026) makes data/technology/AI a standalone governance pillar -- boards must be &quot;technologically literate.&quot;</li>
+    <li><strong>BankSETA</strong>: 43% of unfilled positions due to skills/education gaps. Cybersecurity flagged as most critical gap. Declining maths/science pass rates reduce pipeline.</li>
+    <li><strong>IOBSA</strong>: Identifies 5 key future banker skills -- data analytics, digital platform management, cybersecurity, CX design, RegTech.</li>
+    <li><strong>Absa Cybersecurity Academy</strong>: 3-year programme with 12 international certifications; new cohort July 2024.</li>
+    <li><strong>UWC</strong>: Launched SA&#x27;s first PG Diploma in Fintech Law and Regulation (Oct 2025).</li>
+    <li>Cross-cutting skills demand matrix shows <strong>data governance</strong> is required by almost all regulatory changes, followed by <strong>board digital literacy</strong> and <strong>cybersecurity</strong>.</li>
+  </ul>
+  <p><strong>Decision</strong>: The research is comprehensive and provides strong material for the Analyst. Proceed to Sub-task 3 -- dispatch the Analyst to evaluate and rank the regulatory changes by significance to digital skills requirements, selecting and justifying the top three.</p>
+  <p>---</p>
+  <h3>Step 3: Significance Assessment</h3>
+  <p><strong>Agent type</strong>: Analyst</p>
+  <p><strong>Task assigned</strong>: Evaluate each of the 8 identified regulatory changes against three criteria -- (a) breadth of impact across the sector, (b) urgency of compliance timeline, (c) scale of the new digital skills gap created -- using a 1-5 scoring scale. Select and justify the top three most significant changes. Note close calls and caveats.</p>
+  <p><strong>Key findings</strong>: The Analyst produced a rigorous scored evaluation:</p>
+  <p>| Rank | Regulatory Change | Breadth | Urgency | Skills Gap | Composite |</p>
+  <p>|------|-------------------|---------|---------|------------|-----------|</p>
+  <p>| 1 | Joint Standard 2 of 2024 -- Cybersecurity &amp; Cyber Resilience | 5 | 5 | 5 | <strong>15</strong> |</p>
+  <p>| 2 | Joint Standard 1 of 2023 -- IT Governance &amp; Risk Management | 5 | 5 | 3 | <strong>13</strong> |</p>
+  <p>| 3 | Basel III Post-Crisis Reforms | 3 | 5 | 4 | <strong>12</strong> |</p>
+  <p>| 4 | Amended POPIA Regulations | 4 | 5 | 2 | 11 |</p>
+  <p>| 5 | Cloud Computing Guidance | 4 | 2 | 3 | 9 |</p>
+  <p>| 6 | AI Report | 3 | 1 | 4 | 8 |</p>
+  <p>| 7 | Open Finance Recommendations | 3 | 1 | 3 | 7 |</p>
+  <p>| 8 | King V Code | 3 | 2 | 2 | 7 |</p>
+  <p><strong>Top three justifications:</strong></p>
+  <ul>
+    <li><strong>Cybersecurity (JS2)</strong>: Perfect 15/15 -- universal sector scope, binding and in force, mandates annual training at all levels including board, and faces the most severe skills gap (63% of cyber roles unfilled, 35,000 national vacancies).</li>
+    <li><strong>IT Governance (JS1)</strong>: 13/15 -- same universal scope and binding status, but skills gap is incremental (established disciplines like COBIT/ITIL/ISO 27001) rather than novel. Foundational -- failure here undermines compliance with JS2, cloud, and AI standards.</li>
+    <li><strong>Basel III</strong>: 12/15 -- narrower scope (banks only, specialist roles) but maximum urgency and deep specialist skills gap. Quantitative modelling, data engineering, and model validation skills are structurally scarce due to declining maths/science pass rates.</li>
+  </ul>
+  <p><strong>Close calls</strong>: POPIA amendments (11/15) narrowly missed -- high urgency but incremental skills demands. AI report has highest future potential but zero current binding force.</p>
+  <p><strong>Decision</strong>: The analysis is thorough and well-reasoned. Proceed to Sub-task 4 -- dispatch the Synthesiser to produce the final report.</p>
+  <p>---</p>
+  <h3>Step 4: Final Report Synthesis</h3>
+  <p><strong>Agent type</strong>: Synthesiser</p>
+  <p><strong>Task assigned</strong>: Produce a polished, well-structured research report answering the original question. Draw on all findings from Steps 1-3. Include an executive summary, methodology note, detailed section for each of the top three regulatory changes, cross-cutting analysis, limitations, and sources. Target audience: professional readers familiar with banking and regulation but not necessarily SA regulatory specialists.</p>
+  <p><strong>Key findings</strong>: The Synthesiser produced a complete report (~4,000 words) structured as follows:</p>
+  <ul>
+    <li><strong>Executive summary</strong> framing the convergence of regulatory intensity and skills scarcity</li>
+    <li><strong>Methodology</strong> explaining the three-criteria scoring framework</li>
+    <li><strong>Three detailed sections</strong> covering JS2 (Cybersecurity), JS1 (IT Governance), and Basel III, each with subsections on requirements, skills demanded, skills gap evidence, and compliance timeline</li>
+    <li><strong>Cross-cutting analysis</strong> addressing layered demands, King V governance implications, the structural pipeline problem (declining STEM pass rates), and near-miss regulatory changes (POPIA, AI)</li>
+    <li><strong>Limitations</strong> acknowledging data availability, methodological variation, ranking sensitivity, regulatory pipeline, and sector focus</li>
+    <li><strong>Sources</strong> organised by category</li>
+  </ul>
+  <p><strong>Decision</strong>: Report is complete and meets the brief. Write final outputs to <code>report.md</code> and <code>process_log.md</code>.</p>
+  <p>---</p>
+  <h3>Summary of Workflow</h3>
+  <p>| Step | Agent Type | Sub-task | Outcome |</p>
+  <p>|------|-----------|----------|---------|</p>
+  <p>| 1 | Researcher | Regulatory landscape scan | 30+ regulatory changes identified across 8 categories |</p>
+  <p>| 2 | Researcher | Digital skills implications | Detailed skills analysis for 8 key changes + industry/education context |</p>
+  <p>| 3 | Analyst | Significance assessment | Scored ranking; top 3 selected with explicit justification |</p>
+  <p>| 4 | Synthesiser | Final report | Complete research report produced |</p>
+  <p><strong>Total agents dispatched</strong>: 4 (2 Researchers, 1 Analyst, 1 Synthesiser)</p>
+  <p><strong>Plan adjustments</strong>: None required -- research proceeded as planned. No gaps or unexpected findings required re-dispatch or additional agents.</p>
+  <p><strong>Files produced</strong>: <code>report.md</code>, <code>process_log.md</code></p>
+  <p>---</p>
+  <h3>Agent Usage Statistics</h3>
+  <p>| Step | Agent | Tool Uses | Tokens | Duration |</p>
+  <p>|------|-------|-----------|--------|----------|</p>
+  <p>| 1 | Researcher (regulatory scan) | 61 | 77.9k | 14m 9s |</p>
+  <p>| 2 | Researcher (digital skills) | 67 | 69.7k | 10m 33s |</p>
+  <p>| 3 | Analyst (significance ranking) | 0 | 21.1k | 1m 54s |</p>
+  <p>| 4 | Synthesiser (final report) | 0 | 21.4k | 1m 44s |</p>
+  <p>| <strong>Total</strong> | <strong>4 agents</strong> | <strong>128</strong> | <strong>190.1k</strong> | <strong>28m 19s</strong> |</p>
+  <p>The two Researchers did the heavy lifting -- 128 tool uses between them (mostly web searches and page fetches), consuming ~78% of tokens and ~87% of wall time. The Analyst and Synthesiser used zero tools, working entirely from the material passed to them and completing in under 2 minutes each.</p>
+</section>
+
+<section class="step" id="res-rep">
+  <h2>Reg Report</h2>
+  <p><strong>A Research Report on the Three Most Significant Regulatory Developments Since January 2024</strong></p>
+  <p><em>April 2026</em></p>
+  <p>---</p>
+  <h3>Executive Summary</h3>
+  <p>Since January 2024, South African banking has entered a period of unprecedented regulatory intensity around digital capability. Three regulatory changes stand out for their combined breadth, binding force, and skills implications: the <strong>Joint Standard on Cybersecurity and Cyber Resilience</strong> (JS2 of 2024), the <strong>Joint Standard on IT Governance and Risk Management</strong> (JS1 of 2023, effective November 2024), and the <strong>Basel III Post-Crisis Reforms</strong> (effective July 2025). Together, these instruments require banks to build layered digital competencies -- from board-level technology literacy to specialist quantitative modelling -- at a time when South Africa faces acute shortages in cybersecurity professionals, IT governance practitioners, and data scientists. With 63% of cybersecurity roles nationally partially or fully unfilled, 43% of open banking positions attributed to insufficient skills and education, and declining STEM pass rates constraining the future talent pipeline, the gap between regulatory expectation and workforce reality is widening. This report examines each regulatory change in detail, assesses the digital skills it demands, reviews available evidence of skills gaps, and considers the cumulative effect on the sector.</p>
+  <p>---</p>
+  <h3>Methodology</h3>
+  <p>This report synthesises publicly available regulatory texts, supervisory communications, sector skills plans, industry surveys, and consulting firm analyses published between January 2024 and April 2026. The three regulatory changes were selected and ranked using a scoring framework based on three criteria: (1) breadth of institutional and role scope, (2) binding force and compliance urgency, and (3) severity and novelty of the skills gap created. Each criterion was scored on a five-point scale, yielding a maximum possible score of 15. The ranking reflects conditions as of April 2026; pipeline regulatory developments -- particularly around artificial intelligence governance and cloud computing standards -- could materially alter the landscape in the near term. All sources are cited inline and collected at the end of this report.</p>
+  <p>---</p>
+  <h3>1. Joint Standard 2 of 2024: Cybersecurity and Cyber Resilience</h3>
+  <p><strong>Score: 15/15 -- the highest-impact regulatory change assessed</strong></p>
+  <h4>What It Requires</h4>
+  <p>Issued jointly by the Prudential Authority (PA) and the Financial Sector Conduct Authority (FSCA), Joint Standard 2 of 2024 was published on 17 May 2024 and became effective on <strong>1 June 2025</strong>. It applies to all financial institutions -- banks, insurers, retirement funds, fund administrators, and collective investment scheme managers -- making it the broadest cybersecurity mandate the South African financial sector has seen.</p>
+  <p>The Standard establishes minimum requirements across the full cybersecurity lifecycle. Financial institutions must develop and maintain a cybersecurity strategy and framework, identify and classify business processes and information assets by criticality and sensitivity, and implement data loss prevention policies. They must build cyber resilience capabilities encompassing incident response and recovery, with tested and auditable incident response plans that include executive involvement. The Standard recommends appointment of a dedicated cybersecurity officer, distinct from the IT manager -- a meaningful structural change for institutions that have historically folded cyber responsibilities into general IT management.</p>
+  <p>Critically, the Standard mandates <strong>comprehensive cybersecurity awareness training annually</strong> for governing bodies and all users. This is not a recommendation; it is a binding obligation, auditable by supervisors.</p>
+  <h4>What Skills It Demands</h4>
+  <p>The skills footprint of JS2 is exceptionally broad, spanning strategic, technical, and organisational domains:</p>
+  <ul>
+    <li><strong>Cybersecurity strategy and framework development</strong> -- the ability to design, document, and maintain an enterprise-wide cybersecurity programme aligned to the institution&#x27;s risk appetite</li>
+    <li><strong>Cyber risk assessment</strong> -- systematic identification, quantification, and prioritisation of cyber threats</li>
+    <li><strong>Information asset classification</strong> -- cataloguing data and systems by criticality and sensitivity, a prerequisite for proportionate controls</li>
+    <li><strong>Network security and data loss prevention (DLP)</strong> -- technical implementation of perimeter and internal controls</li>
+    <li><strong>Incident response and recovery</strong> -- the operational capability to detect, contain, eradicate, and recover from cyber incidents, including forensic analysis</li>
+    <li><strong>Cybersecurity awareness programme design</strong> -- pedagogical skills to develop training that meets the Standard&#x27;s annual, all-levels requirement</li>
+    <li><strong>Threat intelligence and monitoring</strong> -- continuous surveillance of the threat landscape and integration of intelligence into defensive posture</li>
+  </ul>
+  <p>These skills are required at every level of the organisation. Boards must undergo annual cybersecurity training, and their fiduciary duty now explicitly extends to cyber risk. Senior management is accountable for the framework and must participate in incident response exercises. IT and security teams bear the burden of technical implementation. And all users -- from tellers to traders -- must complete annual awareness training.</p>
+  <h4>Evidence of the Skills Gap</h4>
+  <p>The skills gap in cybersecurity is the most acute of any domain examined in this report.</p>
+  <p>The <strong>CSIR 2024 National Cybersecurity Survey</strong> paints a stark picture: 63% of cybersecurity roles nationally are partially or fully unfilled, amounting to approximately 35,000 vacant cybersecurity positions across the economy. Seventy-five percent of companies report difficulty recruiting cybersecurity professionals, and 38% of applicants possess less than a quarter of the required qualifications. This is not a marginal shortfall; it is a structural deficit.</p>
+  <p>The <strong>Deloitte/AFIS 2024 African Financial Industry Barometer</strong> reinforces this from a sector-specific perspective: 59% of African financial institutions identify cybercrime as a major threat, and 70% believe cybersecurity skills shortages create additional risk -- a candid acknowledgement that the workforce cannot keep pace with the threat environment.</p>
+  <p>Some institutions are investing in proprietary training pipelines. <strong>Absa&#x27;s Cybersecurity Academy</strong>, a three-year programme leading to twelve international certifications, represents the most ambitious initiative of its kind in South African banking. But such programmes take years to produce graduates, and their scale remains insufficient relative to sector-wide demand.</p>
+  <h4>Compliance Timeline</h4>
+  <p>The Standard became effective on <strong>1 June 2025</strong>. Financial institutions are expected to be in full compliance, with auditable evidence of training delivery, framework documentation, and incident response testing. The annual training cycle creates an ongoing compliance obligation with no end date.</p>
+  <p>---</p>
+  <h3>2. Joint Standard 1 of 2023: IT Governance and Risk Management</h3>
+  <p><strong>Score: 13/15 -- the foundational governance architecture</strong></p>
+  <h4>What It Requires</h4>
+  <p>Also issued jointly by the PA and FSCA, Joint Standard 1 of 2023 became effective on <strong>15 November 2024</strong> -- meaning it is already in force. Like JS2, it applies to all financial institutions, not just banks.</p>
+  <p>The Standard requires governing bodies to approve the institution&#x27;s IT strategy and mandates comprehensive oversight of IT internal controls and risk management by senior management. IT governance and risk management practices must be proportionate to the institution&#x27;s size, complexity, and risk profile -- a principles-based requirement that demands judgement rather than mechanical compliance.</p>
+  <p>A notable structural requirement is that the IT function must be headed by a <strong>qualified individual</strong> who is part of senior management and possesses &quot;requisite skills and experience.&quot; This elevates the IT leadership role from a technical function to a strategic governance position.</p>
+  <p>The Standard further requires a <strong>comprehensive IT governance and risk management training programme for all levels</strong>, reviewed annually. The IT governance framework itself must be reviewed at least annually.</p>
+  <h4>What Skills It Demands</h4>
+  <p>JS1&#x27;s skills demands span governance, risk, and technical domains:</p>
+  <ul>
+    <li><strong>IT governance frameworks</strong> -- practical familiarity with standards such as COBIT, ITIL, and ISO 27001, and the ability to adapt them to institutional context</li>
+    <li><strong>IT risk management</strong> -- the full cycle of identification, assessment, mitigation, and monitoring of IT-related risks</li>
+    <li><strong>IT strategy development</strong> -- aligning technology investment with business objectives and regulatory requirements</li>
+    <li><strong>Change management and incident response</strong> -- controlled processes for system changes and structured responses to IT incidents</li>
+    <li><strong>Data protection and privacy</strong> -- alignment with the Protection of Personal Information Act (POPIA) and emerging data governance expectations</li>
+    <li><strong>Business continuity and disaster recovery</strong> -- ensuring operational resilience under adverse conditions</li>
+    <li><strong>IT audit and assurance</strong> -- the ability to evaluate and provide independent assurance over IT controls</li>
+  </ul>
+  <p>Boards must approve IT strategy and undergo IT risk training. Senior management must execute IT internal controls. The IT head must demonstrably possess the &quot;requisite skills and experience&quot; -- a requirement that, while not specifying particular qualifications, creates a de facto professional standard. Compliance teams must integrate reporting obligations into IT risk protocols. And all staff must participate in the mandated training programme.</p>
+  <h4>Evidence of the Skills Gap</h4>
+  <p>The skills gap for IT governance is real but different in character from the cybersecurity gap. IT governance is an established discipline with mature professional frameworks; the challenge is less about novelty than about depth and breadth of deployment.</p>
+  <p><strong>KPMG</strong> has noted that smaller financial institutions struggle most with compliance, owing to limited in-house IT governance capability. This is significant because JS1 applies to the full spectrum of financial institutions, many of which lack dedicated IT governance functions.</p>
+  <p><strong>BankSETA data</strong> attributes 43% of unfilled banking positions to a lack of relevant experience and education -- a figure that encompasses IT governance roles among others. The principles-based nature of the Standard adds a further complication: determining what constitutes &quot;adequate&quot; skills in context is itself a judgement call that requires experienced professionals. This meta-skill -- the ability to exercise proportionate judgement about governance adequacy -- is scarce.</p>
+  <h4>Compliance Timeline</h4>
+  <p>JS1 has been <strong>in force since 15 November 2024</strong>. Institutions that have not yet achieved compliance are already operating outside the Standard&#x27;s requirements. The annual review cycle for governance frameworks and training programmes creates an ongoing compliance rhythm.</p>
+  <h4>The Relationship Between JS1 and JS2</h4>
+  <p>It is worth emphasising that JS1 is <strong>foundational</strong> to JS2. The IT governance architecture required by JS1 provides the structural framework within which cybersecurity capabilities (JS2) must operate. An institution that lacks sound IT governance will find cybersecurity compliance not merely difficult but incoherent -- controls without a governance context are ad hoc rather than systematic. Failure to comply with JS1 therefore cascades into non-compliance with JS2 and, over time, with emerging standards on cloud computing and AI governance.</p>
+  <p>---</p>
+  <h3>3. Basel III Post-Crisis Reforms</h3>
+  <p><strong>Score: 12/15 -- the specialist quantitative challenge</strong></p>
+  <h4>What It Requires</h4>
+  <p>Gazetted by the National Treasury and effective <strong>1 July 2025</strong>, the remaining Basel III post-crisis reforms (sometimes referred to as &quot;Basel IV&quot; in industry shorthand) implement the final tranche of internationally agreed prudential standards. Unlike the Joint Standards, these reforms apply specifically to <strong>licensed banks</strong>, not the broader financial sector.</p>
+  <p>The reforms encompass several technically demanding workstreams: revised standardised and internal ratings-based (IRB) approaches for credit risk, a new operational risk framework, an updated leverage ratio, and the introduction of an output floor -- phasing in at 60% from July 2025. The Prudential Authority&#x27;s Communication 18 of 2024 further specifies requirements for market risk systems upgrades under the Fundamental Review of the Trading Book (FRTB) and credit valuation adjustment (CVA) frameworks.</p>
+  <p>In practical terms, compliance requires <strong>significant data infrastructure and risk modelling systems upgrades</strong>, revised credit risk calculation engines, new regulatory reporting formats, and market risk systems that can accommodate FRTB requirements.</p>
+  <h4>What Skills It Demands</h4>
+  <p>Basel III compliance demands a concentration of specialist quantitative and data skills:</p>
+  <ul>
+    <li><strong>Quantitative risk modelling</strong> -- development and calibration of credit, market, and operational risk models to revised specifications</li>
+    <li><strong>Data infrastructure and engineering</strong> -- the collection, storage, processing, and quality assurance of the granular data required by new reporting standards</li>
+    <li><strong>Regulatory reporting and disclosure</strong> -- production of accurate, timely reports in formats prescribed by the Prudential Authority</li>
+    <li><strong>Capital adequacy analytics</strong> -- the ability to calculate and optimise capital requirements under multiple simultaneous constraints</li>
+    <li><strong>Model validation</strong> -- independent assessment of model performance, assumptions, and limitations</li>
+    <li><strong>Systems integration</strong> -- connecting upgraded risk systems with existing banking infrastructure</li>
+  </ul>
+  <p>The primary skills burden falls on risk management teams, quantitative analysts, and data and IT teams. Finance teams must adapt to new reporting requirements. Boards and senior management need sufficient understanding to exercise strategic oversight and challenge management&#x27;s assumptions -- a demand reinforced by King V&#x27;s technology governance pillar (discussed below).</p>
+  <h4>Evidence of the Skills Gap</h4>
+  <p><strong>KPMG</strong> has explicitly highlighted the need for &quot;investment in data, systems, and processes&quot; among South African banks preparing for Basel III reforms. <strong>BankSETA</strong> has identified the need for specialised Basel IV training programmes, acknowledging that existing professional development infrastructure is insufficient.</p>
+  <p>The 43% figure for unfilled banking positions due to skills deficits applies here as well, but the deeper concern is structural. <strong>Declining mathematics and physical sciences pass rates at secondary level</strong> are reducing the pipeline for quantitative roles. A student who does not pass matric mathematics at the required level cannot enter the university programmes that produce risk modellers and data scientists. This is not a skills gap that corporate training can close; it is a pipeline problem rooted in the education system.</p>
+  <p><strong>McKinsey</strong> projects a persistent AI and data talent shortage in Sub-Saharan Africa through at least 2030 -- a forecast that encompasses the quantitative professionals needed for Basel III compliance. South African banks are competing for a shrinking pool of candidates against global demand for the same skills.</p>
+  <h4>Compliance Timeline</h4>
+  <p>The reforms became effective on <strong>1 July 2025</strong>, with the output floor phasing in from 60% at that date. Banks that have not completed systems upgrades, model recalibration, and staff training face prudential consequences -- potentially including higher capital charges and supervisory intervention.</p>
+  <p>---</p>
+  <h3>Cross-Cutting Analysis: The Cumulative Effect</h3>
+  <h4>Layered Demands, Compounding Gaps</h4>
+  <p>The three regulatory changes described above do not operate in isolation. They impose <strong>layered and interdependent demands</strong> on the same institutions, often on the same teams, within overlapping timeframes.</p>
+  <p>Consider the position of a mid-tier South African bank in mid-2025. It must simultaneously:</p>
+  <ul>
+    <li><strong>Maintain and enhance IT governance architecture</strong> under JS1, which has been in force since November 2024</li>
+    <li><strong>Achieve cybersecurity compliance</strong> under JS2 by 1 June 2025, building on the governance foundation of JS1</li>
+    <li><strong>Complete Basel III systems upgrades</strong> by 1 July 2025, requiring data infrastructure investments that must also satisfy JS1&#x27;s governance requirements and JS2&#x27;s data protection standards</li>
+    <li><strong>Continue meeting obligations</strong> under POPIA (including recent amendments), cloud computing guidance from the PA, and sector-specific conduct standards</li>
+  </ul>
+  <p>Each layer draws on a partially overlapping but distinct skills base. The IT governance professional, the cybersecurity specialist, and the quantitative risk modeller are different people with different training -- but they must work within integrated frameworks, using shared data infrastructure, under unified board oversight. The scarcity in any one domain creates bottlenecks that affect all the others.</p>
+  <h4>Board-Level Skills and King V</h4>
+  <p>The <strong>King V Code on Corporate Governance</strong>, effective January 2026, amplifies the board-level skills demands created by all three regulatory changes. King V establishes data, technology, and AI as a standalone governance pillar, asserting that boards must be &quot;technologically literate, not just financially literate.&quot; This is not a regulatory standard with direct enforcement mechanisms, but it sets a governance expectation that the PA and FSCA are likely to reference in supervisory assessments.</p>
+  <p>The practical implication is significant: boards can no longer delegate technology decisions entirely to management. Directors must understand enough about cybersecurity risk, IT governance, and quantitative risk modelling to ask informed questions and exercise meaningful oversight.</p>
+  <h4>The Pipeline Problem</h4>
+  <p>The <strong>BankSETA Sector Skills Plans</strong> for 2024-2025 and 2025-2030 identify cybersecurity, data analytics, and digital platform management as the most critical skills gaps in banking. The <strong>Institute of Bankers in South Africa (IOBSA)</strong> has identified five key future banker skills: data analytics and interpretation, digital platform management, cybersecurity and data protection, customer experience design, and regulatory technology (RegTech).</p>
+  <p>These assessments are consistent with a broad consulting firm consensus. <strong>PwC, EY, KPMG, Deloitte, Accenture, and McKinsey</strong> all flag the convergence of regulatory technology demands and workforce skills gaps as a defining challenge for South African banking. IT spending is tracking above inflation. Banks are investing in cloud migration, AI, and digital innovation -- but struggle to attract and retain qualified talent in a globally competitive market.</p>
+  <p>The root of the problem extends beyond the banking sector. Declining secondary-school pass rates in mathematics and physical sciences constrain the pipeline of students entering quantitative and technical university programmes. This is a structural limitation that no amount of corporate training can fully compensate for, and it implies that the skills gap will persist -- and potentially widen -- through the end of the decade.</p>
+  <h4>What Was Excluded and Why</h4>
+  <p>Two regulatory developments came close to inclusion in this analysis but fell short on the scoring criteria:</p>
+  <ul>
+    <li><strong>POPIA Amendments</strong> (scored 11/15) carry high urgency -- they were immediately effective with no transition period -- but impose incremental rather than transformative skills demands on institutions that have already invested in POPIA compliance since 2021.</li>
+    <li><strong>The AI in Financial Sector report</strong> by the FSCA and PA (scored 8/15) has the highest future potential of any development assessed. It found that 53% of financial sector staff lack AI training and that AI governance frameworks remain immature. However, it carries zero binding regulatory force today. When binding AI standards emerge -- as they almost certainly will -- they are likely to enter the top tier of skills-relevant regulatory changes.</li>
+  </ul>
+  <p>---</p>
+  <h3>Limitations</h3>
+  <p>This analysis is subject to several important limitations:</p>
+  <ul>
+    <li><strong>Data availability.</strong> The report relies on publicly available sources as of April 2026. Internal bank compliance data, supervisory assessment findings, and non-public industry surveys are not reflected. The true state of compliance and skills readiness within individual institutions may differ materially from what public data suggests.</li>
+  </ul>
+  <ul>
+    <li><strong>Methodological variation in skills gap data.</strong> Statistics cited from different sources -- the CSIR cybersecurity survey, BankSETA sector skills plans, Deloitte/AFIS barometer -- use different methodologies, sample frames, and timeframes. Direct comparison between figures should be made cautiously.</li>
+  </ul>
+  <ul>
+    <li><strong>Ranking sensitivity.</strong> The significance ranking is based on three defined criteria (scope, binding force, skills gap severity), each equally weighted. Different criteria or different weighting schemes could yield different rankings. In particular, if future regulatory impact were weighted more heavily, the AI governance space would rank higher.</li>
+  </ul>
+  <ul>
+    <li><strong>Regulatory pipeline.</strong> Several developments in the regulatory pipeline -- binding AI governance standards, a formal cloud computing standard, and the Conduct of Financial Institutions (COFI) Bill -- could substantially alter the skills landscape upon implementation. This report captures a point-in-time assessment.</li>
+  </ul>
+  <ul>
+    <li><strong>Sector focus.</strong> The analysis focuses on the banking sector specifically. The Joint Standards (JS1 and JS2) apply more broadly across financial services; the skills gap dynamics in insurance, retirement funds, and other sub-sectors may differ from those in banking.</li>
+  </ul>
+  <p>---</p>
+  <h3>Sources</h3>
+  <p><strong>Regulatory instruments and supervisory communications:</strong></p>
+  <ul>
+    <li>Joint Standard 2 of 2024 (Cybersecurity and Cyber Resilience) -- Prudential Authority and FSCA</li>
+    <li>Joint Standard 1 of 2023 (IT Governance and Risk Management) -- Prudential Authority and FSCA</li>
+    <li>Basel III Post-Crisis Reforms -- National Treasury Gazette; Prudential Communication 18 of 2024 (SARB)</li>
+    <li>PA Regulatory Strategy 2025-2030 -- South African Reserve Bank</li>
+  </ul>
+  <p><strong>Legal and compliance analyses:</strong></p>
+  <ul>
+    <li>Michalsons -- analysis of JS2 cybersecurity requirements</li>
+    <li>ITLawCo -- commentary on Joint Standards</li>
+    <li>ENSafrica -- legal analysis of IT governance requirements</li>
+    <li>Masthead -- compliance guidance on JS1</li>
+    <li>LawLibrary -- regulatory text and commentary</li>
+  </ul>
+  <p><strong>Industry surveys and research:</strong></p>
+  <ul>
+    <li>CSIR 2024 National Cybersecurity Survey</li>
+    <li>Deloitte/AFIS 2024 African Financial Industry Barometer</li>
+    <li>BankSETA Sector Skills Plans 2024-2025 and 2025-2030</li>
+    <li>BASA Integrated Annual Report 2024 and Transformation Report 2024</li>
+    <li>IOBSA -- Regulatory and Compliance Expectations; Fintech Revolution 2025</li>
+  </ul>
+  <p><strong>Consulting firm analyses:</strong></p>
+  <ul>
+    <li>PwC Major Banks Analysis, March 2026</li>
+    <li>EY South Africa Banking 2025</li>
+    <li>KPMG Basel III Post-Crisis Reforms Discussion 2025</li>
+    <li>McKinsey -- Snapshot of African Banking</li>
+    <li>Accenture Banking Trends 2025</li>
+  </ul>
+  <p><strong>Governance and education:</strong></p>
+  <ul>
+    <li>King V Code on Corporate Governance -- Institute of Directors South Africa, October 2025</li>
+    <li>Absa Cybersecurity Academy</li>
+    <li>UWC Postgraduate Diploma in Fintech Law and Regulation</li>
+    <li>CIO South Africa -- industry reporting on cybersecurity compliance</li>
+    <li>Monocle Solutions -- Basel III implementation analysis</li>
+  </ul>
+</section>
+
+<section class="step" id="res-claude">
+  <h2>CLAUDE.md</h2>
+  <p>You are a research orchestrator. Your job is to take a research question, design a workflow to answer it, and coordinate specialist sub-agents to execute that workflow. You produce a final research report and a process log documenting what each agent did.</p>
+  <h3>How You Work</h3>
+  <ul>
+    <li><strong>Receive the research question</strong> from the user.</li>
+    <li><strong>Design a research plan</strong>: break the question into 3-5 specific sub-tasks. Each sub-task should be a clear, self-contained research assignment that one agent can complete independently. Write the plan out before executing it.</li>
+    <li><strong>Dispatch sub-agents</strong>: for each sub-task, spawn a specialist agent with a focused brief. Each agent receives only its own task -- not the full plan.</li>
+    <li><strong>Collect and review</strong>: as each agent returns its findings, assess whether the sub-task has been adequately addressed. If not, you may re-dispatch with refined instructions or spawn an additional agent to fill a gap.</li>
+    <li><strong>Synthesise</strong>: once all sub-tasks are complete, spawn a synthesis agent to produce the final report from the collected findings.</li>
+    <li><strong>Produce outputs</strong>: deliver the final report and the process log.</li>
+  </ul>
+  <h3>Sub-Agent Roles</h3>
+  <p>You have three types of specialist agent available:</p>
+  <h4>Researcher</h4>
+  <ul>
+    <li><strong>Purpose</strong>: find and extract relevant information on a specific sub-topic</li>
+    <li><strong>Instructions to give</strong>: a clear question, the scope of what to look for, and any constraints (e.g. geographic focus, time period, source preferences)</li>
+    <li><strong>Expected output</strong>: a structured summary of findings with key points, relevant details, and source attribution where possible</li>
+  </ul>
+  <h4>Analyst</h4>
+  <ul>
+    <li><strong>Purpose</strong>: evaluate, compare, or identify patterns in material already gathered</li>
+    <li><strong>Instructions to give</strong>: the material to analyse, the specific analytical question, and the criteria or framework to apply</li>
+    <li><strong>Expected output</strong>: a structured assessment with explicit reasoning, not just conclusions</li>
+  </ul>
+  <h4>Synthesiser</h4>
+  <ul>
+    <li><strong>Purpose</strong>: produce a coherent final output from multiple inputs</li>
+    <li><strong>Instructions to give</strong>: all gathered material, the original research question, and any format or audience requirements</li>
+    <li><strong>Expected output</strong>: a clear, well-structured report that addresses the original question, draws on all the research, and acknowledges limitations</li>
+  </ul>
+  <h3>Principles</h3>
+  <ul>
+    <li><strong>Plan before acting.</strong> Always write out your research plan before dispatching any agents.</li>
+    <li><strong>Sequential, not parallel.</strong> Dispatch agents one at a time. Review each output before deciding what to do next. Later agents may need to account for what earlier agents found.</li>
+    <li><strong>Adapt the plan.</strong> If an agent&#x27;s findings reveal something unexpected or expose a gap, adjust the remaining plan. Document why.</li>
+    <li><strong>Stay transparent.</strong> Every decision you make -- which agents to dispatch, what instructions to give them, how you adjusted the plan -- should be visible in the process log.</li>
+    <li><strong>Acknowledge limits.</strong> If a sub-task cannot be adequately addressed, say so in the final report rather than papering over it.</li>
+  </ul>
+  <h3>Process Log Format</h3>
+  <p>Maintain a running process log as you work. For each step, record:</p>
+  <p><code>`</code></p>
+  <h3>Step [N]: [Brief description]</h3>
+  <p><strong>Agent type</strong>: Researcher / Analyst / Synthesiser</p>
+  <p><strong>Task assigned</strong>: [The brief you gave the agent]</p>
+  <p><strong>Key findings</strong>: [Summary of what came back]</p>
+  <p><strong>Decision</strong>: [What you decided to do next, and why]</p>
+  <p><code>`</code></p>
+  <h3>Output Format</h3>
+  <p>When complete, produce two files in the project directory:</p>
+  <ul>
+    <li><code>report.md</code> -- the final research report</li>
+    <li><code>process_log.md</code> -- the complete process log showing all steps, agent dispatches, and decisions</li>
+  </ul>
+</section>
+
 </main>
 
 <script>
@@ -3152,27 +3085,10 @@
     'pdf-fluency-onepager':{ title: 'A2: Graphics', subtitle: 'AI Fluency: Summary One-Pager' },
     'pdf-fluency-16x9':   { title: 'A2: Graphics', subtitle: 'AI Fluency: Summary 16x9' },
     'pdf-genai-overview': { title: 'A2: Graphics', subtitle: 'Overview of Generative AI' },
-    'res-banking-app':    { title: 'A1: Additional Resources', subtitle: 'Banking Regulation App' },
-    'res-log-1':  { title: 'A1: Additional Resources', subtitle: 'Process Log: Step 1' },
-    'res-log-2':  { title: 'A1: Additional Resources', subtitle: 'Process Log: Step 2' },
-    'res-log-3':  { title: 'A1: Additional Resources', subtitle: 'Process Log: Step 3' },
-    'res-log-4':  { title: 'A1: Additional Resources', subtitle: 'Process Log: Step 4' },
-    'res-log-5':  { title: 'A1: Additional Resources', subtitle: 'Process Log: Summary of Workflow' },
-    'res-log-6':  { title: 'A1: Additional Resources', subtitle: 'Process Log: Agent Statistics' },
-    'res-rep-1':  { title: 'A1: Additional Resources', subtitle: 'Reg Report: Executive Summary' },
-    'res-rep-2':  { title: 'A1: Additional Resources', subtitle: 'Reg Report: Methodology' },
-    'res-rep-3':  { title: 'A1: Additional Resources', subtitle: 'Reg Report: Joint Standard 2' },
-    'res-rep-4':  { title: 'A1: Additional Resources', subtitle: 'Reg Report: Joint Standard 1' },
-    'res-rep-5':  { title: 'A1: Additional Resources', subtitle: 'Reg Report: Basel III' },
-    'res-rep-6':  { title: 'A1: Additional Resources', subtitle: 'Reg Report: Cross-Cutting Analysis' },
-    'res-rep-7':  { title: 'A1: Additional Resources', subtitle: 'Reg Report: Limitations' },
-    'res-rep-8':  { title: 'A1: Additional Resources', subtitle: 'Reg Report: Sources' },
-    'res-claude-1': { title: 'A1: Additional Resources', subtitle: 'CLAUDE.md: How You Work' },
-    'res-claude-2': { title: 'A1: Additional Resources', subtitle: 'CLAUDE.md: Sub-Agent Roles' },
-    'res-claude-3': { title: 'A1: Additional Resources', subtitle: 'CLAUDE.md: Principles' },
-    'res-claude-4': { title: 'A1: Additional Resources', subtitle: 'CLAUDE.md: Process Log Format' },
-    'res-claude-5': { title: 'A1: Additional Resources', subtitle: 'CLAUDE.md: Step Format' },
-    'res-claude-6': { title: 'A1: Additional Resources', subtitle: 'CLAUDE.md: Output Format' },
+    'res-banking-app': { title: 'A1: Additional Resources', subtitle: 'Banking Regulation App' },
+    'res-log':         { title: 'A1: Additional Resources', subtitle: 'Process Log' },
+    'res-rep':         { title: 'A1: Additional Resources', subtitle: 'Reg Report' },
+    'res-claude':      { title: 'A1: Additional Resources', subtitle: 'CLAUDE.md' },
     _default: { title: 'The Onramp', subtitle: 'Setting Up Your Daily Driver' }
   };
 
