@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regulatory Change &amp; Digital Skills in SA Banking</title>
+<style>
+  :root {
+    --navy: #1a2332;
+    --navy-light: #243044;
+    --navy-hover: #2d3d56;
+    --accent: #3b82f6;
+    --accent-light: #60a5fa;
+    --gold: #f59e0b;
+    --green: #10b981;
+    --red: #ef4444;
+    --orange: #f97316;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --sidebar-w: 280px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* --- Sidebar --- */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: var(--sidebar-w);
+    height: 100vh;
+    background: var(--navy);
+    color: #cbd5e1;
+    overflow-y: auto;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-header {
+    padding: 28px 20px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .sidebar-header h2 {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+
+  .sidebar-header .subtitle {
+    font-size: 11px;
+    color: var(--accent-light);
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+
+  .sidebar nav { flex: 1; padding: 12px 0; }
+
+  .nav-group-label {
+    padding: 14px 20px 6px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #64748b;
+    font-weight: 700;
+  }
+
+  .sidebar nav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 20px;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+  }
+
+  .sidebar nav a:hover {
+    background: var(--navy-hover);
+    color: #e2e8f0;
+  }
+
+  .sidebar nav a.active {
+    background: rgba(59,130,246,0.1);
+    color: var(--accent-light);
+    border-left-color: var(--accent);
+  }
+
+  .nav-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+  }
+
+  .sidebar-footer {
+    padding: 16px 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 11px;
+    color: #475569;
+  }
+
+  /* --- Main content --- */
+  .main {
+    margin-left: var(--sidebar-w);
+    min-height: 100vh;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #1e3a5f 50%, #1a4a6e 100%);
+    color: white;
+    padding: 64px 48px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -20%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    max-width: 700px;
+    position: relative;
+  }
+
+  .hero .hero-sub {
+    font-size: 16px;
+    color: #93c5fd;
+    margin-top: 12px;
+    font-weight: 400;
+    position: relative;
+  }
+
+  .hero .hero-date {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    position: relative;
+  }
+
+  /* Key stats strip */
+  .stats-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stat-card {
+    padding: 28px 32px;
+    text-align: center;
+    border-right: 1px solid var(--border);
+    background: white;
+  }
+
+  .stat-card:last-child { border-right: none; }
+
+  .stat-number {
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .stat-number.red { color: var(--red); }
+  .stat-number.orange { color: var(--orange); }
+  .stat-number.navy { color: var(--navy); }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .stat-detail {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* Content area */
+  .content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 48px 80px;
+  }
+
+  .content section { margin-bottom: 56px; }
+
+  .content h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 28px 0 12px;
+  }
+
+  .content p {
+    margin-bottom: 16px;
+    font-size: 15px;
+    color: #334155;
+  }
+
+  .content ul {
+    margin: 0 0 16px 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .content ul li {
+    padding: 6px 0 6px 24px;
+    position: relative;
+    font-size: 14px;
+    color: #334155;
+  }
+
+  .content ul li::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 14px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .content strong { color: var(--text); }
+
+  /* Regulation cards */
+  .reg-card {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    margin-bottom: 32px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  .reg-card-header {
+    padding: 24px 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .rank-badge {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 800;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .rank-1 { background: linear-gradient(135deg, #dc2626, #ef4444); }
+  .rank-2 { background: linear-gradient(135deg, #d97706, #f59e0b); }
+  .rank-3 { background: linear-gradient(135deg, #2563eb, #3b82f6); }
+
+  .reg-card-title h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 0 0 4px;
+  }
+
+  .reg-card-title .tagline {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .reg-card-body { padding: 0 28px 24px; }
+
+  .meta-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .meta-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    background: #f1f5f9;
+    color: #475569;
+  }
+
+  .meta-tag.effective { background: #dcfce7; color: #166534; }
+  .meta-tag.scope { background: #dbeafe; color: #1e40af; }
+  .meta-tag.score { background: #fef3c7; color: #92400e; }
+
+  /* Score bars */
+  .score-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .score-item {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+
+  .score-item .score-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .score-bar-track {
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1s ease;
+  }
+
+  .score-bar-fill.high { background: linear-gradient(90deg, #10b981, #34d399); }
+  .score-bar-fill.mid { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+  .score-bar-fill.low { background: linear-gradient(90deg, #94a3b8, #cbd5e1); }
+
+  .score-value {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--navy);
+  }
+
+  /* Donut charts */
+  .chart-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin: 24px 0;
+  }
+
+  .donut-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .donut-wrapper {
+    width: 120px; height: 120px;
+    margin: 0 auto 14px;
+    position: relative;
+  }
+
+  .donut-wrapper svg { transform: rotate(-90deg); }
+
+  .donut-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--navy);
+  }
+
+  .donut-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* Comparison table */
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 13px;
+  }
+
+  .comparison-table th {
+    background: var(--navy);
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .comparison-table th:first-child { border-radius: 8px 0 0 0; }
+  .comparison-table th:last-child { border-radius: 0 8px 0 0; }
+
+  .comparison-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .comparison-table tr:nth-child(even) td { background: #f8fafc; }
+  .comparison-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+  .comparison-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+
+  .comparison-table .rank-num {
+    display: inline-flex;
+    width: 24px; height: 24px;
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 12px;
+    color: white;
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding: 20px 0 20px 32px;
+    margin: 24px 0;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 11px; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--accent), var(--green));
+    border-radius: 2px;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 24px;
+    padding: 16px 20px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -27px; top: 20px;
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+
+  .timeline-date {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+
+  .timeline-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .timeline-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* Callout boxes */
+  .callout {
+    padding: 20px 24px;
+    border-radius: 10px;
+    margin: 20px 0;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .callout.info {
+    background: #eff6ff;
+    border-left: 4px solid var(--accent);
+    color: #1e40af;
+  }
+
+  .callout.warning {
+    background: #fffbeb;
+    border-left: 4px solid var(--gold);
+    color: #92400e;
+  }
+
+  .callout.insight {
+    background: #f0fdf4;
+    border-left: 4px solid var(--green);
+    color: #166534;
+  }
+
+  .callout-title {
+    font-weight: 700;
+    margin-bottom: 4px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  /* Skills matrix */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .skill-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .skill-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .skill-dot.cyber { background: var(--red); }
+  .skill-dot.gov { background: var(--gold); }
+  .skill-dot.quant { background: var(--accent); }
+
+  /* Sources section */
+  .sources-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 16px;
+  }
+
+  .source-group h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .source-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .source-group ul li {
+    padding: 4px 0;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .source-group ul li::before {
+    content: none;
+  }
+
+  /* Mobile */
+  .mobile-menu-btn {
+    display: none;
+    position: fixed;
+    top: 12px; left: 12px;
+    z-index: 200;
+    width: 40px; height: 40px;
+    background: var(--navy);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 900px) {
+    .sidebar { transform: translateX(-100%); transition: transform 0.3s; }
+    .sidebar.open { transform: translateX(0); }
+    .mobile-menu-btn { display: flex; }
+    .main { margin-left: 0; }
+    .hero { padding: 56px 24px 40px; }
+    .hero h1 { font-size: 24px; }
+    .stats-strip { grid-template-columns: 1fr; }
+    .stat-card { border-right: none; border-bottom: 1px solid var(--border); }
+    .content { padding: 24px 20px 60px; }
+    .chart-row { grid-template-columns: 1fr 1fr; }
+    .sources-grid { grid-template-columns: 1fr; }
+    .score-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<button class="mobile-menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776;</button>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h2>Regulatory Change &amp; Digital Skills</h2>
+    <div class="subtitle">SA Banking Research Report</div>
+  </div>
+  <nav>
+    <div class="nav-group-label">Overview</div>
+    <a href="#hero" class="active"><span class="nav-icon">&#9670;</span> Executive Summary</a>
+    <a href="#methodology"><span class="nav-icon">&#9675;</span> Methodology</a>
+    <a href="#scoring"><span class="nav-icon">&#9675;</span> Scoring Overview</a>
+
+    <div class="nav-group-label">Top 3 Findings</div>
+    <a href="#js2"><span class="nav-icon" style="color:#ef4444">&#9632;</span> #1 Cybersecurity (JS2)</a>
+    <a href="#js1"><span class="nav-icon" style="color:#f59e0b">&#9632;</span> #2 IT Governance (JS1)</a>
+    <a href="#basel"><span class="nav-icon" style="color:#3b82f6">&#9632;</span> #3 Basel III Reforms</a>
+
+    <div class="nav-group-label">Analysis</div>
+    <a href="#cross-cutting"><span class="nav-icon">&#9675;</span> Cumulative Effect</a>
+    <a href="#timeline"><span class="nav-icon">&#9675;</span> Compliance Timeline</a>
+    <a href="#pipeline"><span class="nav-icon">&#9675;</span> The Pipeline Problem</a>
+    <a href="#excluded"><span class="nav-icon">&#9675;</span> Close Calls</a>
+
+    <div class="nav-group-label">Reference</div>
+    <a href="#limitations"><span class="nav-icon">&#9675;</span> Limitations</a>
+    <a href="#sources"><span class="nav-icon">&#9675;</span> Sources</a>
+  </nav>
+  <div class="sidebar-footer">April 2026 &middot; Research Orchestrator</div>
+</aside>
+
+<!-- Main -->
+<div class="main">
+
+  <!-- Hero -->
+  <header class="hero" id="hero">
+    <div class="hero-date">Research Report &middot; April 2026</div>
+    <h1>Regulatory Change and Digital Skills in South African Banking</h1>
+    <p class="hero-sub">The three most significant regulatory developments since January 2024</p>
+  </header>
+
+  <!-- Key Stats -->
+  <div class="stats-strip">
+    <div class="stat-card">
+      <div class="stat-number red">63%</div>
+      <div class="stat-label">Cyber roles unfilled</div>
+      <div class="stat-detail">~35,000 vacancies nationally (CSIR 2024)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number orange">43%</div>
+      <div class="stat-label">Banking vacancies</div>
+      <div class="stat-detail">Due to lack of relevant skills (BankSETA)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number navy">3</div>
+      <div class="stat-label">Binding standards</div>
+      <div class="stat-detail">All effective by July 2025</div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- Executive Summary -->
+    <section id="summary">
+      <h2>Executive Summary</h2>
+      <p>Since January 2024, South African banking has entered a period of unprecedented regulatory intensity around digital capability. Three regulatory changes stand out for their combined breadth, binding force, and skills implications: the <strong>Joint Standard on Cybersecurity and Cyber Resilience</strong> (JS2 of 2024), the <strong>Joint Standard on IT Governance and Risk Management</strong> (JS1 of 2023), and the <strong>Basel III Post-Crisis Reforms</strong> (effective July 2025).</p>
+      <p>Together, these instruments require banks to build layered digital competencies &mdash; from board-level technology literacy to specialist quantitative modelling &mdash; at a time when South Africa faces acute shortages in cybersecurity professionals, IT governance practitioners, and data scientists. The gap between regulatory expectation and workforce reality is widening.</p>
+    </section>
+
+    <!-- Methodology -->
+    <section id="methodology">
+      <h2>Methodology</h2>
+      <p>This report synthesises publicly available regulatory texts, supervisory communications, sector skills plans, industry surveys, and consulting firm analyses published between January 2024 and April 2026.</p>
+      <p>The three regulatory changes were selected and ranked using a scoring framework based on three criteria, each scored on a five-point scale (maximum composite: 15):</p>
+      <div class="score-grid">
+        <div class="score-item">
+          <div class="score-label">Breadth</div>
+          <p style="font-size:12px;color:#64748b;margin:4px 0 0">Institutional &amp; role scope</p>
+        </div>
+        <div class="score-item">
+          <div class="score-label">Urgency</div>
+          <p style="font-size:12px;color:#64748b;margin:4px 0 0">Binding force &amp; timeline</p>
+        </div>
+        <div class="score-item">
+          <div class="score-label">Skills Gap</div>
+          <p style="font-size:12px;color:#64748b;margin:4px 0 0">Severity &amp; novelty</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scoring Overview -->
+    <section id="scoring">
+      <h2>Scoring Overview</h2>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th style="width:36px">#</th>
+            <th>Regulatory Change</th>
+            <th style="width:70px">Breadth</th>
+            <th style="width:70px">Urgency</th>
+            <th style="width:80px">Skills Gap</th>
+            <th style="width:70px">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="rank-num rank-1">1</span></td>
+            <td><strong>Cybersecurity &amp; Cyber Resilience (JS2)</strong></td>
+            <td>5 / 5</td>
+            <td>5 / 5</td>
+            <td>5 / 5</td>
+            <td><strong>15</strong></td>
+          </tr>
+          <tr>
+            <td><span class="rank-num rank-2">2</span></td>
+            <td><strong>IT Governance &amp; Risk Management (JS1)</strong></td>
+            <td>5 / 5</td>
+            <td>5 / 5</td>
+            <td>3 / 5</td>
+            <td><strong>13</strong></td>
+          </tr>
+          <tr>
+            <td><span class="rank-num rank-3">3</span></td>
+            <td><strong>Basel III Post-Crisis Reforms</strong></td>
+            <td>3 / 5</td>
+            <td>5 / 5</td>
+            <td>4 / 5</td>
+            <td><strong>12</strong></td>
+          </tr>
+          <tr>
+            <td style="color:#94a3b8">4</td>
+            <td style="color:#64748b">POPIA Amendments</td>
+            <td>4 / 5</td>
+            <td>5 / 5</td>
+            <td>2 / 5</td>
+            <td>11</td>
+          </tr>
+          <tr>
+            <td style="color:#94a3b8">5</td>
+            <td style="color:#64748b">Cloud Computing Guidance</td>
+            <td>4 / 5</td>
+            <td>2 / 5</td>
+            <td>3 / 5</td>
+            <td>9</td>
+          </tr>
+          <tr>
+            <td style="color:#94a3b8">6</td>
+            <td style="color:#64748b">AI in Financial Sector Report</td>
+            <td>3 / 5</td>
+            <td>1 / 5</td>
+            <td>4 / 5</td>
+            <td>8</td>
+          </tr>
+          <tr>
+            <td style="color:#94a3b8">7</td>
+            <td style="color:#64748b">Open Finance Recommendations</td>
+            <td>3 / 5</td>
+            <td>1 / 5</td>
+            <td>3 / 5</td>
+            <td>7</td>
+          </tr>
+          <tr>
+            <td style="color:#94a3b8">8</td>
+            <td style="color:#64748b">King V Code</td>
+            <td>3 / 5</td>
+            <td>2 / 5</td>
+            <td>2 / 5</td>
+            <td>7</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- #1 Cybersecurity -->
+    <section id="js2">
+      <h2>#1 &mdash; Cybersecurity &amp; Cyber Resilience</h2>
+
+      <div class="reg-card">
+        <div class="reg-card-header">
+          <div class="rank-badge rank-1">1</div>
+          <div class="reg-card-title">
+            <h3>Joint Standard 2 of 2024</h3>
+            <div class="tagline">The highest-impact regulatory change assessed &mdash; perfect score</div>
+          </div>
+        </div>
+        <div class="reg-card-body">
+          <div class="meta-row">
+            <span class="meta-tag scope">All financial institutions</span>
+            <span class="meta-tag effective">Effective 1 June 2025</span>
+            <span class="meta-tag score">Score: 15 / 15</span>
+          </div>
+          <div class="score-grid">
+            <div class="score-item">
+              <div class="score-label">Breadth</div>
+              <div class="score-bar-track"><div class="score-bar-fill high" style="width:100%"></div></div>
+              <div class="score-value">5/5</div>
+            </div>
+            <div class="score-item">
+              <div class="score-label">Urgency</div>
+              <div class="score-bar-track"><div class="score-bar-fill high" style="width:100%"></div></div>
+              <div class="score-value">5/5</div>
+            </div>
+            <div class="score-item">
+              <div class="score-label">Skills Gap</div>
+              <div class="score-bar-track"><div class="score-bar-fill high" style="width:100%"></div></div>
+              <div class="score-value">5/5</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3>What It Requires</h3>
+      <p>Issued jointly by the Prudential Authority and FSCA, this Standard applies to <strong>all financial institutions</strong> &mdash; banks, insurers, retirement funds, fund administrators, and collective investment scheme managers. It establishes minimum requirements across the full cybersecurity lifecycle:</p>
+      <ul>
+        <li>A cybersecurity strategy and framework</li>
+        <li>Identification and classification of business processes and information assets</li>
+        <li><strong>Annual cybersecurity awareness training</strong> for governing bodies and all users</li>
+        <li>Data loss prevention policies</li>
+        <li>Tested, auditable incident response plans with executive involvement</li>
+        <li>A dedicated cybersecurity officer (recommended, distinct from IT manager)</li>
+      </ul>
+
+      <h3>Skills Demanded</h3>
+      <div class="skills-grid">
+        <div class="skill-pill"><span class="skill-dot cyber"></span>Cybersecurity strategy</div>
+        <div class="skill-pill"><span class="skill-dot cyber"></span>Cyber risk assessment</div>
+        <div class="skill-pill"><span class="skill-dot cyber"></span>Asset classification</div>
+        <div class="skill-pill"><span class="skill-dot cyber"></span>Network security &amp; DLP</div>
+        <div class="skill-pill"><span class="skill-dot cyber"></span>Incident response</div>
+        <div class="skill-pill"><span class="skill-dot cyber"></span>Awareness programme design</div>
+        <div class="skill-pill"><span class="skill-dot cyber"></span>Threat intelligence</div>
+      </div>
+
+      <h3>The Skills Gap</h3>
+      <div class="chart-row">
+        <div class="donut-card">
+          <div class="donut-wrapper">
+            <svg width="120" height="120" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#e2e8f0" stroke-width="12"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#ef4444" stroke-width="12"
+                stroke-dasharray="198 316" stroke-linecap="round"/>
+            </svg>
+            <div class="donut-center">63%</div>
+          </div>
+          <div class="donut-label">Cybersecurity roles<br>partially or fully unfilled</div>
+        </div>
+        <div class="donut-card">
+          <div class="donut-wrapper">
+            <svg width="120" height="120" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#e2e8f0" stroke-width="12"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#f97316" stroke-width="12"
+                stroke-dasharray="236 316" stroke-linecap="round"/>
+            </svg>
+            <div class="donut-center">75%</div>
+          </div>
+          <div class="donut-label">Companies report<br>difficulty recruiting</div>
+        </div>
+        <div class="donut-card">
+          <div class="donut-wrapper">
+            <svg width="120" height="120" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#e2e8f0" stroke-width="12"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#f59e0b" stroke-width="12"
+                stroke-dasharray="220 316" stroke-linecap="round"/>
+            </svg>
+            <div class="donut-center">70%</div>
+          </div>
+          <div class="donut-label">FIs say skills shortages<br>create additional risk</div>
+        </div>
+      </div>
+      <p>The CSIR 2024 survey found approximately <strong>35,000 cybersecurity positions vacant nationally</strong>, with 38% of applicants possessing less than a quarter of required qualifications. This is not a marginal shortfall &mdash; it is a structural deficit.</p>
+    </section>
+
+    <!-- #2 IT Governance -->
+    <section id="js1">
+      <h2>#2 &mdash; IT Governance &amp; Risk Management</h2>
+
+      <div class="reg-card">
+        <div class="reg-card-header">
+          <div class="rank-badge rank-2">2</div>
+          <div class="reg-card-title">
+            <h3>Joint Standard 1 of 2023</h3>
+            <div class="tagline">The foundational governance architecture</div>
+          </div>
+        </div>
+        <div class="reg-card-body">
+          <div class="meta-row">
+            <span class="meta-tag scope">All financial institutions</span>
+            <span class="meta-tag effective">Effective 15 Nov 2024</span>
+            <span class="meta-tag score">Score: 13 / 15</span>
+          </div>
+          <div class="score-grid">
+            <div class="score-item">
+              <div class="score-label">Breadth</div>
+              <div class="score-bar-track"><div class="score-bar-fill high" style="width:100%"></div></div>
+              <div class="score-value">5/5</div>
+            </div>
+            <div class="score-item">
+              <div class="score-label">Urgency</div>
+              <div class="score-bar-track"><div class="score-bar-fill high" style="width:100%"></div></div>
+              <div class="score-value">5/5</div>
+            </div>
+            <div class="score-item">
+              <div class="score-label">Skills Gap</div>
+              <div class="score-bar-track"><div class="score-bar-fill mid" style="width:60%"></div></div>
+              <div class="score-value">3/5</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3>What It Requires</h3>
+      <p>Already in force, JS1 requires governing bodies to approve the institution's IT strategy and mandates comprehensive oversight of IT internal controls and risk management. The IT function must be headed by a <strong>qualified individual</strong> who is part of senior management.</p>
+      <p>A comprehensive IT governance and risk management training programme is mandated for <strong>all levels</strong>, reviewed annually.</p>
+
+      <h3>Skills Demanded</h3>
+      <div class="skills-grid">
+        <div class="skill-pill"><span class="skill-dot gov"></span>COBIT / ITIL / ISO 27001</div>
+        <div class="skill-pill"><span class="skill-dot gov"></span>IT risk management</div>
+        <div class="skill-pill"><span class="skill-dot gov"></span>IT strategy development</div>
+        <div class="skill-pill"><span class="skill-dot gov"></span>Change management</div>
+        <div class="skill-pill"><span class="skill-dot gov"></span>Data protection (POPIA)</div>
+        <div class="skill-pill"><span class="skill-dot gov"></span>Business continuity / DR</div>
+        <div class="skill-pill"><span class="skill-dot gov"></span>IT audit &amp; assurance</div>
+      </div>
+
+      <h3>The Skills Gap</h3>
+      <p>The challenge here is <strong>diffusion, not novelty</strong>. IT governance is an established discipline, but extending these competencies to boards of smaller institutions, and exercising the judgement required by the Standard's principles-based approach, is where the gap lies.</p>
+
+      <div class="callout info">
+        <div class="callout-title">Key Relationship</div>
+        JS1 is <strong>foundational</strong> to JS2. The IT governance architecture provides the structural framework within which cybersecurity capabilities must operate. Failure to comply with JS1 cascades into non-compliance with JS2 and emerging cloud and AI standards.
+      </div>
+
+      <div class="chart-row">
+        <div class="donut-card">
+          <div class="donut-wrapper">
+            <svg width="120" height="120" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#e2e8f0" stroke-width="12"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#f59e0b" stroke-width="12"
+                stroke-dasharray="135 316" stroke-linecap="round"/>
+            </svg>
+            <div class="donut-center">43%</div>
+          </div>
+          <div class="donut-label">Banking vacancies due to<br>insufficient skills &amp; education</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- #3 Basel III -->
+    <section id="basel">
+      <h2>#3 &mdash; Basel III Post-Crisis Reforms</h2>
+
+      <div class="reg-card">
+        <div class="reg-card-header">
+          <div class="rank-badge rank-3">3</div>
+          <div class="reg-card-title">
+            <h3>Basel III Reforms ("Basel IV")</h3>
+            <div class="tagline">The specialist quantitative challenge</div>
+          </div>
+        </div>
+        <div class="reg-card-body">
+          <div class="meta-row">
+            <span class="meta-tag scope">Licensed banks only</span>
+            <span class="meta-tag effective">Effective 1 July 2025</span>
+            <span class="meta-tag score">Score: 12 / 15</span>
+          </div>
+          <div class="score-grid">
+            <div class="score-item">
+              <div class="score-label">Breadth</div>
+              <div class="score-bar-track"><div class="score-bar-fill mid" style="width:60%"></div></div>
+              <div class="score-value">3/5</div>
+            </div>
+            <div class="score-item">
+              <div class="score-label">Urgency</div>
+              <div class="score-bar-track"><div class="score-bar-fill high" style="width:100%"></div></div>
+              <div class="score-value">5/5</div>
+            </div>
+            <div class="score-item">
+              <div class="score-label">Skills Gap</div>
+              <div class="score-bar-track"><div class="score-bar-fill high" style="width:80%"></div></div>
+              <div class="score-value">4/5</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3>What It Requires</h3>
+      <p>The final tranche of internationally agreed prudential standards: revised credit risk approaches (standardised and IRB), a new operational risk framework, an updated leverage ratio, and the output floor (phasing in at 60%). Compliance requires <strong>significant data infrastructure and risk modelling systems upgrades</strong>.</p>
+
+      <h3>Skills Demanded</h3>
+      <div class="skills-grid">
+        <div class="skill-pill"><span class="skill-dot quant"></span>Quantitative risk modelling</div>
+        <div class="skill-pill"><span class="skill-dot quant"></span>Data infrastructure</div>
+        <div class="skill-pill"><span class="skill-dot quant"></span>Regulatory reporting</div>
+        <div class="skill-pill"><span class="skill-dot quant"></span>Capital adequacy analytics</div>
+        <div class="skill-pill"><span class="skill-dot quant"></span>Model validation</div>
+        <div class="skill-pill"><span class="skill-dot quant"></span>Systems integration</div>
+      </div>
+
+      <h3>The Pipeline Problem</h3>
+      <p>The skills gap here is <strong>structural and worsening</strong>. Declining matric pass rates in mathematics and physical sciences are shrinking the pipeline of students who can enter quantitative university programmes.</p>
+
+      <div class="callout warning">
+        <div class="callout-title">Structural Constraint</div>
+        A student who does not pass matric mathematics at the required level cannot enter the university programmes that produce risk modellers and data scientists. This is not a gap that corporate training can close &mdash; it is a pipeline problem rooted in the education system. McKinsey projects a persistent talent shortage through at least 2030.
+      </div>
+    </section>
+
+    <!-- Cross-cutting -->
+    <section id="cross-cutting">
+      <h2>The Cumulative Effect</h2>
+      <h3>Layered Demands, Compounding Gaps</h3>
+      <p>These regulatory changes impose <strong>layered and interdependent demands</strong> on the same institutions, often on the same teams, within overlapping timeframes. A mid-tier bank in mid-2025 must simultaneously:</p>
+      <ul>
+        <li><strong>Maintain IT governance architecture</strong> under JS1 (in force since November 2024)</li>
+        <li><strong>Achieve cybersecurity compliance</strong> under JS2 (June 2025)</li>
+        <li><strong>Complete Basel III systems upgrades</strong> (July 2025)</li>
+        <li><strong>Continue meeting POPIA, cloud, and conduct obligations</strong></li>
+      </ul>
+      <p>The IT governance professional, the cybersecurity specialist, and the quantitative risk modeller are different people with different training &mdash; but they must work within integrated frameworks. Scarcity in any one domain creates bottlenecks that affect all the others.</p>
+
+      <div class="callout insight">
+        <div class="callout-title">King V Amplification</div>
+        The King V Code (effective January 2026) establishes data, technology, and AI as a standalone governance pillar: boards must be <em>"technologically literate, not just financially literate."</em> Directors can no longer delegate technology oversight entirely to management.
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section id="timeline">
+      <h2>Compliance Timeline</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">15 November 2024</div>
+          <div class="timeline-title">JS1 &mdash; IT Governance &amp; Risk Management</div>
+          <div class="timeline-desc">All financial institutions must comply. Comprehensive training programme and annual framework review required.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">17 April 2025</div>
+          <div class="timeline-title">POPIA Amendments</div>
+          <div class="timeline-desc">Immediately effective, no transition period. Multi-channel consent and enhanced DSAR handling required.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">1 June 2025</div>
+          <div class="timeline-title">JS2 &mdash; Cybersecurity &amp; Cyber Resilience</div>
+          <div class="timeline-desc">Annual cybersecurity training for all levels. Auditable incident response plans. Dedicated cyber officer recommended.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">1 July 2025</div>
+          <div class="timeline-title">Basel III Post-Crisis Reforms</div>
+          <div class="timeline-desc">Revised credit/market/operational risk frameworks. Output floor phasing in at 60%. Major systems upgrades required.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">January 2026</div>
+          <div class="timeline-title">King V Code</div>
+          <div class="timeline-desc">Data, technology, and AI become a standalone governance pillar. Board technology literacy expected.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pipeline Problem -->
+    <section id="pipeline">
+      <h2>The Pipeline Problem</h2>
+      <p>The <strong>BankSETA Sector Skills Plans</strong> identify cybersecurity, data analytics, and digital platform management as the most critical gaps. The <strong>Institute of Bankers in South Africa</strong> has identified five key future banker skills:</p>
+
+      <div class="skills-grid">
+        <div class="skill-pill"><span class="skill-dot cyber"></span>Cybersecurity &amp; Data Protection</div>
+        <div class="skill-pill"><span class="skill-dot quant"></span>Data Analytics &amp; Interpretation</div>
+        <div class="skill-pill"><span class="skill-dot gov"></span>Digital Platform Management</div>
+        <div class="skill-pill"><span class="skill-dot gov"></span>Customer Experience Design</div>
+        <div class="skill-pill"><span class="skill-dot quant"></span>Regulatory Technology (RegTech)</div>
+      </div>
+
+      <p><strong>PwC, EY, KPMG, Deloitte, Accenture, and McKinsey</strong> all flag the convergence of regulatory technology demands and workforce skills gaps as a defining challenge for South African banking. IT spending is tracking above inflation, but banks struggle to attract and retain qualified talent in a globally competitive market.</p>
+
+      <p>The root of the problem extends beyond banking. <strong>Declining secondary-school pass rates in mathematics and physical sciences</strong> constrain the pipeline of students entering quantitative and technical university programmes. This structural limitation implies the skills gap will persist &mdash; and potentially widen &mdash; through the end of the decade.</p>
+    </section>
+
+    <!-- Excluded -->
+    <section id="excluded">
+      <h2>Close Calls</h2>
+      <p>Two regulatory developments came close to inclusion but fell short:</p>
+
+      <div class="reg-card" style="border-left:4px solid #f59e0b">
+        <div class="reg-card-body" style="padding-top:20px">
+          <p><strong>POPIA Amendments</strong> (scored 11/15) &mdash; High urgency (immediately effective, no transition period) but incremental skills demands on institutions that have already invested in POPIA compliance since 2021.</p>
+        </div>
+      </div>
+
+      <div class="reg-card" style="border-left:4px solid #8b5cf6">
+        <div class="reg-card-body" style="padding-top:20px">
+          <p><strong>AI in Financial Sector Report</strong> (scored 8/15) &mdash; Highest future potential. Found that 53% of financial sector staff lack AI training and governance frameworks are immature. However, it carries zero binding regulatory force today. When binding AI standards emerge, this area will almost certainly enter the top tier.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Limitations -->
+    <section id="limitations">
+      <h2>Limitations</h2>
+      <ul>
+        <li><strong>Data availability</strong> &mdash; relies on publicly available sources as of April 2026; internal compliance data and supervisory assessments are not reflected</li>
+        <li><strong>Methodological variation</strong> &mdash; skills gap statistics from different sources use different methodologies, sample frames, and timeframes</li>
+        <li><strong>Ranking sensitivity</strong> &mdash; different criteria weighting could yield different rankings; weighting future impact more heavily would elevate AI governance</li>
+        <li><strong>Regulatory pipeline</strong> &mdash; binding AI governance standards, a cloud computing standard, and the COFI Bill could substantially alter the landscape</li>
+        <li><strong>Sector focus</strong> &mdash; analysis focuses on banking specifically; dynamics in insurance, retirement funds, and other sub-sectors may differ</li>
+      </ul>
+    </section>
+
+    <!-- Sources -->
+    <section id="sources">
+      <h2>Sources</h2>
+      <div class="sources-grid">
+        <div class="source-group">
+          <h4>Regulatory Instruments</h4>
+          <ul>
+            <li>Joint Standard 2 of 2024 (Cybersecurity) &mdash; PA &amp; FSCA</li>
+            <li>Joint Standard 1 of 2023 (IT Governance) &mdash; PA &amp; FSCA</li>
+            <li>Basel III Reforms &mdash; National Treasury; Prudential Communication 18/2024</li>
+            <li>PA Regulatory Strategy 2025-2030 &mdash; SARB</li>
+          </ul>
+        </div>
+        <div class="source-group">
+          <h4>Legal &amp; Compliance</h4>
+          <ul>
+            <li>Michalsons &mdash; JS2 cybersecurity analysis</li>
+            <li>ITLawCo &mdash; Joint Standards commentary</li>
+            <li>ENSafrica &mdash; IT governance analysis</li>
+            <li>Masthead &mdash; JS1 compliance guidance</li>
+            <li>LawLibrary &mdash; regulatory text</li>
+          </ul>
+        </div>
+        <div class="source-group">
+          <h4>Industry Surveys &amp; Research</h4>
+          <ul>
+            <li>CSIR 2024 National Cybersecurity Survey</li>
+            <li>Deloitte/AFIS 2024 African Financial Industry Barometer</li>
+            <li>BankSETA Sector Skills Plans 2024-2030</li>
+            <li>BASA Annual Report &amp; Transformation Report 2024</li>
+            <li>IOBSA &mdash; Regulatory Expectations; Fintech Revolution 2025</li>
+          </ul>
+        </div>
+        <div class="source-group">
+          <h4>Consulting &amp; Governance</h4>
+          <ul>
+            <li>PwC Major Banks Analysis, March 2026</li>
+            <li>EY South Africa Banking 2025</li>
+            <li>KPMG Basel III Discussion 2025</li>
+            <li>McKinsey &mdash; Snapshot of African Banking</li>
+            <li>Accenture Banking Trends 2025</li>
+            <li>King V Code &mdash; IoDSA, October 2025</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<script>
+  // Active nav tracking on scroll
+  const sections = document.querySelectorAll('section[id], header[id], div.timeline');
+  const navLinks = document.querySelectorAll('.sidebar nav a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        if (!id) return;
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+  document.querySelectorAll('[id]').forEach(el => observer.observe(el));
+
+  // Close mobile sidebar on link click
+  document.querySelectorAll('.sidebar nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.sidebar').classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>
