@@ -517,6 +517,15 @@
     <a href="#dr2-s7" data-group="deep-research2">7. The Direction Repertoire</a>
     <a href="#dr2-s8" data-group="deep-research2">8. Homework</a>
   </div>
+  <button class="nav-group-btn" data-target="nav-s6">S6: The Horizon</button>
+  <div class="nav-sublinks" id="nav-s6">
+    <a href="#s6-s1" data-group="s6">1. Where This Session Fits</a>
+    <a href="#s6-s2" data-group="s6">2. Key Concepts</a>
+    <a href="#s6-s3" data-group="s6">3. The Demo</a>
+    <a href="#s6-s4" data-group="s6">4. Evaluation Still Applies</a>
+    <a href="#s6-s5" data-group="s6">5. The Design Spectrum</a>
+    <a href="#s6-s6" data-group="s6">6. The Course Arc</a>
+  </div>
   <button class="nav-group-btn" data-target="nav-resources">A1: Additional Resources</button>
   <div class="nav-sublinks" id="nav-resources">
     <a href="#res-general" data-group="resources">General Links</a>
@@ -3037,6 +3046,117 @@
   </ul>
 </section>
 
+
+<section class="step" id="s6-s1">
+  <h2>1. Where This Session Fits</h2>
+  <p class="subtitle" style="margin-bottom:24px;">Session 6: The Horizon -- Agentic Teams and One-Shot Building</p>
+  <p>In Session 3, you submitted a research question to three canned Deep Research tools and evaluated what came back. The tools did everything -- search strategy, source selection, analysis, report writing. You had no control over how they worked. Your skill was Evaluation.</p>
+  <p>In Sessions 4 and 5, you took control. You designed your own research process, wrote the instructions, curated the sources, managed the workflow step by step, and integrated offline material. You controlled Direction and Input. Evaluation was woven in throughout.</p>
+  <p>This session shows what happens when you hand the orchestration itself to an AI. You write a specification -- a natural language document describing what agents you want, how they should coordinate, and what principles they should follow. An AI orchestrator reads that spec and executes the workflow autonomously.</p>
+  <p>The key insight: the specification is Direction. It is the same skill you have been building all course -- writing clear, structured instructions that guide AI behaviour -- applied at a higher level of abstraction. Instead of directing a single conversation, you are directing an entire research operation.</p>
+</section>
+
+<section class="step" id="s6-s2">
+  <h2>2. Key Concepts</h2>
+  <p class="subtitle" style="margin-bottom:24px;">Session 6: The Horizon -- Agentic Teams and One-Shot Building</p>
+  <h3>Multi-Agent Orchestration</h3>
+  <p>A single AI conversation -- even a powerful one -- is one model doing one thing at a time. Multi-agent orchestration changes this: a coordinating agent breaks a task into sub-tasks and dispatches specialist agents to handle each one. The orchestrator manages the workflow, passes outputs between agents, and assembles the final result.</p>
+  <p>This is not a metaphor. The orchestrator literally spawns separate AI instances, each with its own brief, and coordinates their work. The specialist agents do not see each other&#x27;s instructions -- they receive only their own task and return their findings to the orchestrator.</p>
+  <h3>The Orchestration Spec</h3>
+  <p>The orchestrator&#x27;s behaviour is defined by a specification file -- in this demo, a file called CLAUDE.md written in plain English. The spec describes:</p>
+  <ul>
+    <li>The orchestrator&#x27;s role and workflow (receive question, design plan, dispatch agents, collect results, synthesise)</li>
+    <li>The types of specialist agent available (Researcher, Analyst, Synthesiser) and what each does</li>
+    <li>Operating principles (plan before acting, sequential dispatch, adapt if needed, stay transparent)</li>
+    <li>Output requirements (a final report and a process log)</li>
+  </ul>
+  <p>The spec is independent of the research question. It describes how to work, not what to work on. The question is provided separately at launch. This is exactly like writing standing instructions for a human research team.</p>
+  <h3>The Claw Model</h3>
+  <p>The demo in this session shows orchestration and multi-agent coordination -- the core of what makes agentic systems powerful. A full production implementation (sometimes called a &quot;Claw&quot;) would go further:</p>
+  <ul>
+    <li>Persistent state and memory -- the system maintains context across sessions, days, or weeks</li>
+    <li>Continuous execution loop -- observe, check for instructions, decide, act, update memory, repeat</li>
+    <li>Local environment access -- email, calendars, file systems, messaging apps, code repositories</li>
+    <li>Event-driven triggers -- the system responds to external events, not just user commands</li>
+  </ul>
+  <p>We are not building or recommending a full Claw in this course. The security implications of a persistent AI agent with access to your local environment require careful institutional consideration. But the orchestration pattern demonstrated in this session is the foundation these systems are built on.</p>
+</section>
+
+<section class="step" id="s6-s3">
+  <h2>3. The Demo</h2>
+  <p class="subtitle" style="margin-bottom:24px;">Session 6: The Horizon -- Agentic Teams and One-Shot Building</p>
+  <h3>Setup</h3>
+  <p>The entire setup consists of three things:</p>
+  <ul>
+    <li>A project directory -- an empty folder on your computer</li>
+    <li>A CLAUDE.md file -- the natural language orchestration spec, approximately one page</li>
+    <li>Claude Code -- launched from the terminal in the project directory</li>
+  </ul>
+  <p>No code. No configuration files. No technical setup beyond what is described above.</p>
+  <h3>The Research Question</h3>
+  <p>&quot;What are the three most significant regulatory changes affecting digital skills requirements in South African banking since January 2024?&quot;</p>
+  <p>This question was chosen because it is narrow enough to be answerable in a single run, complex enough to require genuine decomposition into sub-tasks, and directly connected to the course&#x27;s domain.</p>
+  <h3>What Happened</h3>
+  <p>The orchestrator read the CLAUDE.md spec and designed a four-step research plan:</p>
+  <p>Step 1: Researcher -- regulatory landscape scan. Identify all notable regulatory changes affecting South African banking since January 2024. The agent conducted 61 web searches across regulatory bodies, legislation databases, and industry sources, identifying over 30 distinct regulatory changes. Duration: 14 minutes.</p>
+  <p>Step 2: Researcher -- digital skills implications. For each of the most significant regulatory changes identified in Step 1, research the specific digital skills they demand, who needs them, and what evidence exists of skills gaps. The agent conducted 67 searches, working from the first researcher&#x27;s findings. Duration: 10 minutes.</p>
+  <p>Step 3: Analyst -- significance assessment. Evaluate the regulatory changes against three criteria -- breadth of impact, urgency of compliance, and severity of skills gap -- scoring each on a five-point scale. The analyst used zero web searches, working entirely from the material the two researchers had gathered. Duration: 2 minutes.</p>
+  <p>Step 4: Synthesiser -- final report. Produce a structured research report from all accumulated findings, with executive summary, methodology, detailed analysis of the top three changes, cross-cutting analysis, limitations, and sources. Zero web searches. Duration: 2 minutes.</p>
+  <p>The pattern is clear: research was the expensive part -- 128 searches, 87% of the total time. Analysis and synthesis were fast once the inputs were strong. This maps directly onto human experience: gathering and curating sources is where the time goes. Writing is comparatively quick.</p>
+  <h3>The Findings</h3>
+  <p>The orchestrator identified three regulatory changes as most significant:</p>
+  <ul>
+    <li>Joint Standard 2 of 2024 -- Cybersecurity and Cyber Resilience (scored 15/15). Universal scope across all financial institutions, binding, mandates annual cybersecurity training at all levels including boards. The skills gap is the most acute: 63% of cybersecurity roles nationally partially or fully unfilled.</li>
+    <li>Joint Standard 1 of 2023 -- IT Governance and Risk Management (scored 13/15). Same broad scope, in force since November 2024. Foundational to all other digital compliance -- failure here cascades into non-compliance with cybersecurity, cloud, and AI standards.</li>
+    <li>Basel III Post-Crisis Reforms (scored 12/15). Effective July 2025, demands specialist quantitative skills -- risk modelling, data engineering, model validation -- that are structurally scarce due to declining STEM education pipeline.</li>
+  </ul>
+  <h3>The Process Log</h3>
+  <p>The orchestrator produced a complete process log documenting every step: what agent was dispatched, what brief it received, what it found, and what the orchestrator decided to do next. This log is the evidence of orchestration -- it shows that the system planned, coordinated, and made editorial decisions, not just ran four independent queries.</p>
+  <h3>The One-Shot App Build</h3>
+  <p>After the research run, a single instruction to Claude Code --</p>
+  <p>Can you build me a website that takes the findings in the report and shows them in a nice way. Maybe a left hand side panel allowing the user to click on the subsections, and maybe add some graphics. Just a nice HTML.</p>
+  <p>-- produced a working interactive website presenting the research findings, built in under two minutes. The point is not that you can now build websites. It is that the output of any AI-assisted process can be turned into a shareable, interactive product with minimal effort.</p>
+</section>
+
+<section class="step" id="s6-s4">
+  <h2>4. Evaluation Still Applies</h2>
+  <p class="subtitle" style="margin-bottom:24px;">Session 6: The Horizon -- Agentic Teams and One-Shot Building</p>
+  <p>The report looks impressive. The process log shows sophisticated coordination. The website presents it beautifully.</p>
+  <p>Now apply the rubric from Session 3.</p>
+  <ul>
+    <li>Are the statistics real? The report claims 63% of cybersecurity roles are unfilled, citing a CSIR 2024 survey. Does that survey exist? Does it say what the report claims?</li>
+    <li>Are the regulatory instruments correctly described? Joint Standard 2 of 2024 is cited with a specific effective date. Is that accurate?</li>
+    <li>Are the sources genuine? The report cites specific regulatory communications and industry reports. Do they exist as described?</li>
+    <li>Where are the hedges? The limitations section is substantive -- but are there claims in the body of the report that should be qualified but are not?</li>
+  </ul>
+  <p>The point: an agentic system produces output that requires the same critical evaluation as any other AI output. The orchestration is more sophisticated. The research is more thorough. The report is more structured. But the fundamental question has not changed: can you stand behind every claim in this document?</p>
+  <p>This is what the course has been building toward. Not a toolset -- a capability.</p>
+</section>
+
+<section class="step" id="s6-s5">
+  <h2>5. The Design Spectrum</h2>
+  <p class="subtitle" style="margin-bottom:24px;">Session 6: The Horizon -- Agentic Teams and One-Shot Building</p>
+  <p>You now have four approaches to AI-assisted research. Each is appropriate for different questions, audiences, and stakes.</p>
+  <p>Option 1: Canned Deep Research</p>
+  <p>You write a question. The system handles everything. You have no control over Direction. Your skill is Evaluation. Appropriate when: the question is well-defined, the stakes are moderate, and speed matters. This is what you saw in Session 3.</p>
+  <p>Option 2: Customised process with human-managed workflow</p>
+  <p>You design the workflow, write the instructions, curate the sources, and manage the process. Humans are in the loop throughout. You control Direction and Input. Appropriate when: the question is complex, the stakes are high, source control matters, and the output must be defensible. This is what you built in Sessions 4 and 5.</p>
+  <p>Option 3: Fully agentic orchestration</p>
+  <p>You write a specification. An AI orchestrator designs and executes the workflow autonomously. You control Direction at the spec level. Appropriate when: the question is well-scoped, speed and scale matter, and you have strong evaluation capability. This is what you saw today.</p>
+  <p>Option 4: Hybrid -- human-designed workflow with agentic sub-loops</p>
+  <p>You design the overall workflow. You decide which steps need human judgment and which can be handed to agentic sub-processes. You mix canned tools where they are sufficient, custom agents where they are needed, and human checkpoints where the stakes require it.</p>
+  <p>This is where the real skill lives. It requires understanding all three of the other options well enough to know when each is appropriate. It is a genuine design capability -- not tool use, but system design informed by the nature of the question and the stakes of the answer.</p>
+</section>
+
+<section class="step" id="s6-s6">
+  <h2>6. The Course Arc</h2>
+  <p class="subtitle" style="margin-bottom:24px;">Session 6: The Horizon -- Agentic Teams and One-Shot Building</p>
+  <p>You started this course learning to evaluate what a canned tool gives you. You end it knowing how to design a system that combines canned tools, customised processes, and agentic orchestration -- choosing the right approach based on the question and the stakes.</p>
+  <p>That is not a toolkit for 2026. The interfaces will change. The tools will evolve. The models will get more capable. The principles -- clear Direction, controlled Input, rigorous Evaluation -- will not.</p>
+  <p>What you do with it from here is up to you.</p>
+  <p>Part of the AI Onramps programme  •  Building AI literacy for working professionals</p>
+</section>
+
 </main>
 
 <script>
@@ -3085,6 +3205,12 @@
     'pdf-fluency-onepager':{ title: 'A2: Graphics', subtitle: 'AI Fluency: Summary One-Pager' },
     'pdf-fluency-16x9':   { title: 'A2: Graphics', subtitle: 'AI Fluency: Summary 16x9' },
     'pdf-genai-overview': { title: 'A2: Graphics', subtitle: 'Overview of Generative AI' },
+    's6-s1': { title: 'S6: The Horizon', subtitle: '1. Where This Session Fits' },
+    's6-s2': { title: 'S6: The Horizon', subtitle: '2. Key Concepts' },
+    's6-s3': { title: 'S6: The Horizon', subtitle: '3. The Demo' },
+    's6-s4': { title: 'S6: The Horizon', subtitle: '4. Evaluation Still Applies' },
+    's6-s5': { title: 'S6: The Horizon', subtitle: '5. The Design Spectrum' },
+    's6-s6': { title: 'S6: The Horizon', subtitle: '6. The Course Arc' },
     'res-banking-app': { title: 'A1: Additional Resources', subtitle: 'Banking Regulation App' },
     'res-log':         { title: 'A1: Additional Resources', subtitle: 'Process Log' },
     'res-rep':         { title: 'A1: Additional Resources', subtitle: 'Reg Report' },
