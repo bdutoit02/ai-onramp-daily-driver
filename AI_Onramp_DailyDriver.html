@@ -165,6 +165,39 @@
     margin-bottom: 8px;
   }
 
+  /* ── NESTED NAV SUB-GROUPS ───────────────────── */
+  .nav-sub-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    padding: 5px 10px;
+    margin-top: 4px;
+    border-radius: 5px;
+    text-align: left;
+  }
+
+  .nav-sub-btn:hover { background: var(--accent-light); }
+
+  .nav-sub-btn::after {
+    content: "\25B6";
+    font-size: 9px;
+    flex-shrink: 0;
+    transition: transform .2s;
+  }
+
+  .nav-sub-btn.open::after { transform: rotate(90deg); }
+
+  .nav-sub-sublinks { display: none; padding-left: 10px; }
+  .nav-sub-sublinks.open { display: block; }
+
   h3.session-hdg {
     text-decoration: underline;
     margin-top: 28px;
@@ -489,28 +522,40 @@
     <a href="#res-general" data-group="resources">General Links</a>
     <a href="#res-study" data-group="resources">Further Study</a>
     <a href="#res-security" data-group="resources">AI Security Essentials</a>
-    <a href="#res-chat" data-group="resources">Session 4: Chat Notes for Show</a>
-    <a href="#res-banking-app" data-group="resources">Banking Regulation App</a>
-    <a href="#res-log-1" data-group="resources">Process Log: Step 1</a>
-    <a href="#res-log-2" data-group="resources">Process Log: Step 2</a>
-    <a href="#res-log-3" data-group="resources">Process Log: Step 3</a>
-    <a href="#res-log-4" data-group="resources">Process Log: Step 4</a>
-    <a href="#res-log-5" data-group="resources">Process Log: Summary</a>
-    <a href="#res-log-6" data-group="resources">Process Log: Agent Statistics</a>
-    <a href="#res-rep-1" data-group="resources">Reg Report: Executive Summary</a>
-    <a href="#res-rep-2" data-group="resources">Reg Report: Methodology</a>
-    <a href="#res-rep-3" data-group="resources">Reg Report: Joint Standard 2</a>
-    <a href="#res-rep-4" data-group="resources">Reg Report: Joint Standard 1</a>
-    <a href="#res-rep-5" data-group="resources">Reg Report: Basel III</a>
-    <a href="#res-rep-6" data-group="resources">Reg Report: Cross-Cutting Analysis</a>
-    <a href="#res-rep-7" data-group="resources">Reg Report: Limitations</a>
-    <a href="#res-rep-8" data-group="resources">Reg Report: Sources</a>
-    <a href="#res-claude-1" data-group="resources">CLAUDE.md: How You Work</a>
-    <a href="#res-claude-2" data-group="resources">CLAUDE.md: Sub-Agent Roles</a>
-    <a href="#res-claude-3" data-group="resources">CLAUDE.md: Principles</a>
-    <a href="#res-claude-4" data-group="resources">CLAUDE.md: Process Log Format</a>
-    <a href="#res-claude-5" data-group="resources">CLAUDE.md: Step Format</a>
-    <a href="#res-claude-6" data-group="resources">CLAUDE.md: Output Format</a>
+    <a href="#res-chat" data-group="resources">Session 4: Design Process - Record of chat</a>
+    <button class="nav-sub-btn" data-subtarget="nav-agentic">Agentic Session Demo</button>
+    <div class="nav-sub-sublinks" id="nav-agentic">
+      <a href="#res-banking-app" data-group="resources">Banking Regulation App</a>
+      <button class="nav-sub-btn" data-subtarget="nav-proc-log">Process Log</button>
+      <div class="nav-sub-sublinks" id="nav-proc-log">
+        <a href="#res-log-1" data-group="resources">Step 1: Regulatory Landscape Scan</a>
+        <a href="#res-log-2" data-group="resources">Step 2: Digital Skills Research</a>
+        <a href="#res-log-3" data-group="resources">Step 3: Significance Assessment</a>
+        <a href="#res-log-4" data-group="resources">Step 4: Report Synthesis</a>
+        <a href="#res-log-5" data-group="resources">Summary of Workflow</a>
+        <a href="#res-log-6" data-group="resources">Agent Usage Statistics</a>
+      </div>
+      <button class="nav-sub-btn" data-subtarget="nav-reg-rep">Reg Report</button>
+      <div class="nav-sub-sublinks" id="nav-reg-rep">
+        <a href="#res-rep-1" data-group="resources">Executive Summary</a>
+        <a href="#res-rep-2" data-group="resources">Methodology</a>
+        <a href="#res-rep-3" data-group="resources">1. Joint Standard 2 of 2024</a>
+        <a href="#res-rep-4" data-group="resources">2. Joint Standard 1 of 2023</a>
+        <a href="#res-rep-5" data-group="resources">3. Basel III Post-Crisis Reforms</a>
+        <a href="#res-rep-6" data-group="resources">Cross-Cutting Analysis</a>
+        <a href="#res-rep-7" data-group="resources">Limitations</a>
+        <a href="#res-rep-8" data-group="resources">Sources</a>
+      </div>
+      <button class="nav-sub-btn" data-subtarget="nav-claude-md">CLAUDE.md</button>
+      <div class="nav-sub-sublinks" id="nav-claude-md">
+        <a href="#res-claude-1" data-group="resources">How You Work</a>
+        <a href="#res-claude-2" data-group="resources">Sub-Agent Roles</a>
+        <a href="#res-claude-3" data-group="resources">Principles</a>
+        <a href="#res-claude-4" data-group="resources">Process Log Format</a>
+        <a href="#res-claude-5" data-group="resources">Step Format</a>
+        <a href="#res-claude-6" data-group="resources">Output Format</a>
+      </div>
+    </div>
   </div>
   <button class="nav-group-btn" data-target="nav-graphics">A2: Graphics</button>
   <div class="nav-sublinks" id="nav-graphics">
@@ -3086,7 +3131,7 @@
     'res-general': { title: 'General Links', subtitle: 'A1: Additional Resources' },
     'res-study': { title: 'Further Study', subtitle: 'A1: Additional Resources' },
     'res-security': { title: 'AI Security Essentials', subtitle: 'A1: Additional Resources' },
-    'res-chat': { title: 'Session 4: Chat Notes for Show', subtitle: 'A1: Additional Resources' },
+    'res-chat': { title: 'Session 4: Design Process - Record of chat', subtitle: 'A1: Additional Resources' },
     'dr2-s1': { title: 'S4: Deep Research 2: Directed', subtitle: 'Where We Are' },
     'dr2-s2': { title: 'S4: Deep Research 2: Directed', subtitle: 'The Process Architecture' },
     'dr2-s3': { title: 'S4: Deep Research 2: Directed', subtitle: 'Source Discovery and Curation' },
@@ -3182,6 +3227,15 @@
     a.addEventListener('click', e => {
       e.preventDefault();
       showStep(a.getAttribute('href').substring(1));
+    });
+  });
+
+  // Nested nav sub-group toggles
+  document.querySelectorAll('.nav-sub-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sublinks = document.getElementById(btn.dataset.subtarget);
+      btn.classList.toggle('open');
+      sublinks.classList.toggle('open');
     });
   });
 
