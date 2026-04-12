@@ -517,7 +517,11 @@
     <a href="#dr2-s7" data-group="deep-research2">7. The Direction Repertoire</a>
     <a href="#dr2-s8" data-group="deep-research2">8. Homework</a>
   </div>
-  <button class="nav-group-btn" data-target="nav-s6">S6: The Horizon</button>
+  <button class="nav-group-btn" data-target="nav-s5">S5: Deep Research 3: Offline Data</button>
+  <div class="nav-sublinks" id="nav-s5">
+    <a href="#s5" data-group="s5">S5: Deep Research 3: Offline Data</a>
+  </div>
+  <button class="nav-group-btn" data-target="nav-s6">S6: Deep Research 4: Orchestrated Agency</button>
   <div class="nav-sublinks" id="nav-s6">
     <a href="#s6-s1" data-group="s6">1. Where This Session Fits</a>
     <a href="#s6-s2" data-group="s6">2. Key Concepts</a>
@@ -525,6 +529,18 @@
     <a href="#s6-s4" data-group="s6">4. Evaluation Still Applies</a>
     <a href="#s6-s5" data-group="s6">5. The Design Spectrum</a>
     <a href="#s6-s6" data-group="s6">6. The Course Arc</a>
+  </div>
+  <button class="nav-group-btn" data-target="nav-s7">S7: Policy Research AI Workflow</button>
+  <div class="nav-sublinks" id="nav-s7">
+    <a href="#lec-prw-table" data-group="s7">Reference Table</a>
+    <a href="#lec-prw-1" data-group="s7">Overview</a>
+    <a href="#lec-prw-2" data-group="s7">Setup Phase</a>
+    <a href="#lec-prw-3" data-group="s7">Phase 1: Data Gathering</a>
+    <a href="#lec-prw-4" data-group="s7">Phase 2: Processing</a>
+    <a href="#lec-prw-5" data-group="s7">Evaluation 1</a>
+    <a href="#lec-prw-6" data-group="s7">Phase 3: Report Writing</a>
+    <a href="#lec-prw-7" data-group="s7">Evaluation 2</a>
+    <a href="#lec-prw-8" data-group="s7">Closing: Assembling the Team</a>
   </div>
   <button class="nav-group-btn" data-target="nav-resources">A1: Additional Resources</button>
   <div class="nav-sublinks" id="nav-resources">
@@ -557,18 +573,6 @@
     <a href="#lec-l4" data-group="lecturer">L4: Deep Research: Directed</a>
     <a href="#lec-brochure" data-group="lecturer">Course Brochure: 7 April</a>
     <a href="#lec-s6" data-group="lecturer">Session 6: Agentic Demo</a>
-    <button class="nav-sub-btn" data-subtarget="nav-prw">Policy Research Workflow</button>
-    <div class="nav-sub-sublinks" id="nav-prw">
-      <a href="#lec-prw-table" data-group="lecturer">Reference Table</a>
-      <a href="#lec-prw-1" data-group="lecturer">Overview</a>
-      <a href="#lec-prw-2" data-group="lecturer">Setup Phase</a>
-      <a href="#lec-prw-3" data-group="lecturer">Phase 1: Data Gathering</a>
-      <a href="#lec-prw-4" data-group="lecturer">Phase 2: Processing</a>
-      <a href="#lec-prw-5" data-group="lecturer">Evaluation 1</a>
-      <a href="#lec-prw-6" data-group="lecturer">Phase 3: Report Writing</a>
-      <a href="#lec-prw-7" data-group="lecturer">Evaluation 2</a>
-      <a href="#lec-prw-8" data-group="lecturer">Closing: Assembling the Team</a>
-    </div>
   </div>
 </nav>
 
@@ -1744,6 +1748,10 @@
   <p>If you want to use AI to assist with Task 1, here is a starting prompt:</p>
   <p>I have a research report and the analytical synthesis it was built from. I will paste both below. Please identify: (1) two claims in the report that are well-supported by the synthesis -- explain which evidence supports them and why you consider the support strong; (2) two claims that appear to overreach or understate relative to what the synthesis actually shows -- explain the gap between what the report claims and what the evidence supports. Be specific about source references where possible.</p>
   <p>Part of the AI Onramps programme · Building AI literacy for working professionals</p>
+</section>
+
+<section class="step" id="s5">
+  <h2>S5: Deep Research 3: Offline Data</h2>
 </section>
 
 <!-- ── AI CONCEPTUAL GUIDE ─────────────────────── -->
@@ -3061,7 +3069,7 @@
 
 <section class="step" id="s6-s1">
   <h2>1. Where This Session Fits</h2>
-  <p class="subtitle" style="margin-bottom:24px;">Session 6: The Horizon -- Agentic Teams and One-Shot Building</p>
+  <p class="subtitle" style="margin-bottom:24px;">S6: Deep Research 4: Orchestrated Agency</p>
   <p>In Session 3, you submitted a research question to three canned Deep Research tools and evaluated what came back. The tools did everything -- search strategy, source selection, analysis, report writing. You had no control over how they worked. Your skill was Evaluation.</p>
   <p>In Sessions 4 and 5, you took control. You designed your own research process, wrote the instructions, curated the sources, managed the workflow step by step, and integrated offline material. You controlled Direction and Input. Evaluation was woven in throughout.</p>
   <p>This session shows what happens when you hand the orchestration itself to an AI. You write a specification -- a natural language document describing what agents you want, how they should coordinate, and what principles they should follow. An AI orchestrator reads that spec and executes the workflow autonomously.</p>
@@ -3070,7 +3078,7 @@
 
 <section class="step" id="s6-s2">
   <h2>2. Key Concepts</h2>
-  <p class="subtitle" style="margin-bottom:24px;">Session 6: The Horizon -- Agentic Teams and One-Shot Building</p>
+  <p class="subtitle" style="margin-bottom:24px;">S6: Deep Research 4: Orchestrated Agency</p>
   <h3>Multi-Agent Orchestration</h3>
   <p>A single AI conversation -- even a powerful one -- is one model doing one thing at a time. Multi-agent orchestration changes this: a coordinating agent breaks a task into sub-tasks and dispatches specialist agents to handle each one. The orchestrator manages the workflow, passes outputs between agents, and assembles the final result.</p>
   <p>This is not a metaphor. The orchestrator literally spawns separate AI instances, each with its own brief, and coordinates their work. The specialist agents do not see each other&#x27;s instructions -- they receive only their own task and return their findings to the orchestrator.</p>
@@ -3096,7 +3104,7 @@
 
 <section class="step" id="s6-s3">
   <h2>3. The Demo</h2>
-  <p class="subtitle" style="margin-bottom:24px;">Session 6: The Horizon -- Agentic Teams and One-Shot Building</p>
+  <p class="subtitle" style="margin-bottom:24px;">S6: Deep Research 4: Orchestrated Agency</p>
   <h3>Setup</h3>
   <p>The entire setup consists of three things:</p>
   <ul>
@@ -3132,7 +3140,7 @@
 
 <section class="step" id="s6-s4">
   <h2>4. Evaluation Still Applies</h2>
-  <p class="subtitle" style="margin-bottom:24px;">Session 6: The Horizon -- Agentic Teams and One-Shot Building</p>
+  <p class="subtitle" style="margin-bottom:24px;">S6: Deep Research 4: Orchestrated Agency</p>
   <p>The report looks impressive. The process log shows sophisticated coordination. The website presents it beautifully.</p>
   <p>Now apply the rubric from Session 3.</p>
   <ul>
@@ -3147,7 +3155,7 @@
 
 <section class="step" id="s6-s5">
   <h2>5. The Design Spectrum</h2>
-  <p class="subtitle" style="margin-bottom:24px;">Session 6: The Horizon -- Agentic Teams and One-Shot Building</p>
+  <p class="subtitle" style="margin-bottom:24px;">S6: Deep Research 4: Orchestrated Agency</p>
   <p>You now have four approaches to AI-assisted research. Each is appropriate for different questions, audiences, and stakes.</p>
   <p>Option 1: Canned Deep Research</p>
   <p>You write a question. The system handles everything. You have no control over Direction. Your skill is Evaluation. Appropriate when: the question is well-defined, the stakes are moderate, and speed matters. This is what you saw in Session 3.</p>
@@ -3162,13 +3170,12 @@
 
 <section class="step" id="s6-s6">
   <h2>6. The Course Arc</h2>
-  <p class="subtitle" style="margin-bottom:24px;">Session 6: The Horizon -- Agentic Teams and One-Shot Building</p>
+  <p class="subtitle" style="margin-bottom:24px;">S6: Deep Research 4: Orchestrated Agency</p>
   <p>You started this course learning to evaluate what a canned tool gives you. You end it knowing how to design a system that combines canned tools, customised processes, and agentic orchestration -- choosing the right approach based on the question and the stakes.</p>
   <p>That is not a toolkit for 2026. The interfaces will change. The tools will evolve. The models will get more capable. The principles -- clear Direction, controlled Input, rigorous Evaluation -- will not.</p>
   <p>What you do with it from here is up to you.</p>
   <p>Part of the AI Onramps programme  •  Building AI literacy for working professionals</p>
 </section>
-
 
 <section class="step" id="lec-prw-table">
   <h2>Policy Research Workflow: Reference Table</h2>
@@ -3448,25 +3455,27 @@
     'lec-l4':      { title: "Lecturer's Resources", subtitle: 'L4: Deep Research: Directed' },
     'lec-brochure':       { title: "Lecturer's Resources", subtitle: 'Course Brochure: 7 April' },
     'lec-s6':             { title: "Lecturer's Resources", subtitle: 'Session 6: Agentic Demo' },
-    'lec-prw-table': { title: "Lecturer's Resources", subtitle: 'Policy Research Workflow: Reference Table' },
-    'lec-prw-1': { title: "Lecturer's Resources", subtitle: 'Policy Research Workflow: Overview' },
-    'lec-prw-2': { title: "Lecturer's Resources", subtitle: 'Policy Research Workflow: Setup Phase' },
-    'lec-prw-3': { title: "Lecturer's Resources", subtitle: 'Policy Research Workflow: Phase 1 -- Data Gathering' },
-    'lec-prw-4': { title: "Lecturer's Resources", subtitle: 'Policy Research Workflow: Phase 2 -- Processing' },
-    'lec-prw-5': { title: "Lecturer's Resources", subtitle: 'Policy Research Workflow: Evaluation 1' },
-    'lec-prw-6': { title: "Lecturer's Resources", subtitle: 'Policy Research Workflow: Phase 3 -- Report Writing' },
-    'lec-prw-7': { title: "Lecturer's Resources", subtitle: 'Policy Research Workflow: Evaluation 2' },
-    'lec-prw-8': { title: "Lecturer's Resources", subtitle: 'Policy Research Workflow: Closing' },
+    'lec-prw-table': { title: 'S7: Policy Research AI Workflow', subtitle: 'Reference Table' },
+    'lec-prw-1': { title: 'S7: Policy Research AI Workflow', subtitle: 'Overview' },
+    'lec-prw-2': { title: 'S7: Policy Research AI Workflow', subtitle: 'Setup Phase' },
+    'lec-prw-3': { title: 'S7: Policy Research AI Workflow', subtitle: 'Phase 1 -- Data Gathering' },
+    'lec-prw-4': { title: 'S7: Policy Research AI Workflow', subtitle: 'Phase 2 -- Processing' },
+    'lec-prw-5': { title: 'S7: Policy Research AI Workflow', subtitle: 'Evaluation 1' },
+    'lec-prw-6': { title: 'S7: Policy Research AI Workflow', subtitle: 'Phase 3 -- Report Writing' },
+    'lec-prw-7': { title: 'S7: Policy Research AI Workflow', subtitle: 'Evaluation 2' },
+    'lec-prw-8': { title: 'S7: Policy Research AI Workflow', subtitle: 'Closing' },
     'pdf-fluency-vocab':  { title: 'A2: Graphics', subtitle: 'AI Fluency: Vocabulary Cheat Sheet' },
     'pdf-fluency-onepager':{ title: 'A2: Graphics', subtitle: 'AI Fluency: Summary One-Pager' },
     'pdf-fluency-16x9':   { title: 'A2: Graphics', subtitle: 'AI Fluency: Summary 16x9' },
     'pdf-genai-overview': { title: 'A2: Graphics', subtitle: 'Overview of Generative AI' },
-    's6-s1': { title: 'S6: The Horizon', subtitle: '1. Where This Session Fits' },
-    's6-s2': { title: 'S6: The Horizon', subtitle: '2. Key Concepts' },
-    's6-s3': { title: 'S6: The Horizon', subtitle: '3. The Demo' },
-    's6-s4': { title: 'S6: The Horizon', subtitle: '4. Evaluation Still Applies' },
-    's6-s5': { title: 'S6: The Horizon', subtitle: '5. The Design Spectrum' },
-    's6-s6': { title: 'S6: The Horizon', subtitle: '6. The Course Arc' },
+    's5': { title: 'S5: Deep Research 3: Offline Data', subtitle: 'S5: Deep Research 3: Offline Data' },
+    's6-s1': { title: 'S6: Deep Research 4: Orchestrated Agency', subtitle: '1. Where This Session Fits' },
+    's6-s2': { title: 'S6: Deep Research 4: Orchestrated Agency', subtitle: '2. Key Concepts' },
+    's6-s3': { title: 'S6: Deep Research 4: Orchestrated Agency', subtitle: '3. The Demo' },
+    's6-s4': { title: 'S6: Deep Research 4: Orchestrated Agency', subtitle: '4. Evaluation Still Applies' },
+    's6-s5': { title: 'S6: Deep Research 4: Orchestrated Agency', subtitle: '5. The Design Spectrum' },
+    's6-s6': { title: 'S6: Deep Research 4: Orchestrated Agency', subtitle: '6. The Course Arc' },
+    's7': { title: 'S7: Policy Research AI Workflow', subtitle: 'S7: Policy Research AI Workflow' },
     'res-banking-app': { title: 'A1: Additional Resources', subtitle: 'Banking Regulation App' },
     'res-log':         { title: 'A1: Additional Resources', subtitle: 'Process Log' },
     'res-rep':         { title: 'A1: Additional Resources', subtitle: 'Reg Report' },
