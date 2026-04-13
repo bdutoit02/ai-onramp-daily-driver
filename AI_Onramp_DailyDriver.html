@@ -519,7 +519,8 @@
   </div>
   <button class="nav-group-btn" data-target="nav-s5">S5: Deep Research 3: Offline Data</button>
   <div class="nav-sublinks" id="nav-s5">
-    <a href="#s5" data-group="s5">S5: Deep Research 3: Offline Data</a>
+    <a href="#s5-s1" data-group="s5">The Recommended Workflow</a>
+    <a href="#s5-s2" data-group="s5">Additional Notes</a>
   </div>
   <button class="nav-group-btn" data-target="nav-s6">S6: Deep Research 4: Orchestrated Agency</button>
   <div class="nav-sublinks" id="nav-s6">
@@ -1750,8 +1751,34 @@
   <p>Part of the AI Onramps programme · Building AI literacy for working professionals</p>
 </section>
 
-<section class="step" id="s5">
-  <h2>S5: Deep Research 3: Offline Data</h2>
+<section class="step" id="s5-s1">
+  <h2>The Recommended Workflow</h2>
+  <p class="subtitle" style="margin-bottom:24px;">S5: Deep Research 3: Offline Data &mdash; Claude for Excel</p>
+  <p>For clients working with messy data that needs to be cleaned, anonymised, and turned into useful findings, the recommended workflow combines two tools in sequence.</p>
+  <h3>Stage 1 &mdash; Claude for Excel (/clean-data-xls)</h3>
+  <p>Load the raw file into Claude for Excel and run <code>/clean-data-xls</code>. This handles the mechanical work: casing standardisation across all columns, date format normalisation, duplicate detection, missing value flagging, and structured output on a new sheet &mdash; with the original preserved untouched. The output is polished, formula-based, and ready for the next stage.</p>
+  <p>Before you start: duplicate your file and rename the copy. If Autosave is on, changes apply immediately to whatever file is open.</p>
+  <h3>Stage 2 &mdash; Claude Project</h3>
+  <p>Bring the cleaned file into a Claude Project for everything that requires judgment. The Project path catches what <code>/clean-data-xls</code> misses &mdash; ambiguous duplicates, ID errors, logical inconsistencies &mdash; and adds an audit trail. It can also produce descriptive statistics, summary graphics, and narrative findings in the same workspace.</p>
+  <p>Critically, the Project connects your data to your other work. The cleaned and anonymised dataset can sit alongside your online research, literature review, and report draft in the same Project. The two workstreams &mdash; online research from Session 4, offline data from Session 5 &mdash; converge here at the reporting stage. This is what a full AI-assisted research workflow looks like in practice.</p>
+  <h3>Why Two Stages</h3>
+  <p>Claude for Excel thinks in Excel terms &mdash; cell formatting, highlights, structured tables. Claude Project thinks in data terms &mdash; annotated columns, audit trails, downstream processing. They are not competing tools. Each is optimised for a different part of the job.</p>
+  <h3>A Note on Anonymisation</h3>
+  <p>Anonymisation belongs in Stage 2. Neither <code>/audit-xls</code> nor <code>/clean-data-xls</code> raises data privacy unprompted, and anonymisation falls outside the named Skills. The safer path is to handle it explicitly in the Project, where you control the instructions and can review the logic. When done, save the mapping table separately and securely before sharing any output. A non-technical client will not think of this automatically &mdash; it needs to be explicitly taught.</p>
+</section>
+
+<section class="step" id="s5-s2">
+  <h2>Additional Notes</h2>
+  <p class="subtitle" style="margin-bottom:24px;">S5: Deep Research 3: Offline Data &mdash; Claude for Excel</p>
+  <p><em>Practical points for instructors and early adopters.</em></p>
+  <ul>
+    <li><strong>Claude for Excel is a beta product &mdash; expect friction.</strong> Installation can produce misleading error messages before completing successfully. Stick to the suggested setup route and don&rsquo;t let early friction put you off.</li>
+    <li><strong>Claude for Excel: Autosave risk.</strong> If Autosave is enabled in Excel, any changes Claude for Excel applies go immediately back to the original file with no undo trail. Duplicate the file and rename the copy before starting any session.</li>
+    <li><strong>Claude for Excel: Named Skills vs ad hoc requests.</strong> The four named Skills (<code>/audit-xls</code>, <code>/clean-data-xls</code>, <code>/dcf-model</code>, <code>/comps-analysis</code>) are tested, constrained workflows &mdash; predictable and reliable. Anything outside them, such as asking Claude for Excel to anonymise data, draws on the base model improvising. Capable, but outside the tested envelope and needs checking. This maps onto the three-layer model: Skills are B1; ad hoc requests are B2.</li>
+    <li><strong>Claude for Excel: Audit vs Clean.</strong> <code>/audit-xls</code> is diagnostic first &mdash; useful when you don&rsquo;t know what you&rsquo;re dealing with. <code>/clean-data-xls</code> is purpose-built for fixing &mdash; non-destructive, formula-based, superior for raw data cleaning. For a straightforward messy dataset, go straight to Clean.</li>
+    <li><strong>Claude Project: chat with your data.</strong> Unlike Claude for Excel, a Project allows open dialogue with the data &mdash; questions, summaries, anomaly investigation, iteration. The analytical depth the named Skills cannot match.</li>
+  </ul>
+  <p>Part of the AI Onramps programme &middot; Building AI literacy for working professionals</p>
 </section>
 
 <!-- ── AI CONCEPTUAL GUIDE ─────────────────────── -->
@@ -3468,7 +3495,8 @@
     'pdf-fluency-onepager':{ title: 'A2: Graphics', subtitle: 'AI Fluency: Summary One-Pager' },
     'pdf-fluency-16x9':   { title: 'A2: Graphics', subtitle: 'AI Fluency: Summary 16x9' },
     'pdf-genai-overview': { title: 'A2: Graphics', subtitle: 'Overview of Generative AI' },
-    's5': { title: 'S5: Deep Research 3: Offline Data', subtitle: 'S5: Deep Research 3: Offline Data' },
+    's5-s1': { title: 'S5: Deep Research 3: Offline Data', subtitle: 'The Recommended Workflow' },
+    's5-s2': { title: 'S5: Deep Research 3: Offline Data', subtitle: 'Additional Notes' },
     's6-s1': { title: 'S6: Deep Research 4: Orchestrated Agency', subtitle: '1. Where This Session Fits' },
     's6-s2': { title: 'S6: Deep Research 4: Orchestrated Agency', subtitle: '2. Key Concepts' },
     's6-s3': { title: 'S6: Deep Research 4: Orchestrated Agency', subtitle: '3. The Demo' },
