@@ -1,58 +1,141 @@
-# Research Orchestrator
+# CLAUDE.md — AI Onramps Web App
 
-You are a research orchestrator. Your job is to take a research question, design a workflow to answer it, and coordinate specialist sub-agents to execute that workflow. You produce a final research report and a process log documenting what each agent did.
+## What this repo is
 
-## How You Work
+A single-page web application delivering course materials for the AI Onramps
+programme. It runs entirely in the browser with no build step, no framework,
+and no external dependencies.
 
-1. **Receive the research question** from the user.
-2. **Design a research plan**: break the question into 3-5 specific sub-tasks. Each sub-task should be a clear, self-contained research assignment that one agent can complete independently. Write the plan out before executing it.
-3. **Dispatch sub-agents**: for each sub-task, spawn a specialist agent with a focused brief. Each agent receives only its own task — not the full plan.
-4. **Collect and review**: as each agent returns its findings, assess whether the sub-task has been adequately addressed. If not, you may re-dispatch with refined instructions or spawn an additional agent to fill a gap.
-5. **Synthesise**: once all sub-tasks are complete, spawn a synthesis agent to produce the final report from the collected findings.
-6. **Produce outputs**: deliver the final report and the process log.
+Live site: https://bdutoit02.github.io/ai-onramp-daily-driver/
 
-## Sub-Agent Roles
+GitHub Pages serves the app from the `/docs` folder, main branch.
 
-You have three types of specialist agent available:
+---
 
-### Researcher
-- **Purpose**: find and extract relevant information on a specific sub-topic
-- **Instructions to give**: a clear question, the scope of what to look for, and any constraints (e.g. geographic focus, time period, source preferences)
-- **Expected output**: a structured summary of findings with key points, relevant details, and source attribution where possible
+## File structure
 
-### Analyst
-- **Purpose**: evaluate, compare, or identify patterns in material already gathered
-- **Instructions to give**: the material to analyse, the specific analytical question, and the criteria or framework to apply
-- **Expected output**: a structured assessment with explicit reasoning, not just conclusions
+/docs
+index.html      — page skeleton, nav sidebar, heading area, script tags
+styles.css      — all appearance: colours, fonts, layout, spacing
+content.js      — all content sections and the headings lookup table
+CLAUDE.md         — this file (repo root)
+/source           — source documents (docx, pdf, md). Not served by GitHub Pages.
 
-### Synthesiser
-- **Purpose**: produce a coherent final output from multiple inputs
-- **Instructions to give**: all gathered material, the original research question, and any format or audience requirements
-- **Expected output**: a clear, well-structured report that addresses the original question, draws on all the research, and acknowledges limitations
 
-## Principles
 
-- **Plan before acting.** Always write out your research plan before dispatching any agents.
-- **Sequential, not parallel.** Dispatch agents one at a time. Review each output before deciding what to do next. Later agents may need to account for what earlier agents found.
-- **Adapt the plan.** If an agent's findings reveal something unexpected or expose a gap, adjust the remaining plan. Document why.
-- **Stay transparent.** Every decision you make — which agents to dispatch, what instructions to give them, how you adjusted the plan — should be visible in the process log.
-- **Acknowledge limits.** If a sub-task cannot be adequately addressed, say so in the final report rather than papering over it.
+**The three app files are strictly separated by responsibility:**
+- Never put content or behaviour in `styles.css`
+- Never put styles or content in `index.html`
+- Never put styles or structure in `content.js`
 
-## Process Log Format
+---
 
-Maintain a running process log as you work. For each step, record:
+## How the app works
 
+The app shows one content panel at a time. All panels are defined in
+`content.js` as `<section class="step">` elements injected into the DOM on
+load. The nav sidebar controls which panel is visible by toggling a `visible`
+CSS class. The heading area updates to match the active panel using a
+`headings` lookup object in `content.js`.
+
+**Critical:** every section needs two things in `content.js`:
+1. A `<section class="step" id="[id]">` block with the content
+2. A matching entry in the `headings` object: `'[id]': { title: '...', subtitle: '...' }`
+
+If you add a section without the headings entry, the heading area will break.
+
+---
+
+## Nav architecture
+
+The nav has four top-level collapsible groups:
+
+1. **Onramp** — conceptual guide + toolkit quickstarts
+2. **Deep Research Deep Dive** — S3 through S7, the methodology arc
+3. **Appendices** — public supplementary material
+4. **Other Resources** — working materials, not for public consumption
+
+Nav groups are defined in `index.html`. Nav links follow this pattern:
+```html
+<a href="#[section-id]">[Link label]</a>
 ```
-## Step [N]: [Brief description]
-**Agent type**: Researcher / Analyst / Synthesiser
-**Task assigned**: [The brief you gave the agent]
-**Key findings**: [Summary of what came back]
-**Decision**: [What you decided to do next, and why]
-```
 
-## Output Format
+---
 
-When complete, produce two files in the project directory:
+## Onramp structure (Group 1)
 
-1. `report.md` — the final research report
-2. `process_log.md` — the complete process log showing all steps, agent dispatches, and decisions
+Two parts:
+
+**Part 1: Conceptual Guide**
+- What AI is and how it works
+- The three-layer model (A, B1, B2)
+
+**Part 2: Toolkit Quickstarts**
+Opinionated, minimal, low technical risk. One quickstart per tool:
+- Claude Chat
+- Claude Projects
+- Claude Desktop
+- Claude Code
+- Orchestrated agentic workflows
+- Building web apps with Claude Code
+- Claude for Excel
+
+Quickstarts are continuously updated as tools evolve.
+
+---
+
+## Making changes safely
+
+**To update content in a section:**
+Edit the relevant `<section>` block in `content.js`. Do not touch
+`index.html` or `styles.css`.
+
+**To add a new section:**
+1. Add the `<section class="step" id="[id]">` block in `content.js`
+2. Add the matching entry to the `headings` object in `content.js`
+3. Add the nav link in the correct group in `index.html`
+
+**To change appearance:**
+Edit `styles.css` only. CSS variables at the top of the file control
+colours and key dimensions — change those first before editing
+individual rules.
+
+**To change nav structure:**
+Edit the nav in `index.html`. Keep group names and order consistent
+with the four-group architecture above.
+
+---
+
+## Working instructions
+
+- Work in small steps. One change at a time, confirm it works before
+  the next step.
+- Never make structural changes (nav reorganisation, file splits,
+  folder moves) without explicitly being asked to.
+- Never touch the nav without being explicitly instructed to.
+- When adding or editing content, touch only `content.js` unless
+  told otherwise.
+- After any change that affects the live site, confirm what was
+  changed and what was left untouched.
+- If a requested change would affect more than one file, flag it
+  before proceeding.
+
+---
+
+## What not to do
+
+- Do not add inline styles to content sections
+- Do not add `<style>` or `<script>` blocks anywhere outside the
+  designated files
+- Do not add external library imports without flagging it — the app
+  is intentionally dependency-free
+- Do not edit files in `/source` — they are reference documents,
+  not app files
+
+---
+
+## GitHub Pages
+
+Served from `/docs`, main branch.
+To deploy: commit and push to main. No build step required.
+Repository: https://github.com/bdutoit02/ai-onramp-daily-driver

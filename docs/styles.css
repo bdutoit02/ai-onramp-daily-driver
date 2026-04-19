@@ -1,0 +1,471 @@
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sidebar-w: 290px;
+    --accent: #2c5f8a;
+    --accent-light: #e8f0f7;
+    --border: #d0d7de;
+    --bg: #fdfdfd;
+    --text: #1e1e1e;
+    --text-muted: #555;
+    --section-bg: #ffffff;
+    --quickstart-bg: #f0f7ee;
+    --quickstart-border: #7ab661;
+    --tips-bg: #fef9ec;
+    --tips-border: #d4a843;
+  }
+
+  html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--bg);
+  }
+
+  /* ── NAV SIDEBAR ─────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0;
+    width: var(--sidebar-w);
+    height: 100vh;
+    overflow-y: auto;
+    background: #f5f7fa;
+    border-right: 1px solid var(--border);
+    padding: 28px 18px 40px;
+    z-index: 100;
+  }
+
+  nav h2 {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    color: var(--accent);
+    margin-bottom: 8px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Collapsible nav group buttons (same look as h2 but clickable) */
+  .nav-group-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: none;
+    border: none;
+    border-top: 1px solid var(--border);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    color: var(--accent);
+    padding: 16px 0 0 0;
+    margin-top: 20px;
+    margin-bottom: 8px;
+  }
+
+  .nav-group-btn:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .nav-group-btn::after {
+    content: "\25B6";
+    font-size: 10px;
+    flex-shrink: 0;
+    transition: transform .2s;
+  }
+
+  .nav-group-btn.open::after {
+    transform: rotate(90deg);
+  }
+
+  .nav-sublinks { display: none; }
+  .nav-sublinks.open { display: block; }
+
+  nav a {
+    display: block;
+    padding: 6px 10px;
+    margin-bottom: 2px;
+    border-radius: 5px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.4;
+    transition: background .15s, color .15s;
+  }
+
+  nav a:hover, nav a.active {
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  /* ── MAIN CONTENT ────────────────────────────── */
+  main {
+    margin-left: var(--sidebar-w);
+    max-width: 800px;
+    padding: 40px 48px 80px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  main > p.subtitle {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
+
+  /* ── STEP SECTIONS ───────────────────────────── */
+  section.step {
+    background: var(--section-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 32px 36px;
+    margin-bottom: 28px;
+    display: none;
+  }
+
+  section.step.visible {
+    display: block;
+  }
+
+  section.step h2 {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent-light);
+  }
+
+  section.step h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 8px;
+  }
+
+  /* ── NESTED NAV SUB-GROUPS ───────────────────── */
+  .nav-sub-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    padding: 5px 10px;
+    margin-top: 4px;
+    border-radius: 5px;
+    text-align: left;
+  }
+
+  .nav-sub-btn:hover { background: var(--accent-light); }
+
+  .nav-sub-btn::after {
+    content: "\25B6";
+    font-size: 9px;
+    flex-shrink: 0;
+    transition: transform .2s;
+  }
+
+  .nav-sub-btn.open::after { transform: rotate(90deg); }
+
+  .nav-sub-sublinks { display: none; padding-left: 10px; }
+  .nav-sub-sublinks.open { display: block; }
+
+  h3.session-hdg {
+    text-decoration: underline;
+    margin-top: 28px;
+  }
+
+  section.step h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 16px;
+    margin-bottom: 6px;
+  }
+
+  section.step p {
+    margin-bottom: 12px;
+  }
+
+  section.step ul, section.step ol {
+    margin: 8px 0 14px 24px;
+  }
+
+  section.step li {
+    margin-bottom: 6px;
+  }
+
+  section.step a {
+    color: var(--accent);
+  }
+
+  /* ── TABLE ───────────────────────────────────── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 18px;
+    font-size: 15px;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+  }
+
+  th {
+    background: var(--accent-light);
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* ── COLLAPSIBLE DETAILS ─────────────────────── */
+  details {
+    border-radius: 6px;
+    margin: 16px 0 12px;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  details summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 10px 16px;
+    list-style: none;
+    user-select: none;
+    border-radius: 6px;
+    transition: background .15s;
+  }
+
+  details summary::-webkit-details-marker { display: none; }
+
+  details summary::before {
+    content: "\25B6";
+    display: inline-block;
+    width: 18px;
+    font-size: 11px;
+    transition: transform .2s;
+  }
+
+  details[open] summary::before {
+    transform: rotate(90deg);
+  }
+
+  details .collapsible-body {
+    padding: 10px 16px 14px 34px;
+    font-size: 15px;
+  }
+
+  details .collapsible-body p { margin-bottom: 8px; }
+  details .collapsible-body ul, details .collapsible-body ol { margin: 6px 0 10px 20px; }
+  details .collapsible-body li { margin-bottom: 5px; }
+
+  /* QuickStart variant */
+  details.quickstart {
+    background: var(--quickstart-bg);
+    border-left: 4px solid var(--quickstart-border);
+  }
+
+  details.quickstart summary {
+    color: #3a6e28;
+  }
+
+  /* Tips variant */
+  details.tips {
+    background: var(--tips-bg);
+    border-left: 4px solid var(--tips-border);
+  }
+
+  details.tips summary {
+    color: #8a6d1b;
+  }
+
+  /* ── QS QUICKSTART BLOCK (always visible) ───────── */
+  .quickstart-block {
+    background: var(--quickstart-bg);
+    border-left: 4px solid var(--quickstart-border);
+    border-radius: 6px;
+    margin: 20px 0 8px;
+    padding: 14px 18px 16px;
+  }
+
+  .quickstart-block .qs-label {
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    color: #3a6e28;
+    margin-bottom: 10px;
+  }
+
+  .quickstart-block ol {
+    margin: 0 0 0 20px;
+  }
+
+  .quickstart-block li {
+    margin-bottom: 7px;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .quickstart-block p.qs-note {
+    font-size: 15px;
+    color: #3a6e28;
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* ── UNDERSTAND & EXPLORE ────────────────────────── */
+  .ue-block { margin-top: 24px; }
+
+  .ue-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .ue-heading {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .ue-close-all {
+    font-size: 12px;
+    color: var(--text-muted);
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3px 9px;
+    cursor: pointer;
+    line-height: 1.4;
+    transition: background .15s, color .15s;
+    white-space: nowrap;
+  }
+
+  .ue-close-all:hover {
+    background: var(--accent-light);
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  details.ue-item {
+    background: #fafbfc;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin: 6px 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  details.ue-item summary {
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 16px;
+  }
+
+  details[open].ue-item {
+    border-color: var(--accent);
+  }
+
+  details[open].ue-item > summary {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent-light);
+  }
+
+  /* ── MOBILE ──────────────────────────────────── */
+  @media (max-width: 900px) {
+    nav {
+      position: static;
+      width: 100%;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 18px;
+    }
+
+    nav .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px 6px;
+    }
+
+    nav a { font-size: 13px; padding: 4px 8px; }
+
+    main {
+      margin-left: 0;
+      padding: 24px 20px 60px;
+    }
+
+    section.step { padding: 22px 20px; }
+  }
+
+  /* ── DOC SECTION (collapsible ## headings) ───────── */
+  details.doc-section {
+    border: 1px solid var(--border);
+    background: var(--section-bg);
+    margin: 0 0 8px;
+  }
+
+  details.doc-section > summary {
+    font-size: 16px;
+    font-weight: 600;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 11px 16px;
+  }
+
+  details.doc-section > summary::before {
+    content: "\25B6";
+    display: inline-block;
+    width: 18px;
+    font-size: 11px;
+    transition: transform .2s;
+  }
+
+  details.doc-section[open] > summary::before {
+    transform: rotate(90deg);
+  }
+
+  details.doc-section .collapsible-body h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 16px 0 6px;
+    color: var(--text);
+  }
+
+  details.doc-section .collapsible-body blockquote {
+    border-left: 3px solid var(--accent-light);
+    margin: 10px 0 10px 4px;
+    padding: 8px 16px;
+    color: var(--text-muted);
+    font-style: italic;
+  }
