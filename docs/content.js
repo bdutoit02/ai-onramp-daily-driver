@@ -1226,12 +1226,12 @@
 
   <h3>Bridge</h3>
   <p>So: a neural network, trained on human language, that models statistical distributions rather than storing facts. This base intelligence has characteristic strengths &mdash; fluency, breadth, pattern recognition across domains, tireless availability &mdash; and characteristic weaknesses &mdash; hallucination, no persistent memory, no reliable self-knowledge about the limits of its knowledge.</p>
-  <p>Enhancement is the natural response to that profile. And the idea of enhancing a base intelligence is not new. We have always built on top of the base intelligence we were given &mdash; through language, writing, mathematics, computation, and now AI. Each layer extended what came before. The same logic applies here.</p>
+  <p>Enhancement is the natural response to that profile. And the idea of enhancing a base intelligence is not new. Humans have always built on top of the base intelligence we were given &mdash; through language, writing, mathematics, computation, and now AI. Each layer extended what came before. The same logic applies here.</p>
 
   <h3>A brief aside &mdash; and then back to work</h3>
   <p>We should note something that is easy to miss in the rush to use these tools: we now live alongside a genuinely new kind of intelligence. Not a smarter human. Not a dumber human. Something built on entirely different foundations &mdash; designed rather than evolved, trained on human artefacts rather than shaped by survival pressures, with a completely different profile of strengths and weaknesses.</p>
   <p>We have, until very recently, shared the world only with other evolved intelligences &mdash; humans and animals, all shaped by the same basic pressures. Artificial intelligences are categorically different. They are behaviourally familiar, because they were trained on everything we wrote, but structurally alien.</p>
-  <p>The most useful approach is not to rank them against human intelligence, but to understand them on their own terms. What is this thing actually good at? What does it genuinely struggle with? That&rsquo;s the question that makes you a better user &mdash; and it&rsquo;s the question the rest of this session is designed to answer.</p>
+  <p>The most useful approach is not to rank them against human intelligence, but to understand them on their own terms. What is this thing actually good at? What does it genuinely struggle with? Understanding that makes you a better user. It also something that AI engineers can address, and have done with great success. What can we give to the model that improves its abilities, and which allow it to overcome its deepest weaknesses?</p>
 </section>
 
 <section class="step" id="cg-part-b">
