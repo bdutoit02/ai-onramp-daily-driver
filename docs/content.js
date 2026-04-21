@@ -1276,6 +1276,35 @@
   <p>That is what this course is designed to build. Not a toolkit for 2026. A foundation that gets more valuable as the models get more capable.</p>
 </section>
 
+<section class="step" id="cg-part-c">
+  <h2>C. The Agentic Turn</h2>
+
+  <h3>C1. Three paradigm shifts</h3>
+  <p>The history of working with AI since 2022 is a history of engineering rigour relocating upward.</p>
+  <p>The first era was <strong>prompt engineering</strong>: the discovery that how you phrased a question dramatically affected the quality of the answer. This was real and important. But it hit a ceiling &mdash; a perfectly written prompt is useless if the model cannot see the relevant information.</p>
+  <p>The second era was <strong>context engineering</strong>: the recognition that what fills the context window matters more than how instructions are phrased. Curating, compressing, and routing information into the model&rsquo;s working memory became the central skill. This too was real and important. But it hit its own ceiling &mdash; perfect context still fails when the system consuming it is poorly designed.</p>
+  <p>The third era, where we are now, is <strong>harness engineering</strong>: the recognition that the model is just the engine, and that what surrounds it &mdash; the tools, the feedback loops, the guardrails, the memory, the human checkpoints &mdash; determines whether it produces reliable results. The harness is the product. The model is what runs inside it.</p>
+  <p>Each transition was triggered by the previous era&rsquo;s failure to deliver reliable, production-grade results. Engineering rigour never disappeared &mdash; it relocated.</p>
+
+  <h3>C2. The agentic turn</h3>
+  <p>The word &ldquo;agent&rdquo; has been used loosely in AI for several years. Early usage meant something fairly modest: a model with a good prompt, access to a few tools, and instructions to iterate until it reached an answer. That was a genuine capability, but it was essentially a smarter single-turn interaction &mdash; still fundamentally prompt-in, response-out, with some extra steps.</p>
+  <p>The agentic turn of 2026 is something categorically different. The shift is not from fewer tools to more tools, or from shorter runs to longer runs. It is from thinking about AI as something you query to thinking about AI as something you deploy &mdash; a system that pursues goals, manages its own workflow, and operates across tools and environments with minimal step-by-step direction. The unit of work is no longer the prompt. It is the mission.</p>
+  <p>An agent, in this fuller sense, is a system that pursues a goal by taking a sequence of actions, using tools, and making decisions along the way. The loop is: observe, plan, act, verify &mdash; and repeat until the goal is reached or the agent determines it cannot proceed.</p>
+  <p>This is a different mode of operation from anything that came before. A prompt produces a response. An agent pursues an outcome. The distinction sounds simple but its implications are significant: an agent can run for minutes or hours, visit dozens of sources, write and execute code, manage files, spawn sub-agents to handle parallel workstreams, and integrate results &mdash; all from a single high-level instruction.</p>
+  <p>The architecture that makes this possible is the harness. The formula is straightforward: <strong>agent = model + harness</strong>. The model provides the intelligence &mdash; pattern recognition, language understanding, reasoning. The harness provides everything else, and it does two distinct things.</p>
+  <p><strong>Extension</strong> &mdash; tools, memory, sub-agents: the capabilities that let the model act in the world, persist across time, and scale across parallel workstreams. Without extension, the model can only generate text within a single conversation.</p>
+  <p><strong>Governance</strong> &mdash; guardrails, permissions, feedback loops, human checkpoints: the constraints and controls that determine what the agent is allowed to do, how it recovers from errors, and where human judgment is required before proceeding. Without governance, a capable agent is an unreliable one.</p>
+  <p>The harness is not an add-on to the model. It is what turns a capable model into a trustworthy system.</p>
+
+  <h3>Agentic coda. What this means for how humans work with AI</h3>
+  <p>The shift to agentic systems changes the human role in a specific and important way.</p>
+  <p>In the prompt engineering era, humans were operators: query in, response out, evaluate, repeat. In the harness engineering era, humans are designers and supervisors. The work moves earlier &mdash; into specifying what the agent should pursue, what constraints it should operate under, what tools it should have access to, and where it should pause for human review. And it moves later &mdash; into evaluating outputs from autonomous processes that ran without step-by-step human direction.</p>
+  <p>The emerging distinction is between humans <strong>in</strong> the loop and humans <strong>on</strong> the loop. In the loop means approving each action before it is taken &mdash; slow, but high control. On the loop means monitoring a running system and intervening at high-stakes checkpoints &mdash; faster, but requiring greater trust in the harness design.</p>
+  <p>Neither is universally correct. The right choice depends on the stakes, the reliability of the harness, and the cost of errors. But the direction of travel is clear: as agents become more reliable, the intervention point moves later and the human role shifts from operator to architect.</p>
+  <p>This is not a loss of control &mdash; it is a different kind of control. Designing the system that an agent operates within is a more consequential act than writing the prompt that a model responds to. The leverage is higher, the decisions are harder, and the need for genuine understanding of what the model is and how it behaves has never been greater.</p>
+  <p>Which is, of course, why this session started where it did.</p>
+</section>
+
 <!-- ── GRAPHICS ───────────────────────────────── -->
 <section class="step" id="graphic-1">
   <h2>Defensible Under Scrutiny</h2>
@@ -2893,6 +2922,7 @@
     'cg-part-a': { title: 'S1: AI Conceptual Guide', subtitle: 'A. What Kind of Intelligence?' },
     'cg-part-b': { title: 'S1: AI Conceptual Guide', subtitle: 'B. Enhancing the Intelligence' },
     'cg-coda': { title: 'S1: AI Conceptual Guide', subtitle: 'Coda' },
+    'cg-part-c': { title: 'S1: AI Conceptual Guide', subtitle: 'C. The Agentic Turn' },
     'dr1-s1': { title: 'S3: Deep Research 1: Canned', subtitle: 'The Skilled User Frame' },
     'dr1-s2': { title: 'S3: Deep Research 1: Canned', subtitle: 'Key Concepts' },
     'dr1-s3': { title: 'S3: Deep Research 1: Canned', subtitle: 'The Evaluation Rubric' },
