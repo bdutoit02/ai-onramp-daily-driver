@@ -3010,5 +3010,3 @@
     });
   });
 
-  // Show QS1 on load
-  showStep('qs1');
