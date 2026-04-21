@@ -382,7 +382,7 @@
 
 <!-- ── RESOURCE: AI Security Essentials ───────── -->
 <section class="step resource" id="res-security">
-  <h2>AI Security Essentials</h2>
+  <h2>AI Daily Driver &mdash; Security Essentials</h2>
   <p class="subtitle" style="margin-bottom:24px;">A take-home guide for course participants</p>
 
   <p>Using AI tools like Claude as a daily driver is low-risk for most people &mdash; but a few simple habits make it genuinely safe. This guide separates what actually matters from what you can stop worrying about.</p>
@@ -390,11 +390,11 @@
   <h3>1. External Threats &mdash; Lower Risk Than You Think</h3>
   <p>When you use a web-based AI tool like Claude.ai, you are trusting a well-resourced technology company to handle security on your behalf. Counterintuitively, this is safer than managing software locally &mdash; you are not responsible for keeping anything patched, configured, or updated.</p>
   <p>Your conversation data is transmitted over an encrypted connection (TLS), so interception in transit is not a realistic risk. Anthropic&rsquo;s servers are not a likely target for someone trying to steal your specific data.</p>
-  <p>The real external risks are account-level, not platform-level:</p>
+  <p><strong>The real external risks are account-level, not platform-level:</strong></p>
   <ul>
-    <li><strong>Phishing</strong> &mdash; fake login pages designed to steal your credentials</li>
-    <li><strong>Password reuse</strong> &mdash; if one account is breached, others become vulnerable</li>
-    <li><strong>Device compromise</strong> &mdash; malware on your machine captures data before it reaches any server</li>
+    <li>Phishing &mdash; fake login pages designed to steal your credentials</li>
+    <li>Password reuse &mdash; if one account is breached, others become vulnerable</li>
+    <li>Device compromise &mdash; malware on your machine captures data before it reaches any server</li>
   </ul>
   <p><strong>Action: Two things to do now</strong></p>
   <ul>
@@ -405,9 +405,9 @@
   <h3>2. Confidential Data &mdash; This Is Where Judgement Matters</h3>
   <p>When you paste text into an AI chat window, you are sending it to a third-party server. For most personal use this is fine. For work data, it requires thought.</p>
   <p>Ask yourself one question before pasting anything:</p>
-  <p><em>&ldquo;Would I be comfortable if my employer saw exactly what I just pasted into this chat?&rdquo;</em></p>
+  <blockquote><p><em>&ldquo;Would I be comfortable if my employer saw exactly what I just pasted into this chat?&rdquo;</em></p></blockquote>
   <p>If the answer is no &mdash; or even maybe &mdash; use made-up data instead. You can learn everything you need to learn with synthetic examples. Real work data adds risk and is rarely necessary.</p>
-  <p>Things to be aware of:</p>
+  <p><strong>Things to be aware of:</strong></p>
   <ul>
     <li>Many employers now have AI use policies. Check yours. Breaching it could have professional consequences regardless of any actual data leak.</li>
     <li>Regulated industries (healthcare, legal, finance, government) have specific data handling obligations that may apply even to informal use.</li>
@@ -419,7 +419,7 @@
   <p>Claude.ai lets you set a permanent system prompt &mdash; background instructions that apply to every conversation. As part of your setup, we will add an instruction that prompts Claude to flag inputs that look like real personal or work data (lists of names with numbers, email addresses, client records, etc.) and ask you whether you want to continue.</p>
   <p>This is not a technical guardrail &mdash; it will not catch everything. But it creates a useful pause at exactly the moment you might otherwise act without thinking. Think of it as a seatbelt reminder chime, not a seatbelt.</p>
 
-  <h3>Your Security Checklist</h3>
+  <h3>Your Daily Driver Security Checklist</h3>
   <ul>
     <li>Install Bitwarden and create a strong master password</li>
     <li>Enable 2FA on Claude.ai (and any other AI accounts you create)</li>
@@ -429,7 +429,23 @@
     <li>Apply the one-question test before pasting anything sensitive</li>
   </ul>
 
-  <p><em>Part of the AI Onramps programme &mdash; Building AI literacy for working professionals</em></p>
+  <h3>4. Sandboxing for Agentic Work</h3>
+  <p>When you move from chat-based AI to agentic workflows &mdash; systems that can read files, run code, browse the web, and make sequential decisions on their own &mdash; the security picture changes. A process that can <em>act</em> autonomously can do more damage if it misbehaves than one that just produces text. This is where sandboxing becomes important.</p>
+  <p><strong>The core idea.</strong> A sandbox is an isolated environment that looks like a computer to whatever is running inside it, but cannot actually reach the real machine&rsquo;s files, network, or other processes. The standard tools for this are <strong>virtual machines</strong> (a full simulated computer running inside another one) and <strong>containers</strong> (a lighter-weight version where the process thinks it has its own filesystem and network, but shares the underlying operating system with the host). Both are mature technologies. The agentic era has not invented sandboxing &mdash; it has raised the stakes.</p>
+  <p>The practical question is <em>where the sandbox lives</em>. Four options, ordered by the amount of effort and engineering know-how required:</p>
+  <p><strong>Built into the tool.</strong> Products like Claude Code already sandbox code execution by default, operate within constrained directories, and ask permission before taking risky actions. You are not starting from zero. For most single-user agentic work on a personal machine, these built-in protections are sufficient &mdash; provided you understand what permissions you are granting when you grant them.</p>
+  <p><strong>A dedicated physical machine.</strong> For deep, one-off research projects that produce a report, running the work on a physically separate machine is a practical option. A dedicated laptop or Mac Mini, with no access to corporate email, shared drives, or internal systems, becomes a clean workspace for agentic research. Information the process needs can be copied across; controlled internet access is fine. This is both access control (the agent cannot reach into sensitive corporate systems) and a clear story for management (research happens over there, nothing else does). It is not strict isolation &mdash; data you deliberately put on the machine is still going to third-party AI services &mdash; but it meaningfully bounds what the agentic process can touch.</p>
+  <p><strong>Local virtual machine or container on your own computer.</strong> You run the agentic process inside a VM or container on your laptop. The agent sees a clean environment; your real files and systems are outside its reach. This is the standard developer approach and is well-supported by free tools. The tradeoff is some friction &mdash; you have to set it up, and moving files in and out is deliberate rather than automatic. That friction is partly the point.</p>
+  <p><strong>A virtual machine in the cloud.</strong> Rather than running the agentic process on any of your own hardware, you spin up a virtual machine with a cloud provider and run it there. The sandbox is somebody else&rsquo;s computer. This scales well, leaves no footprint on your own systems, and can be torn down cleanly when the work is finished. It does require more technical setup than the other options and introduces a second vendor relationship to think about.</p>
+
+  <h3>Your Security Checklist for Agentic Workflows</h3>
+  <ul>
+    <li>If running agents, consider your sandboxing needs: is Claude Code&rsquo;s built-in sandboxing sufficient, or do you need hardware isolation or a cloud-based sandbox?</li>
+    <li>In practice, options 1 and 2 are directly accessible; options 3 and 4 are where you bring in a software engineer familiar with that territory.</li>
+  </ul>
+
+  <hr>
+  <p><em>Part of the AI Onramps programme &bull; Building AI literacy for working professionals</em></p>
 </section>
 
 
