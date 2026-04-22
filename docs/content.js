@@ -388,19 +388,19 @@ The folder contains a sample report. All work in this project is based on this r
     </ol>
 
     <h4>Set the permission mode</h4>
-    <p>Before your first prompt, set your permission mode. Press Shift+Tab to cycle through modes. The current mode appears in the status bar.</p>
+    <p>Before your first prompt, set your permission mode. Click the mode selector at the bottom-left of the prompt box to open a dropdown showing all available modes.</p>
     <ul>
-      <li><strong>Default mode</strong> &mdash; Claude asks before every file write and shell command. Use this.</li>
-      <li><strong>Plan mode</strong> &mdash; Claude reads and explores but cannot change anything. Press Shift+Tab again to reach this. Use this when you want Claude to think before doing.</li>
+      <li><strong>Ask permissions</strong> &mdash; Claude asks before every file write and shell command. Select this.</li>
+      <li><strong>Plan mode</strong> &mdash; Claude reads and explores but cannot change anything. Use this when you want Claude to think before doing.</li>
     </ul>
-    <p>These are the only two modes you should use for now. Stay in Default for active work. Switch to Plan when you want to think first.</p>
+    <p>These are the only two modes you should use for now. Stay in Ask permissions for active work. Switch to Plan when you want to think first. You will see other modes in the dropdown &mdash; Accept edits, Bypass permissions, and Auto mode &mdash; but they are either not suitable for beginners or not yet available on your plan.</p>
 
     <h4>Build 1 &mdash; three versions of the report</h4>
     <p>Send Claude this prompt:</p>
     <blockquote><p><em>Read the report in this folder. Then create three new versions in the same folder: a one-page executive summary, a five-bullet briefing for a busy CEO, and a 200-word version suitable for a LinkedIn post. Save each as a separate .md file with a clear name.</em></p></blockquote>
     <p>Approve each action as Claude works. Read the prompts carefully. Look at the files Claude creates. Ask for changes &mdash; &ldquo;make the LinkedIn version less corporate&rdquo;, &ldquo;add a section on next steps to the executive summary&rdquo;. Stay in the conversation. Iterate.</p>
 
-    <h4>Build 2 &mdash; a small website</h4>
+    <h4>Build 2 &mdash; a small website displaying the report</h4>
     <p>In the same session, send Claude this prompt:</p>
     <blockquote><p><em>Now build a single-file HTML website that displays the report nicely. Include a clean layout, navigation between sections, and at least two charts or graphics that visualise the most important data in the report. Save it as report.html in this folder. When done, tell me how to open it.</em></p></blockquote>
     <p>When Claude is done, double-click the file to open it in your browser. Iterate on it the same way you did with the report versions.</p>
@@ -445,17 +445,18 @@ The folder contains a sample report. All work in this project is based on this r
       <div class="collapsible-body">
         <p>Claude Code has five permission modes. We told you to use only two. Here is why.</p>
         <h4>The two we recommend</h4>
-        <p><strong>Default mode</strong> asks before every file write and every shell command. Yes, this is friction. The friction is the point &mdash; it gives you a chance to catch a mistake before it happens. For your first dozens of sessions, stay here.</p>
+        <p><strong>Ask permissions</strong> (labelled &ldquo;Default&rdquo; in some documentation) asks before every file write and every shell command. Yes, this is friction. The friction is the point &mdash; it gives you a chance to catch a mistake before it happens. For your first dozens of sessions, stay here.</p>
         <p><strong>Plan mode</strong> lets Claude read and explore but not change anything. It produces a written plan and waits. This is genuinely valuable: instead of approving twenty individual actions one at a time, you read one written plan, understand it, and then exit Plan mode and let Claude execute. For non-coders especially, reading a plan is more comprehensible than evaluating individual file edits or shell commands. Reach for Plan mode any time you are about to ask Claude to do something complex.</p>
         <h4>The three we don&rsquo;t</h4>
         <p><strong>Accept Edits mode</strong> stops asking before file edits but still asks before shell commands. We don&rsquo;t recommend it. It removes friction from exactly the operation Claude is most likely to do badly when you are still learning.</p>
-        <p><strong>Auto mode</strong> uses a separate classifier model to approve safe actions and block risky ones. This is conceptually the right next step after Default and Plan &mdash; it adds judgment rather than just removing checks. It is currently restricted to Team and Enterprise plans, so most of you cannot use it yet. When you can, it will be your next stop.</p>
+        <p><strong>Auto mode</strong> uses a separate classifier model to approve safe actions and block risky ones. This is conceptually the right next step after Ask permissions and Plan &mdash; it adds judgment rather than just removing checks. It is currently restricted to Team and Enterprise plans, so most of you cannot use it yet. When you can, it will be your next stop.</p>
         <p><strong>Bypass Permissions mode</strong> (the <code>--dangerously-skip-permissions</code> flag) skips all checks. The flag name is the warning. Don&rsquo;t.</p>
         <h4>Approval fatigue &mdash; the real risk</h4>
         <p>Anthropic&rsquo;s own data shows users approve around 93% of permission prompts. This is the real security risk: not that Claude Code asks too few questions, but that it asks so many that you stop reading them. Two consequences:</p>
         <ul>
           <li>Don&rsquo;t ask Claude to do twelve things at once when you are starting out. You will just be clicking through prompts. Smaller, considered tasks let you actually read what you are approving.</li>
           <li>Use Plan mode for anything complex. Reviewing one written plan beats clicking through twenty individual approvals you barely read.</li>
+          <li>When Auto mode becomes available on your plan, move to it. It is designed precisely to solve approval fatigue &mdash; a classifier makes the approval decisions for you, blocking genuinely risky actions while letting safe ones through. This is the right next step after Ask permissions and Plan.</li>
         </ul>
       </div>
     </details>
