@@ -230,6 +230,22 @@
     color: var(--accent);
   }
 
+  section.step pre {
+    background: #f0f0f0;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin: 12px 0 16px;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+  }
+
+  section.step code {
+    font-family: "Consolas", "Courier New", monospace;
+  }
+
   /* ── TABLE ───────────────────────────────────── */
   table {
     width: 100%;
