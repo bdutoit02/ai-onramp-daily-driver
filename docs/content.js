@@ -486,6 +486,192 @@ The folder contains a sample report. All work in this project is based on this r
   </div>
 </section>
 
+<!-- ── QS8: Agentic Processes ──────────────────── -->
+<section class="step" id="qs8">
+  <h2>QS8: Agentic processes using Claude Code</h2>
+
+  <div class="quickstart-block">
+    <div class="qs-label">QuickStart</div>
+    <p><strong>Before you start.</strong> This module assumes you have completed the Claude Code for Apps module and are comfortable with the basics: creating a project folder, writing a CLAUDE.md, and working with Claude Code in Desktop. Here we use Claude Code in the terminal &mdash; a different surface for the same tool, chosen because it makes the agentic process more transparent.</p>
+    <p>An agentic process is different from asking Claude to build something. In the Apps module, you gave Claude a task and watched it produce files. Here, you give Claude a <em>workflow</em> &mdash; a sequence of distinct roles, each with its own instructions, feeding their outputs to the next stage. Claude doesn&rsquo;t just execute a task; it orchestrates a process.</p>
+    <p>This is the same pattern that underlies the fully autonomous multi-agent systems demonstrated in Session 6. We are running a simpler version here so you can see the moving parts clearly and understand the design before encountering the full thing.</p>
+    <p><em>Follow these steps in order. The full process should take about 20 minutes, most of it watching Claude work.</em></p>
+
+    <h4>Install Claude Code for the terminal</h4>
+    <p>Claude Desktop includes its own built-in Code engine, but to run Claude Code from a terminal window you need to install it separately. This is a one-time step.</p>
+    <ol>
+      <li>Press the Windows key and type <code>Terminal</code>. Open <strong>Windows Terminal</strong>. It does not matter which folder you are in when you run the install command.</li>
+      <li>Paste the following command and press Enter:</li>
+    </ol>
+<pre><code>irm https://claude.ai/install.ps1 | iex</code></pre>
+    <ol start="3">
+      <li>This may take a minute or two. There may be a pause with no visible output &mdash; that is normal. Wait for the installation to complete.</li>
+      <li>The installer may show a warning that Claude Code is not in your PATH. If it does, paste the following command and press Enter:</li>
+    </ol>
+<pre><code>[Environment]::SetEnvironmentVariable("PATH", "$env:PATH;$env:USERPROFILE\.local\bin", [EnvironmentVariableTarget]::User)</code></pre>
+    <p>The command will run silently and return you to the command line with no confirmation message. That is normal &mdash; it has worked.</p>
+    <ol start="5">
+      <li>Close Windows Terminal completely (X in the top right corner) and open a fresh Windows Terminal.</li>
+      <li>Type <code>claude --version</code> and press Enter. You should see a version number. If so, the installation worked.</li>
+    </ol>
+    <p>No additional software is needed &mdash; the installer handles everything. Claude Code installed this way auto-updates in the background.</p>
+
+    <h4>Create the project folder</h4>
+    <ol>
+      <li>In File Explorer, go to your <code>Documents\ClaudeCode</code> folder (created in the Apps module).</li>
+      <li>Create a new sub-folder called <code>agentic-demo</code>.</li>
+    </ol>
+
+    <h4>Write the CLAUDE.md</h4>
+    <p>This CLAUDE.md is longer than the one in the Apps module because it is doing more: it defines the entire workflow, including distinct agent roles and the sequence in which they operate.</p>
+    <ol>
+      <li>In the <code>agentic-demo</code> folder, create a file called <code>CLAUDE.md</code>.</li>
+      <li>Paste in the following content and save:</li>
+    </ol>
+<pre><code># Agentic Research Process
+
+## Goal
+Produce two polished outputs on the topic: "AI adoption in South African professional services &mdash; current state and near-term outlook."
+
+## Workflow
+
+This project runs in three phases. Complete each phase fully before moving to the next. Save all outputs to this project folder with the filenames specified.
+
+### Phase 1 &mdash; Parallel Research
+
+Run two research tasks. These are independent and should be completed in parallel.
+
+**Researcher A: Demand Side**
+- Focus: Which SA professional services firms are adopting AI, what they are using it for, how mature their adoption is, and what is working well or badly.
+- Sources: Search for recent reporting, industry surveys, firm announcements, and case studies specific to South Africa. Prioritise sources from the last 18 months.
+- Output: A structured findings document with clear sections and source references.
+- Save as: \`research_demand.md\`
+
+**Researcher B: Environment**
+- Focus: The regulatory landscape for AI in South Africa, availability of AI skills in the SA labour market, infrastructure constraints, and positions taken by professional bodies and industry associations.
+- Sources: Search for regulatory documents, government policy statements, skills surveys, and industry body publications specific to South Africa. Prioritise sources from the last 18 months.
+- Output: A structured findings document with clear sections and source references.
+- Save as: \`research_environment.md\`
+
+### Phase 2 &mdash; Integration
+
+Read both research files (\`research_demand.md\` and \`research_environment.md\`). Produce a single integrated report that weaves together the demand-side and environment findings into a coherent narrative. Resolve any tensions between the two research streams explicitly &mdash; do not just concatenate. The integrated report should stand on its own as a complete account of the current state.
+
+- Save as: \`integrated_report.md\`
+
+### Phase 3 &mdash; Parallel Writing
+
+Read the integrated report (\`integrated_report.md\`). Produce two separate written outputs from it. These are independent and should be completed in parallel.
+
+**Writer A: Leadership Summary**
+- Audience: Senior partners or C-suite executives who want the picture in five minutes.
+- Tone: Lively, direct, confident. Not a dry report &mdash; something a busy person would actually read.
+- Length: 600-800 words.
+- Include: The two or three things that matter most, what is changing fastest, and one clear recommendation.
+- Save as: \`summary_leadership.md\`
+
+**Writer B: Operational Report**
+- Audience: A team lead or operations manager deciding what to do next quarter.
+- Tone: Professional, structured, specific. This is a working document, not a thought piece.
+- Length: 1500-2000 words.
+- Include: Sectioned findings, specific implications for staffing and capability building, implementation risks, and a prioritised action list.
+- Save as: \`report_operational.md\`
+
+## Working style
+- At each phase transition, briefly state what you have completed and what you are about to do.
+- Do not ask for approval between phases &mdash; proceed automatically.
+- Limit each research task to no more than 10 sources. This is a learning exercise &mdash; depth matters less than seeing the full workflow complete.
+- If a search returns insufficient results, note the gap and continue with what you have.</code></pre>
+
+    <h4>Open Windows Terminal and navigate to the folder</h4>
+    <p>This is the part that is new. You are going to run Claude Code from a terminal window rather than from Claude Desktop. The reason is transparency: in the terminal, you see exactly what Claude is doing at each step.</p>
+    <ol>
+      <li>Press the Windows key and type <code>Terminal</code>. Open <strong>Windows Terminal</strong>.</li>
+      <li>Type the following and press Enter:</li>
+    </ol>
+<pre><code>cd Documents\ClaudeCode\agentic-demo</code></pre>
+    <ol start="3">
+      <li>You are now in your project folder. Type the following and press Enter:</li>
+    </ol>
+<pre><code>claude</code></pre>
+    <ol start="4">
+      <li>Claude Code will start. It will read your CLAUDE.md and begin working.</li>
+    </ol>
+    <p>If you have any problems navigating in the terminal, just ask an AI &mdash; for example, for the right syntax to change directories.</p>
+    <p><strong>Important:</strong> Do not try to do anything else in the terminal beyond these steps. You are using the terminal as a launcher, not as a programming environment. Once Claude is running, interact with it exactly as you would in Desktop &mdash; by typing in the prompt area.</p>
+
+    <h4>Set the permission mode and launch</h4>
+    <p>When Claude starts, it will show you the permission mode. Use <strong>Ask permissions</strong> (the default). You will be approving actions as Claude works through the phases.</p>
+    <p>To launch the process, type this prompt:</p>
+    <blockquote><p><em>Read the CLAUDE.md in this folder and execute the full workflow as described. Begin with Phase 1.</em></p></blockquote>
+    <p>Then watch. Claude will work through the three phases, producing five files in your project folder. Approve each action as prompted. Pay attention to the phase transitions &mdash; Claude should announce what it has completed and what it is about to do.</p>
+    <p><strong>Tip:</strong> Press Ctrl+O to toggle between a detailed view (every action visible) and a summary view. The summary view is easier to follow if the detail becomes overwhelming.</p>
+
+    <h4>Check your outputs</h4>
+    <p>When Claude finishes, you should have five files in your <code>agentic-demo</code> folder:</p>
+    <ul>
+      <li><code>research_demand.md</code> &mdash; demand-side findings</li>
+      <li><code>research_environment.md</code> &mdash; environment findings</li>
+      <li><code>integrated_report.md</code> &mdash; the integrated report</li>
+      <li><code>summary_leadership.md</code> &mdash; the leadership summary</li>
+      <li><code>report_operational.md</code> &mdash; the operational report</li>
+    </ul>
+    <p>Open them and read them. The quality will vary &mdash; that is part of the point.</p>
+  </div>
+
+  <div class="ue-block">
+    <div class="ue-header">
+      <div class="ue-heading">Understand and Explore</div>
+      <button class="ue-close-all" onclick="closeAllInStep(this)">&#x2715; Close all</button>
+    </div>
+
+    <details class="ue-item">
+      <summary>What just happened</summary>
+      <div class="collapsible-body">
+        <p>You gave Claude a single CLAUDE.md file describing a multi-phase workflow with five distinct roles (two researchers, an integrator, two writers). Claude read those instructions and executed the entire process autonomously, producing five files without you writing a single intermediate prompt beyond &ldquo;begin.&rdquo;</p>
+        <p>This is an agentic process. Not because the technology is different &mdash; it is the same Claude &mdash; but because the <em>pattern of work</em> is different. Instead of a single task with a single output, you designed a workflow with decomposition (breaking a goal into sub-tasks), parallelism (independent tasks running concurrently), hand-offs (one agent&rsquo;s output becoming another&rsquo;s input), and role specialisation (each agent with distinct instructions, audience, and success criteria).</p>
+      </div>
+    </details>
+
+    <details class="ue-item">
+      <summary>Why the terminal</summary>
+      <div class="collapsible-body">
+        <p>You could run this same CLAUDE.md in Claude Desktop and it would work. We used the terminal for one reason: you can see everything.</p>
+        <p>In Desktop, Claude&rsquo;s work appears in panes and diffs &mdash; polished, visual, convenient. In the terminal, you see the raw stream: every search query, every file write, every phase transition, every decision Claude makes about what to do next. For your first agentic process, that transparency matters. You are learning to read what an agent does, not just what it produces.</p>
+        <p>Once you are comfortable with the pattern, you can run agentic processes in whichever surface you prefer. The CLAUDE.md works identically in both.</p>
+      </div>
+    </details>
+
+    <details class="ue-item">
+      <summary>The CLAUDE.md as orchestrator</summary>
+      <div class="collapsible-body">
+        <p>In the Apps module, CLAUDE.md was a set of preferences &mdash; how Claude should work, what the project contains, what to be careful about. Here it is something more: an orchestrator. It defines not just what Claude should do but <em>how the work is structured</em> &mdash; which roles exist, what each one focuses on, what they produce, and in what order.</p>
+        <p>This is the same progression you have seen across the course. Session 4&rsquo;s Project instructions shaped how Claude researched within a chat conversation. The Apps module&rsquo;s CLAUDE.md shaped how Claude worked within a folder. This module&rsquo;s CLAUDE.md shapes how Claude runs an entire multi-phase process. The concept is the same &mdash; persistent, structured Direction &mdash; but the scope of what it controls has expanded.</p>
+        <p>Writing a good orchestrator CLAUDE.md is a design skill, not a prompting trick. The one provided in this exercise works because it specifies: the goal clearly, the phases in order, the roles with distinct focus areas, the outputs with filenames, and the hand-offs between stages. Remove any of those and the process degrades &mdash; Claude will still produce something, but the structure and quality will be less predictable.</p>
+      </div>
+    </details>
+
+    <details class="ue-item">
+      <summary>Parallelism and why it matters</summary>
+      <div class="collapsible-body">
+        <p>The CLAUDE.md specifies that Phase 1&rsquo;s two researchers and Phase 3&rsquo;s two writers should run in parallel. Whether Claude actually executes them concurrently or sequentially depends on the model and the context. What matters is the <em>design</em> intent: these tasks are independent, and you have told Claude so.</p>
+        <p>This matters for two reasons. First, it is faster &mdash; parallel tasks complete sooner than sequential ones. Second, and more importantly for your work, it produces genuinely different outputs. Two researchers with different briefs will find different sources, notice different things, and frame their findings differently. That divergence is the point. An integrated report that reconciles two independent research streams is richer than one produced by a single pass.</p>
+        <p>The same logic applies to the two writers. A leadership summary and an operational report are not the same document at different lengths &mdash; they are different products shaped by different audiences and purposes. Producing them in parallel from a shared base ensures they are grounded in the same evidence while serving different needs.</p>
+      </div>
+    </details>
+
+    <details class="ue-item">
+      <summary>Where this is going</summary>
+      <div class="collapsible-body">
+        <p>The workflow you just ran is a simplified version of a pattern that is expanding rapidly. New agentic frameworks and tools are being introduced regularly &mdash; by Anthropic and others. The specific tools will change. The pattern will not: decompose a complex goal, assign specialised roles, run tasks in parallel where possible, integrate the results, and evaluate the output.</p>
+        <p>Session 6 demonstrates a more technically ambitious version of this pattern: a fully autonomous multi-agent system where the orchestrator spawns genuine sub-agents &mdash; separate Claude instances running concurrently with their own contexts. That is the next level of the same idea you have just practised.</p>
+        <p>The skill you are building here is not how to use a specific tool. It is how to <em>design a process</em> that an AI system can execute &mdash; and how to evaluate whether it did so well. That skill transfers to every agentic system you will encounter.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
 <!-- ── RESOURCE: General Links ─────────────────── -->
 <section class="step resource" id="res-general">
   <h2>General Links</h2>
@@ -3061,6 +3247,7 @@ The folder contains a sample report. All work in this project is based on this r
     'qs5': { title: 'S2: AI Onramp', subtitle: 'QS5: Keeping it safe' },
     'qs6': { title: 'S2: AI Onramp', subtitle: 'QS6: Basic chat technique' },
     'qs7': { title: 'S2: AI Onramp', subtitle: 'QS7: Claude Code' },
+    'qs8': { title: 'S2: AI Onramp', subtitle: 'QS8: Agentic processes using Claude Code' },
     'cg-opening': { title: 'S1: AI Conceptual Guide', subtitle: 'Opening' },
     'cg-part-a': { title: 'S1: AI Conceptual Guide', subtitle: 'A. What Kind of Intelligence?' },
     'cg-part-b': { title: 'S1: AI Conceptual Guide', subtitle: 'B. Enhancing the Intelligence' },
