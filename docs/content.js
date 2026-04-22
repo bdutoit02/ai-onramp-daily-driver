@@ -344,6 +344,147 @@
   </div>
 </section>
 
+<!-- ── QS7: Claude Code ────────────────────────── -->
+<section class="step" id="qs7">
+  <h2>QS7: Claude Code</h2>
+
+  <div class="quickstart-block">
+    <div class="qs-label">QuickStart</div>
+    <p><strong>Before you start.</strong> If you have not installed Claude for Desktop, do so now. You will need a Pro subscription to have access to Claude Code and Cowork.</p>
+    <p><em>Follow these steps in order. You should reach a working first build in about 15 minutes.</em></p>
+    <p><strong>A note on Cowork.</strong> Inside Claude Desktop you will also see Cowork. It is genuinely useful but quite different from Code, and confusing if introduced together. We will cover Cowork separately later. For now: ignore it. We are working only in the Code tab.</p>
+
+    <h4>Set up your projects folder</h4>
+    <p>Before you open Claude Code, decide where Claude Code projects will live on your computer. This matters more than it sounds.</p>
+    <ol>
+      <li>In File Explorer, create a folder called <code>ClaudeCode</code> inside your <code>Documents</code> folder. This is the parent folder where every Claude Code project will live.</li>
+      <li>Inside <code>ClaudeCode</code>, create a sub-folder called <code>first-build</code>. This is the project folder for your first hands-on build.</li>
+      <li>Download the sample report file you have been given for this exercise. Save it inside <code>first-build</code>.</li>
+    </ol>
+
+    <h4>Write a CLAUDE.md file</h4>
+    <p>CLAUDE.md is a plain text file Claude Code reads automatically every time you start a session in that folder. It is your standing instructions for the project.</p>
+    <ol>
+      <li>In the <code>first-build</code> folder, create a new file called <code>CLAUDE.md</code> using Notepad or any text editor. Make sure the file extension is <code>.md</code> and not <code>.txt</code>.</li>
+      <li>Paste in the following content and save:</li>
+    </ol>
+<pre><code># Project: First Build
+
+This is a learning project. The user is new to Claude Code.
+
+## Source material
+The folder contains a sample report. All work in this project is based on this report.
+
+## Working style
+- Explain what you are about to do before you do it.
+- Keep outputs in the project folder.
+- Ask before installing anything.</code></pre>
+
+    <h4>Open Claude Code</h4>
+    <ol>
+      <li>Open Claude Desktop. In the left sidebar, click <strong>Code</strong> (not Chat, not Cowork).</li>
+      <li>Above the prompt box, find the <strong>Project folder</strong> selector. Click it and choose your <code>first-build</code> folder.</li>
+      <li>Check the model selector &mdash; leave it on the default Sonnet. Leave Environment on Local.</li>
+    </ol>
+
+    <h4>Set the permission mode</h4>
+    <p>Before your first prompt, set your permission mode. Press Shift+Tab to cycle through modes. The current mode appears in the status bar.</p>
+    <ul>
+      <li><strong>Default mode</strong> &mdash; Claude asks before every file write and shell command. Use this.</li>
+      <li><strong>Plan mode</strong> &mdash; Claude reads and explores but cannot change anything. Press Shift+Tab again to reach this. Use this when you want Claude to think before doing.</li>
+    </ul>
+    <p>These are the only two modes you should use for now. Stay in Default for active work. Switch to Plan when you want to think first.</p>
+
+    <h4>Build 1 &mdash; three versions of the report</h4>
+    <p>Send Claude this prompt:</p>
+    <blockquote><p><em>Read the report in this folder. Then create three new versions in the same folder: a one-page executive summary, a five-bullet briefing for a busy CEO, and a 200-word version suitable for a LinkedIn post. Save each as a separate .md file with a clear name.</em></p></blockquote>
+    <p>Approve each action as Claude works. Read the prompts carefully. Look at the files Claude creates. Ask for changes &mdash; &ldquo;make the LinkedIn version less corporate&rdquo;, &ldquo;add a section on next steps to the executive summary&rdquo;. Stay in the conversation. Iterate.</p>
+
+    <h4>Build 2 &mdash; a small website</h4>
+    <p>In the same session, send Claude this prompt:</p>
+    <blockquote><p><em>Now build a single-file HTML website that displays the report nicely. Include a clean layout, navigation between sections, and at least two charts or graphics that visualise the most important data in the report. Save it as report.html in this folder. When done, tell me how to open it.</em></p></blockquote>
+    <p>When Claude is done, double-click the file to open it in your browser. Iterate on it the same way you did with the report versions.</p>
+    <p>That is your first hands-on with Claude Code. The Understand and Explore section below explains what just happened.</p>
+  </div>
+
+  <div class="ue-block">
+    <div class="ue-header">
+      <div class="ue-heading">Understand and Explore</div>
+      <button class="ue-close-all" onclick="closeAllInStep(this)">&#x2715; Close all</button>
+    </div>
+
+    <details class="ue-item">
+      <summary>What Claude Code actually is</summary>
+      <div class="collapsible-body">
+        <p>Claude Code is the same Claude you know from chat, given two new things: a folder it can read and write in, and a body of conventions for working in that folder. Inside Claude Desktop, the Code tab is the visual surface for this. There is also a terminal version (the CLI) that runs the same engine &mdash; we use it in the Agentic Processes module later in Phase 2.</p>
+        <p>The headline shift from chat is that Claude can now produce things you keep. Instead of pasting outputs out of a chat window, you watch Claude write them as files in your folder. Iteration changes too &mdash; instead of &ldquo;give me a new version&rdquo;, you say &ldquo;revise the file you just wrote&rdquo;, and Claude opens it, edits it, and shows you the diff.</p>
+      </div>
+    </details>
+
+    <details class="ue-item">
+      <summary>CLAUDE.md, and why it matters</summary>
+      <div class="collapsible-body">
+        <p>If you used the Phase 1 daily driver setup, you wrote Project instructions in Claude.ai &mdash; persistent context that every conversation in that Project picks up. CLAUDE.md is the same idea, in a new place, with more power.</p>
+        <p>Same idea: standing instructions Claude reads every time, so you don&rsquo;t repeat yourself.</p>
+        <p>New place: a plain text file in your project folder, which means it travels with the project, lives on your computer, and you can edit it in any text editor.</p>
+        <p>More power: because Claude Code can act on those instructions &mdash; running commands, creating files, organising things &mdash; your CLAUDE.md becomes a description of how the project should work, not just what it is about. Over time, the CLAUDE.md for a project you keep returning to becomes a small operating manual for that work. This is a continuation of a thread that runs all the way back to the earliest prompt engineering: you get more out of an AI when you tell it clearly and persistently what you want.</p>
+        <p>Practical guidance: keep CLAUDE.md short to start. Three sections &mdash; what the project is, what materials it contains, how Claude should work &mdash; is enough. Add to it as you discover what Claude tends to get wrong without instruction. Treat it as living documentation, not a one-time setup.</p>
+      </div>
+    </details>
+
+    <details class="ue-item">
+      <summary>Folder discipline &mdash; two reasons it matters</summary>
+      <div class="collapsible-body">
+        <p>The first reason is what Claude Code can touch. Claude Code can read and write any file in the project folder you select, and any sub-folder of it. It cannot reach outside that folder. So the folder you select is the entire scope of what Claude can affect. Choose deliberately. Never select your home directory, your Documents root, or anything synced to cloud storage you don&rsquo;t fully control. One project, one dedicated folder, every time.</p>
+        <p>The second reason is project hygiene. A Claude Code project is just a folder with a CLAUDE.md in it. There is no project list, no recent-projects sidebar, no metadata tying things together. If your project folders are scattered across Desktop, Downloads, OneDrive and three random subdirectories, your projects are too &mdash; and three months from now you will not remember what was in any of them. Pick a single parent location, like the <code>ClaudeCode</code> folder under Documents that the Quickstart had you create, and put every project there. This small discipline pays off enormously over time.</p>
+      </div>
+    </details>
+
+    <details class="ue-item">
+      <summary>Permission modes &mdash; why we recommend what we do</summary>
+      <div class="collapsible-body">
+        <p>Claude Code has five permission modes. We told you to use only two. Here is why.</p>
+        <h4>The two we recommend</h4>
+        <p><strong>Default mode</strong> asks before every file write and every shell command. Yes, this is friction. The friction is the point &mdash; it gives you a chance to catch a mistake before it happens. For your first dozens of sessions, stay here.</p>
+        <p><strong>Plan mode</strong> lets Claude read and explore but not change anything. It produces a written plan and waits. This is genuinely valuable: instead of approving twenty individual actions one at a time, you read one written plan, understand it, and then exit Plan mode and let Claude execute. For non-coders especially, reading a plan is more comprehensible than evaluating individual file edits or shell commands. Reach for Plan mode any time you are about to ask Claude to do something complex.</p>
+        <h4>The three we don&rsquo;t</h4>
+        <p><strong>Accept Edits mode</strong> stops asking before file edits but still asks before shell commands. We don&rsquo;t recommend it. It removes friction from exactly the operation Claude is most likely to do badly when you are still learning.</p>
+        <p><strong>Auto mode</strong> uses a separate classifier model to approve safe actions and block risky ones. This is conceptually the right next step after Default and Plan &mdash; it adds judgment rather than just removing checks. It is currently restricted to Team and Enterprise plans, so most of you cannot use it yet. When you can, it will be your next stop.</p>
+        <p><strong>Bypass Permissions mode</strong> (the <code>--dangerously-skip-permissions</code> flag) skips all checks. The flag name is the warning. Don&rsquo;t.</p>
+        <h4>Approval fatigue &mdash; the real risk</h4>
+        <p>Anthropic&rsquo;s own data shows users approve around 93% of permission prompts. This is the real security risk: not that Claude Code asks too few questions, but that it asks so many that you stop reading them. Two consequences:</p>
+        <ul>
+          <li>Don&rsquo;t ask Claude to do twelve things at once when you are starting out. You will just be clicking through prompts. Smaller, considered tasks let you actually read what you are approving.</li>
+          <li>Use Plan mode for anything complex. Reviewing one written plan beats clicking through twenty individual approvals you barely read.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="ue-item">
+      <summary>Practitioner tips</summary>
+      <div class="collapsible-body">
+        <ul>
+          <li><strong>Talk to Claude before you tell it to do anything.</strong> Especially for a new project, the first few exchanges should be a conversation: what is the project, what is in the folder, what would Claude suggest as a sensible structure. Then go and do something. This is the same chat-style technique from Session 2 (&ldquo;stay in the conversation&rdquo;) applied to Code.</li>
+          <li><strong>Use Plan mode for anything you don&rsquo;t fully understand.</strong> If you are not sure what Claude is about to do, switch to Plan, ask the question, read the plan. Then decide whether to execute.</li>
+          <li><strong>Read the diffs.</strong> Claude Desktop shows you a side-by-side view of what changed. Even if you don&rsquo;t read code, you can usually tell whether the structure of a change matches what you asked for. Make this a habit.</li>
+          <li><strong>When something goes wrong, tell Claude.</strong> &ldquo;That&rsquo;s not what I wanted, undo it and try again with this approach instead&rdquo; is a perfectly normal thing to say. Claude can revert recent file changes.</li>
+          <li><strong>Update CLAUDE.md as you go.</strong> If you find yourself giving Claude the same correction twice in a session, that correction belongs in CLAUDE.md so you don&rsquo;t have to give it again.</li>
+          <li><strong>Open Claude Code first thing on your project days.</strong> The same daily-driver point from Session 2 applies here: it becomes your default working surface only if you make a habit of opening it before anything else.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="ue-item">
+      <summary>Where to go from here</summary>
+      <div class="collapsible-body">
+        <p>Try a real project of your own. Pick something small with a clear output &mdash; a document you need to reformat in three ways, a small website you want to build, a set of files you want to organise and analyse. Create a folder, write a short CLAUDE.md, point Claude Code at it, and start. The leap from this guide to genuine capability happens through use, not reading.</p>
+        <p>The next module in Phase 2 of the Onramp covers Agentic Processes &mdash; using Claude Code in the terminal to run small multi-agent workflows. That is a different use case for the same tool, and we recommend you have a few projects of your own under your belt with what you&rsquo;ve learned here before moving on.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
 <!-- ── RESOURCE: General Links ─────────────────── -->
 <section class="step resource" id="res-general">
   <h2>General Links</h2>
@@ -2918,6 +3059,7 @@
     'qs4': { title: 'S2: AI Onramp', subtitle: 'QS4: Set up your Connectors' },
     'qs5': { title: 'S2: AI Onramp', subtitle: 'QS5: Keeping it safe' },
     'qs6': { title: 'S2: AI Onramp', subtitle: 'QS6: Basic chat technique' },
+    'qs7': { title: 'S2: AI Onramp', subtitle: 'QS7: Claude Code' },
     'cg-opening': { title: 'S1: AI Conceptual Guide', subtitle: 'Opening' },
     'cg-part-a': { title: 'S1: AI Conceptual Guide', subtitle: 'A. What Kind of Intelligence?' },
     'cg-part-b': { title: 'S1: AI Conceptual Guide', subtitle: 'B. Enhancing the Intelligence' },
