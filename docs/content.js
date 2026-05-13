@@ -3230,6 +3230,141 @@ Read the integrated report (\`integrated_report.md\`). Produce two separate writ
   <p><em>Part of the AI Onramps programme · Building AI literacy for working professionals</em></p>
 </section>
 
+<!-- ── S8: AGENTIC RESEARCH WITH SKILLS ───────── -->
+<section class="step" id="s8-s1">
+  <h2>1. From Tacit to Explicit to Guided Agentic</h2>
+  <p class="subtitle" style="margin-bottom:24px;">Student Notes</p>
+  <p>A research unit&rsquo;s quality has always rested on tacit expertise. Which sources to trust. How to decompose a brief. Which sub-sectoral framings surface concrete evidence and which collapse into platitudes. When triangulation across two thin sources is worth more than a single confident one. When to flag a gap rather than paper over it. This knowledge lives in senior heads, gets transmitted slowly through apprenticeship, and walks out the door when people leave.</p>
+  <p>The skills approach lets that craft be written down. Not as documentation about the work, but as files that <em>drive</em> the work &mdash; read by an agentic AI at the start of each run and applied to the task at hand. The organisational arc is straightforward: tacit method becomes explicit method becomes guided agentic process. What was held in heads becomes inspectable, criticisable, improvable, and re-usable.</p>
+  <p>This unit sets out a method for organising that work. The example used here is drawn from labour-market research, but the architecture is the point. What is being described is not a specific research project &mdash; it is the shape of a research unit&rsquo;s operating system.</p>
+</section>
+
+<section class="step" id="s8-s2">
+  <h2>2. What the Skills Approach Buys a Research Unit</h2>
+  <p>Five claims, in order from foundational to operational.</p>
+
+  <h3>Externalisation</h3>
+  <p>Tacit knowledge cannot be inspected. It can only be observed in action, inferred from outcomes, or transmitted by working alongside the person who holds it. The skills approach forces the unit&rsquo;s method into plain text. Once written down, the method can be read by anyone in the unit, challenged on its merits, improved deliberately, and inherited by new staff. The act of writing it down is itself clarifying &mdash; implicit assumptions surface, edge cases get named, distinctions that lived as feel become distinctions that live as rules.</p>
+
+  <h3>Methodological progress</h3>
+  <p>What is explicit can be improved. Every run of the process is an opportunity to refine the files: a sub-query pattern that worked well, a source that turned out to be authoritative on a question nobody had thought to ask it, a domain-specific framing that consistently surfaces better evidence than the obvious one. These refinements accumulate. The method gets better over time, and the improvements are durable &mdash; they are in the files, not in the head of whoever happened to run that month&rsquo;s project. A research unit operating this way builds a methodological asset that compounds.</p>
+
+  <h3>Role separation: AE and SS</h3>
+  <p>Serious professional research divides labour between a methodologist and a domain expert. The skills approach mirrors this directly in the file structure. The <strong>AI Engineer (AE)</strong> owns the workflow files &mdash; how a brief is decomposed, how sources are categorised, how outputs are recorded. The <strong>Subject Specialist (SS)</strong> owns the domain files &mdash; which institutions matter in this sector, which technical terms fail as search queries, which conceptual distinctions briefs routinely conflate. The two collaborate rather than one trying to do both. The split is the right split: it lets each role contribute what they actually know, and it lets each set of files evolve at its own pace.</p>
+
+  <h3>Reuse</h3>
+  <p>A research method written down can be re-run. When the world changes &mdash; a new regulatory instrument, a new quarter&rsquo;s data, a new question in the same domain &mdash; the existing files do most of the work. The marginal cost of the second run is a small fraction of the first. For a research unit with ongoing monitoring obligations, or with multiple clients in the same domain, the reuse case is decisive. The files become a productive asset rather than a one-off output.</p>
+
+  <h3>Auditability</h3>
+  <p>The architecture produces process logs and trace files as a matter of course. Every run leaves behind a record of what was searched, what was read, which sources fed which findings, where reconciliations were made, what was deliberately excluded. This is not overhead bolted onto the work &mdash; it is a real output of the work, and it is the artefact that lets a reviewer follow the reasoning without re-reading every input. For research that has to survive scrutiny, the audit trail is itself part of what is being sold.</p>
+</section>
+
+<section class="step" id="s8-s3">
+  <h2>3. The Architecture &mdash; Three Projects, Not One</h2>
+  <p>The method runs as three separate projects, in sequence, each consuming the previous one&rsquo;s outputs:</p>
+  <p><strong>Phase 1 &mdash; Curated Search.</strong> Produces per-source summaries, a process log, and a source-quality assessment.</p>
+  <p><strong>Phase 2 &mdash; Synthesis.</strong> Takes Phase 1&rsquo;s outputs and produces an analytical first draft organised around the research question.</p>
+  <p><strong>Phase 3 &mdash; Report Writing.</strong> Takes the Phase 2 synthesis and renders it as a finished report for a specific audience.</p>
+  <p>The separation matters. It is tempting to collapse the three into a single long agent run &mdash; feed in the brief at one end and get a report out at the other. The separation does several things that the collapsed version cannot.</p>
+  <p>First, <strong>scope discipline</strong>. Each phase does one job. Search agents are forbidden from synthesising. Synthesis agents are forbidden from re-searching. Report agents are forbidden from re-analysing. Without this discipline, agents drift: a synthesis run notices a gap and goes back to search; a report run decides it has a better idea than the synthesis it was given. Scope rules in each phase&rsquo;s <code>CLAUDE.md</code> hold the line.</p>
+  <p>Second, <strong>evaluation at each handoff</strong>. Phase 1&rsquo;s outputs can be reviewed for source quality before any synthesis runs. Phase 2&rsquo;s synthesis can be reviewed for analytical soundness before any report is written. Problems get caught where they happen, not buried in a final deliverable.</p>
+  <p>Third, <strong>traceability</strong>. When something in the final report looks odd, the chain back to evidence is two short hops &mdash; report to synthesis, synthesis to source &mdash; rather than one long opaque run.</p>
+  <p>Fourth, <strong>role flexibility</strong>. Different phases can be run by different people, or by the same person on different days. The files carry the project; nothing depends on a single agent session staying coherent across a complex multi-stage task.</p>
+  <p>Every phase has the same folder shape:</p>
+<pre><code>phase-project/
+├── CLAUDE.md
+├── identity.md
+├── [skill file(s)]
+├── environment.md
+├── inputs/
+└── outputs/</code></pre>
+  <p><code>identity.md</code> (who the human is, how they want the agent to work) and <code>environment.md</code> (platform and tool facts) are reusable across phases and across projects. The skill files and the contents of <code>inputs/</code> and <code>outputs/</code> are what change between phases.</p>
+</section>
+
+<section class="step" id="s8-s4">
+  <h2>4. Phase 1 &mdash; Curated Search</h2>
+  <p>Phase 1 is where the AE/SS split is most visible and most consequential. The files are:</p>
+  <p><strong><code>CLAUDE.md</code></strong> &mdash; the project&rsquo;s constitution. Names what the project is for, what is in and out of scope, the folder structure, and which files to read at session start. About fifty lines. Unchanged by any individual run.</p>
+  <p><strong><code>identity.md</code></strong> &mdash; the portable layer describing the user. Communication style, technical level, preferences for pushback, exclusions. Imported by <code>CLAUDE.md</code> rather than duplicated. Travels unchanged to any future project.</p>
+  <p><strong><code>search-skill.md</code></strong> &mdash; the AE&rsquo;s file. The general workflow for curated search. Three levels of engagement (discovery search, primary-document reading, claim verification). The discipline of decomposing briefs into discovery sub-queries rather than navigation queries. How to categorise sources. What to record. What counts as triangulation versus synthesis. When to flag rather than resolve. It is not domain-specific &mdash; the same file would apply to any curated research engagement.</p>
+  <p><strong><code>search-domain.md</code></strong> &mdash; the SS&rsquo;s file. The domain layer. For each engagement, this records which sources matter (the Core list &mdash; must be consulted), which are worth a look (the Potentially Useful list, each with handling notes), and which to exclude. It also captures domain-specific search craft: the technical terms that fail as search queries, the conceptual distinctions in the field that briefs routinely conflate, the sub-sectoral framings that surface concrete evidence rather than generalities. This is the most actively maintained file in the system.</p>
+  <p><strong><code>environment.md</code></strong> &mdash; platform facts. Which tools are available, how PDFs get handled, where archives live. Small but useful: it lets the workflow rules in <code>search-skill.md</code> stay clean.</p>
+  <p>A design principle worth stating directly: source lists filter and categorise what is found, but the agent operates in <strong>discovery mode by default</strong>. A common failure pattern is for agents to treat curated source lists as gatekeeping &mdash; consulting only listed sources and missing everything else. The method is explicit against this. Listed sources guarantee certain things get read; they do not constrain the agent to read only those things.</p>
+  <p>The outputs of a Phase 1 run:</p>
+  <p><strong><code>log.md</code></strong> &mdash; an append-only descriptive record. Sub-queries run, sources consulted, documents fetched, claims traced. No judgements about quality &mdash; its job is faithful process record.</p>
+  <p><strong><code>source-quality.md</code></strong> &mdash; the evaluative companion. Organised by source: did the search reach it, what came back, an assessment on recency, depth, relevance, trustworthiness. Crucially, this file also flags <strong>candidate updates to <code>search-domain.md</code></strong> &mdash; new sources to add to Core, others to exclude, categorisations that look wrong. This is the artefact for human review at the end of each run, and it is the primary feeder of the feedback loop described in Section 7.</p>
+  <p><strong><code>outputs/summaries/</code></strong> &mdash; one summary file per source consulted. Each captures what that specific source says: content, structure, caveats. Summaries are deliberately engaged &mdash; they note where statistics need verification, where document gaps exist, where evidence is thin. They are written to be Phase 2&rsquo;s inputs.</p>
+</section>
+
+<section class="step" id="s8-s5">
+  <h2>5. Phase 2 &mdash; Synthesis</h2>
+  <p>Phase 2 takes Phase 1&rsquo;s outputs and turns them into a first-draft analysis organised around the research question. The substantive evidence base is settled; what Phase 2 adds is <strong>structure</strong>. The output is not yet a report &mdash; it is the analytical scaffolding from which a report can be written.</p>
+  <p>The folder:</p>
+<pre><code>agri-summary/
+├── CLAUDE.md
+├── identity.md
+├── synth-skill.md
+├── environment.md
+├── inputs/         (Phase 1 outputs copied in)
+└── outputs/
+    ├── synthesis.md
+    └── trace.md</code></pre>
+  <p><code>CLAUDE.md</code> does a small but important job. Its most consequential content is the scope rule: <em>do not go back and search for more evidence; do not polish for presentation; the analytical work is what this phase produces, nothing more, nothing less.</em> The out-of-scope statements matter as much as the in-scope ones.</p>
+  <p><code>synth-skill.md</code> is the methodology file. About a page, structured around five sections: how the file is used, what a synthesis brief consists of, how to derive an analytical structure from the goal, the technical moves available (triangulation across sources, conceptual reconciliation, gap-naming, re-framing, source weighting), and how to record what was done.</p>
+  <p>A design principle to state explicitly: <strong>the methodology file is held thin on purpose.</strong> Modern AI assistants bring substantial analytical intelligence to a task. Over-specifying the methodology suffocates that intelligence and converts the work into mechanical rule-following. The goal is to give the AI just enough structure to stay on task and produce traceable work, then trust its judgement on the substance. In practice this means resisting the temptation to add prescriptions every time something goes slightly wrong; the right response is usually to refine the framing rather than tighten the rules.</p>
+  <p>The outputs:</p>
+  <p><strong><code>synthesis.md</code></strong> &mdash; the analytical first draft, organised around whatever structure the AI derives from the goal.</p>
+  <p><strong><code>trace.md</code></strong> &mdash; a short record of how the synthesis was done. Which sources fed which sections. Where reconciliations were made. Which gaps were named. The trace is what allows a reviewer to follow the reasoning without re-reading every input.</p>
+  <p>Two characteristics of the synthesis are worth noticing. First, the AI is expected to <strong>push back</strong> on the brief if anything seems wrong &mdash; methodology files do not just instruct, they invite challenge. Second, the synthesis is <strong>honest about its limits</strong>. Gaps in the evidence base are surfaced as findings, not hidden behind plausible-sounding prose. Both behaviours are encoded in <code>synth-skill.md</code> as discipline rather than left to chance.</p>
+</section>
+
+<section class="step" id="s8-s6">
+  <h2>6. Phase 3 &mdash; Report Writing</h2>
+  <p>Phase 3 takes the synthesis and renders it into a finished report for a specific audience. The substantive analytical work is settled. What Phase 3 changes is <strong>form</strong>: section ordering, voice, length, what gets foregrounded, what moves to a methodology note at the back. This is editorial work, not analytical work.</p>
+  <p>The folder mirrors Phase 2&rsquo;s:</p>
+<pre><code>agri-report/
+├── CLAUDE.md
+├── identity.md
+├── report-skill.md
+├── environment.md
+├── inputs/         (Phase 2 outputs copied in)
+└── outputs/
+    ├── report.md
+    ├── report.html
+    └── trace.md</code></pre>
+  <p><code>CLAUDE.md</code>&rsquo;s most important sentence is the scope rule: <strong>Phase 3 is editorial, not analytical. The substantive work was done in Phase 2.</strong> This guards against the AI deciding, mid-render, that it has a better idea than the synthesis it has been handed. The inputs are not raw material to be re-analysed; they are the analytical ground truth from which a report is to be rendered.</p>
+  <p><code>report-skill.md</code> is even shorter than <code>synth-skill.md</code>, because editorial discipline is a smaller domain than analytical synthesis. It names the inputs the report task takes (audience, format, length, the prior synthesis), the move from analytical ordering to reader-centred ordering, and the editorial moves available &mdash; re-framing for the audience, selection, sequencing by the reader&rsquo;s questions, voice shift to a finished register, proportionate handling of gaps. The principle is the same as in Phase 2: frame the work, then trust the AI to do it.</p>
+  <p>The outputs:</p>
+  <p><strong><code>report.md</code></strong> &mdash; the markdown source of the finished report.</p>
+  <p><strong><code>report.html</code></strong> &mdash; a formatted version for on-screen reading, rendered from the markdown.</p>
+  <p><strong><code>trace.md</code></strong> &mdash; editorial decisions. What was re-framed, what was trimmed, where the report&rsquo;s order departs from the synthesis.</p>
+  <p>What the three-project architecture buys, in summary, is <strong>separation</strong>. The synthesis can be reviewed on its analytical merits without distraction from formatting choices. The report can be edited or re-rendered for a different audience without re-doing the analysis. The trace files at each phase mean that anomalies in the final report trace back to evidence in two short hops rather than being buried in a single long document.</p>
+</section>
+
+<section class="step" id="s8-s7">
+  <h2>7. The Feedback Loop</h2>
+  <p>The logs and traces produced by each run are not just for audit. They are the raw material for improving the method.</p>
+  <p>Every run surfaces things that did not work as well as they should have. A sub-query pattern that returned mostly noise. A source on the Core list that turned out to add nothing on this kind of question. A domain framing that the agent kept stumbling over. A category of evidence the synthesis kept missing because no input summary surfaced it cleanly. These are visible in the logs because the architecture produces logs as a matter of course.</p>
+  <p>The feedback loop is the move from those observations back into the files. Some examples:</p>
+  <ul>
+    <li>A failure pattern in <code>log.md</code> becomes a refinement to <code>search-skill.md</code> &mdash; a new instruction about when to abandon a sub-query rather than re-run it with slight variations.</li>
+    <li>A consistent gap noted in <code>source-quality.md</code> becomes a new entry on the Core list in <code>search-domain.md</code>, with handling notes.</li>
+    <li>A reconciliation move that the synthesis kept doing well becomes an explicit pattern in <code>synth-skill.md</code>, available to future runs that might not have arrived at it independently.</li>
+    <li>An editorial move that landed cleanly for one audience becomes a named pattern in <code>report-skill.md</code> for re-use.</li>
+  </ul>
+  <p>The point is not that this happens automatically &mdash; it does not. It happens because someone reviews the trace files after each run and decides what is worth promoting into the methodology. But the architecture makes the review possible. Without the logs and traces, the lessons of each run dissipate as soon as the run ends. With them, every run is an opportunity to upgrade the method.</p>
+  <p>This is what makes the methodological progress claim concrete. The files are version-controlled, the lessons are written down, and the next run inherits the improvement. Over enough runs, the unit&rsquo;s method gets genuinely better &mdash; and the improvement belongs to the unit, not to whoever happened to do the work.</p>
+</section>
+
+<section class="step" id="s8-s8">
+  <h2>8. Where This Leaves a Research Unit</h2>
+  <p>The pitch is not &ldquo;an agent will do your research.&rdquo; It is that the craft of professional curated research can be encoded into plain text files, applied by an agent to produce trustworthy outputs, and re-run as the world changes &mdash; at a small fraction of the cost of doing the same work manually each time.</p>
+  <p>A research unit operating this way has externalised its method, made it improvable, divided labour cleanly between methodologist and domain expert, produced an audit trail as a real output, and built a feedback loop that makes the method better over time. The files are a productive asset. The audit trail is part of what is being delivered. The unit&rsquo;s accumulated craft is no longer locked in any individual&rsquo;s head.</p>
+  <p>This is, at the time of writing, what state-of-the-art looks like for a content-focused research unit working with AI.</p>
+  <hr>
+  <p><em>Part of the AI Onramps programme &middot; Deep Research Deep Dive</em></p>
+</section>
+
   `;
 })();
 
@@ -3287,6 +3422,14 @@ Read the integrated report (\`integrated_report.md\`). Produce two separate writ
     'lec-prw-6': { title: 'S7: Policy Research AI Workflow', subtitle: 'Phase 3 -- Report Writing' },
     'lec-prw-7': { title: 'S7: Policy Research AI Workflow', subtitle: 'Evaluation 2' },
     'lec-prw-8': { title: 'S7: Policy Research AI Workflow', subtitle: 'Closing' },
+    's8-s1': { title: 'S8: Agentic Research with Skills', subtitle: '1. From Tacit to Explicit' },
+    's8-s2': { title: 'S8: Agentic Research with Skills', subtitle: '2. What the Skills Approach Buys' },
+    's8-s3': { title: 'S8: Agentic Research with Skills', subtitle: '3. The Architecture' },
+    's8-s4': { title: 'S8: Agentic Research with Skills', subtitle: '4. Phase 1: Curated Search' },
+    's8-s5': { title: 'S8: Agentic Research with Skills', subtitle: '5. Phase 2: Synthesis' },
+    's8-s6': { title: 'S8: Agentic Research with Skills', subtitle: '6. Phase 3: Report Writing' },
+    's8-s7': { title: 'S8: Agentic Research with Skills', subtitle: '7. The Feedback Loop' },
+    's8-s8': { title: 'S8: Agentic Research with Skills', subtitle: '8. Where This Leaves a Research Unit' },
     'pdf-fluency-vocab':  { title: 'A2: Graphics', subtitle: 'AI Fluency: Vocabulary Cheat Sheet' },
     'pdf-fluency-onepager':{ title: 'A2: Graphics', subtitle: 'AI Fluency: Summary One-Pager' },
     'pdf-fluency-16x9':   { title: 'A2: Graphics', subtitle: 'AI Fluency: Summary 16x9' },
